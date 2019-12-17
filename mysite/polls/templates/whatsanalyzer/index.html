@@ -1,0 +1,9 @@
+<h1>MY HOME SCREEN</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form method="post" enctype="multipart/form-data">
+{% csrf_token %}
+    <input type="file" name="WhatsAppFile">
+    <button type="submit">Submit</button>
+</form>

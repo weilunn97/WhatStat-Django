@@ -1,0 +1,18 @@
+<h1>UPLOAD SUCCESSFUL</h1>
+<h2>Uploaded File Name : {{uploadedFile.name}} </h2>
+<body>Uploaded File List Length : {{fileContentsListLength}} </body>
+<body>Uploaded File Contents List :
+{% for line in fileContentsList %}
+    <br />{{line}}<br />
+{% endfor %}
+</body>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<div class="container">
+    {% if messages %}
+        {% for msg in messages %}
+            <script>M.toast({html: "{{msg}}"});</script>
+        {% endfor %}
+    {% endif %}
+</div>

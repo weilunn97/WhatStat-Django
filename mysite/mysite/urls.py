@@ -23,6 +23,7 @@ from django.urls import include, path
 file of the corresponding app that we wish to serve the user
 '''
 urlpatterns = [
-    path('admin/', admin.site.urls),       # Default
-    path('polls/', include('polls.urls'))  # "Importing" the polls app's url.py file
+    path('admin/', admin.site.urls),                        # Default
+    path('polls/', include('polls.urls')),                  # "Importing" the polls app's url.py file
+    path ('WhatsAnalyzer/', include('whatsanalyzer.urls'))  # "Importing" the WhatsAnalyzer app
 ]

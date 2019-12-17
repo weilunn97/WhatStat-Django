@@ -51,6 +51,3 @@ def votes(request, question_id):
                       context={'question': question, 'error_message': 'You didn\'t select a choice'})
 
     return HttpResponse("Votes for Question %s" % question_id)
-
-def fileUpload(request):
-    pass

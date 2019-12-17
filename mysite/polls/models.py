@@ -38,13 +38,3 @@ class Choice(models.Model):
     # RETURN STRING TEXT
     def __str__(self):
         return self.choice_text
-
-
-'''WHATSAPP PROJECT MODELS'''
-class FileProcessing(models.Model):
-    uploadedFile = models.FileField(null=True, blank=True)
-    fileContents = models.TextField()
-    # fileContentLines = models.
-
-    def __str__(self):
-        return self.uploadedFile.name
