@@ -1,0 +1,17 @@
+<!--
+A. To create HTML templates :
+1. Create a sub-folder under templates, with the same name as your app
+2. Place the HTML file belonging to an app within its own folder
+3. REASON : Prevent Django from using HTML files with the same name but
+belonging to OTHER APPS (eg payment_screen.html for registered vs non-registered users
+-->
+
+{% if latest_question_list %}
+    <ul>
+    {% for question in latest_question_list %}
+        <li><a href="% url 'detail' {{ question.id }}/">{{ question.question_text }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
