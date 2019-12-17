@@ -44,4 +44,7 @@ class Choice(models.Model):
 class FileProcessing(models.Model):
     uploadedFile = models.FileField(null=True, blank=True)
     fileContents = models.TextField()
-    fileContentLines = models.
+    # fileContentLines = models.
+
+    def __str__(self):
+        return self.uploadedFile.name
