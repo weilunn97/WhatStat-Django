@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2c75543a-9fb0-4d81-8380-858a63f0b24d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/mysite/whatsanalyzer/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/whatsanalyzer/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysite/whatsanalyzer/templates/whatsanalyzer/homepage.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/whatsanalyzer/templates/whatsanalyzer/homepage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/whatsanalyzer/templates/whatsanalyzer/upload.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/whatsanalyzer/templates/whatsanalyzer/upload.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysite/whatsanalyzer/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/whatsanalyzer/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,11 +13,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mysite/whatsanalyzer/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="646">
-              <caret line="24" column="11" selection-start-line="24" selection-start-column="11" selection-end-line="24" selection-end-column="11" />
+            <state relative-caret-position="152">
+              <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -30,7 +28,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mysite/whatsanalyzer/line_processing.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="610">
+            <state relative-caret-position="1330">
               <caret line="35" column="19" selection-start-line="35" selection-start-column="4" selection-end-line="35" selection-end-column="19" />
               <folding>
                 <element signature="e#0#22#0" expanded="true" />
@@ -51,11 +49,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mysite/whatsanalyzer/templates/whatsanalyzer/homepage.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="87" lean-forward="true" selection-start-line="87" selection-end-line="87" />
+            <state relative-caret-position="453">
+              <caret line="199" column="30" selection-start-line="199" selection-start-column="30" selection-end-line="199" selection-end-column="30" />
               <folding>
                 <element signature="n#style#0;n#input#0;n#form#0;n#div#0;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#form#0;n#div#0;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -76,9 +74,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>votes</find>
-      <find>extra</find>
-      <find>null</find>
       <find>;</find>
       <find>line</find>
       <find>re.</find>
@@ -106,6 +101,9 @@
       <find>file_upload_button</find>
       <find>whatsappfile</find>
       <find>form</find>
+      <find>img</find>
+      <find>h-</find>
+      <find>target</find>
     </findStrings>
     <replaceStrings>
       <replace>None</replace>
@@ -145,9 +143,9 @@
         <option value="$PROJECT_DIR$/mysite/whatsanalyzer/templates/whatsanalyzer/index.html" />
         <option value="$PROJECT_DIR$/mysite/whatsanalyzer/urls.py" />
         <option value="$PROJECT_DIR$/mysite/whatsanalyzer/templates/whatsanalyzer/upload.html" />
-        <option value="$PROJECT_DIR$/mysite/whatsanalyzer/templates/whatsanalyzer/homepage.html" />
         <option value="$PROJECT_DIR$/mysite/whatsanalyzer/models.py" />
         <option value="$PROJECT_DIR$/mysite/whatsanalyzer/views.py" />
+        <option value="$PROJECT_DIR$/mysite/whatsanalyzer/templates/whatsanalyzer/homepage.html" />
       </list>
     </option>
   </component>
@@ -200,21 +198,6 @@
               <item name="WhatsAnalyzer--Django-" type="b2602c69:ProjectViewProjectNode" />
               <item name="WhatsAnalyzer--Django-" type="462c0819:PsiDirectoryNode" />
               <item name="mysite" type="462c0819:PsiDirectoryNode" />
-              <item name="whatsanalyzer" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="WhatsAnalyzer--Django-" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WhatsAnalyzer--Django-" type="462c0819:PsiDirectoryNode" />
-              <item name="mysite" type="462c0819:PsiDirectoryNode" />
-              <item name="whatsanalyzer" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="WhatsAnalyzer--Django-" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WhatsAnalyzer--Django-" type="462c0819:PsiDirectoryNode" />
-              <item name="mysite" type="462c0819:PsiDirectoryNode" />
-              <item name="whatsanalyzer" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="whatsanalyzer" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -508,17 +491,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mysite/whatsanalyzer/templates/whatsanalyzer/homepage.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="87" lean-forward="true" selection-start-line="87" selection-end-line="87" />
-          <folding>
-            <element signature="n#style#0;n#input#0;n#form#0;n#div#0;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#form#0;n#div#0;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mysite/whatsanalyzer/templates/whatsanalyzer/upload.html">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -535,10 +507,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mysite/whatsanalyzer/line_processing.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="610">
+        <state relative-caret-position="1330">
           <caret line="35" column="19" selection-start-line="35" selection-start-column="4" selection-end-line="35" selection-end-column="19" />
           <folding>
             <element signature="e#0#22#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mysite/whatsanalyzer/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -553,12 +535,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mysite/whatsanalyzer/views.py">
+    <entry file="file://$PROJECT_DIR$/mysite/whatsanalyzer/templates/whatsanalyzer/homepage.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="24" column="11" selection-start-line="24" selection-start-column="11" selection-end-line="24" selection-end-column="11" />
+        <state relative-caret-position="453">
+          <caret line="199" column="30" selection-start-line="199" selection-start-column="30" selection-end-line="199" selection-end-column="30" />
           <folding>
-            <element signature="e#0#35#0" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#form#0;n#div#0;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#form#0;n#div#0;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -1,6 +1,6 @@
 from django.contrib import messages
 from django.shortcuts import redirect, render, reverse
-from line_processing import *
+from .line_processing import *
 from .models import Message, WhatsAppTextFile
 
 
