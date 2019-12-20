@@ -118,5 +118,42 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
-
 STATIC_URL = '/static/'
+
+'''
+1. Specify the STATICFILES_DIR. Best practice is to create a folder
+named static in your root directory (in the same folder as your manage.py
+file), and place all static content (css, js, img, etc) there
+
+2. Specify the DJANGO STATIC_ROOT DIRECTORY. This is the folder where
+Django LOOKS AT DURING RUNTIME (optimized for speed/convenience) to 
+obtain all its static assets
+
+3. This STATIC_ROOT directory is initially non-existent. You've to do
+python manage.py collectstatic in the directory containing both manage.py
+and your created static folder in Step 1 to CREATE AND POPULATE this
+Django-specific folder in Step 2
+
+4. Once that is done, we need to ALTER THE HTML FILE LINKS to these
+static files
+
+Before : <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+After  : <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet">
+
+We've to encapsulate the absolute link in SINGLE-QUOTES, and then WRAP
+{% '<ORIGINAL/ABSOLUTE/LINKS' %} in THESE % BRACKETS
+'''
+
+# Step 1
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+    #'/var/www/static/', # for hardcoded URLs
+]
+# Step 2
+STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
+
+# Step 3
+# In terminal (python manage.py collectstatic)
+
+# Step 4
+# Alter HTML links in <file_name>.html

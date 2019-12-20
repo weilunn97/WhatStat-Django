@@ -1,37 +1,8 @@
 from django.db import models
-
+from whatsanalyzer.count_analysis import *
+from whatsanalyzer.line_processing import *
 
 # Create your models here.
-class LineProcessing(models.Model):
-    @staticmethod
-    def extractDate(text):
-        pass
-
-    @staticmethod
-    def extractSender(text):
-        pass
-
-    @staticmethod
-    def extractText(text):
-        pass
-
-    @staticmethod
-    def parseDateString(date):
-        pass
-
-
-class CountAnalysis(models.Model):
-    # Metrics to be calculated later (via single loop through messageList)
-    senderOneTotalMessages = 0
-    senderTwoTotalMessages = 0
-    senderOneTotalWords = 0
-    senderTwoTotalWords = 0
-
-    @staticmethod
-    def calculateCounts():
-        pass
-
-
 class ReplyTimingAnalysis(models.Model):
     # Setup all attributes related to reply timings
     _lineNumber = models.IntegerField()
@@ -56,22 +27,6 @@ class WhatsAppTextFile(models.Model):
     def __str__(self):
         return self._fileName
 
-    @property
-    def getFilePath(self):
-        return self._filePath
-
-    @property
-    def getFileName(self):
-        return self._fileName
-
-    @property
-    def getFileContents(self):
-        return self._fileContents
-
-    @property
-    def getFileMessages(self):
-        return self._fileMessages
-
 
 class Message(models.Model):
     # Setup all attributes related to a Message
@@ -83,18 +38,5 @@ class Message(models.Model):
     # Upon deletion of the file object, we shall also delete all Message objects
     _whatsAppTextFile = models.ForeignKey(WhatsAppTextFile, on_delete=models.CASCADE)
 
-    @property
-    def getLineNumber(self):
-        return self._lineNumber
-
-    @property
-    def getMessageDate(self):
-        return self._messageDate
-
-    @property
-    def getMessageSender(self):
-        return self._messageSender
-
-    @property
-    def getMessageText(self):
-        return self._messageText
+    def __str__(self):
+        return f"{self._messageDate} {self._messageSender} {self._messageText}"

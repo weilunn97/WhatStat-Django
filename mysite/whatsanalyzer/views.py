@@ -7,21 +7,22 @@ def index(request):
     # Serve up the success page if upload is successful
     if request.method == "POST":
         uploadedFile = request.FILES['WhatsAppFile']
-        messages.success(request, f"Uploaded File Name : {uploadedFile.name}")
         fileContents = uploadedFile.read().decode('utf-8')
-        fileContentsType = type(fileContents)
         fileContentsList = fileContents.split('\n')
-        fileContentsListLength = len(fileContentsList)
+        # calculateMetrics()
+        # return render(request, 'whatsanalyzer/upload.html', {'uploadedFile': uploadedFile,
+        #                                                      'fileContents': fileContents,
+        #                                                      'fileContentsList': fileContentsList})
 
-        return render(request, 'whatsanalyzer/upload.html', {'uploadedFile': uploadedFile,
-                                                             'fileContents': fileContents,
-                                                             'fileContentsListLength': fileContentsListLength,
-                                                             'fileContentsList': fileContentsList})
+        return upload(request, uploadedFile, fileContents, fileContentsList)
+
     # Else, refresh the page
     return render(request, 'whatsanalyzer/index.html')
 
 
-def upload(request):
-    return render(request, 'whatsanalyzer/upload.html')
+def upload(request, uploadedFile, fileContents, fileContentsList):
+    return render(request, 'whatsanalyzer/my_template.html', {'uploadedFile': uploadedFile,
+                                                         'fileContents': fileContents,
+                                                         'fileContentsList': fileContentsList})
 
 

@@ -13,9 +13,10 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
-
 '''
 1. mysite/urls.py acts as a CONTROLLER to MAP URLs to views in your app(s)
 2. Views DO NOT EXIST in your main site, only your created apps
@@ -23,7 +24,11 @@ from django.urls import include, path
 file of the corresponding app that we wish to serve the user
 '''
 urlpatterns = [
-    path('admin/', admin.site.urls),                        # Default
-    path('polls/', include('polls.urls')),                  # "Importing" the polls app's url.py file
-    path ('WhatsAnalyzer/', include('whatsanalyzer.urls'))  # "Importing" the WhatsAnalyzer app
+    path('admin/', admin.site.urls),                                    # Default
+    path('polls/', include('polls.urls')),                              # "Importing" the polls app's url.py file
+    path ('WhatsAnalyzer/', include('whatsanalyzer.urls'))              # "Importing" the WhatsAnalyzer app
 ]
+
+# "Importing" all CSS/JS templates
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
