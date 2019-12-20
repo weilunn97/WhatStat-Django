@@ -15,13 +15,13 @@ class WhatsAppTextFile(models.Model):
 
 class Message(models.Model):
     # Setup all attributes related to a Message
-    _lineNumber = models.IntegerField()
-    _messageDate = models.DateTimeField()
-    _messageSender = models.CharField(max_length=500)
-    _messageText = models.TextField
+    lineNumber = models.IntegerField()
+    messageDate = models.DateTimeField()
+    messageSender = models.CharField(max_length=500)
+    messageText = models.TextField
     # Add a FK within Message to enforce that each Message must belong to a WhatsAppTextFile
     # Upon deletion of the file object, we shall also delete all Message objects
-    _whatsAppTextFile = models.ForeignKey(WhatsAppTextFile, on_delete=models.CASCADE)
+    whatsAppTextFile = models.ForeignKey(WhatsAppTextFile, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"Message : {self._messageDate} {self._messageSender} {self._messageText}"
+        return f"Message : {self.messageDate} {self.messageSender} {self.messageText}"

@@ -72,15 +72,18 @@
             <a href="https://web.whatsapp.com/" target="_blank">WhatsApp Web</a> and email any conversation you wish to analyze to yourself. Next, simply download the text file, and upload it below! </p>
         </div>
       </div>
-      <form name="upload_form" method="post" enctype="multipart/form-data">
+
+      <!--CORRECT FORM-->
+      <form method="post" enctype="multipart/form-data">
       {% csrf_token %}
-        <input type="file" id="WhatsAppFile" hidden="hidden" />
-        <button type="button" class="btn btn-primary" id="custom_upload_button">Upload File</button>
+          <input id="fileBrowserButton" style="display:none" class="btn btn-primary" type="file" name="WhatsAppFile">
+          <button id="customFileBrowserButton" class="btn btn-primary" type="button">Upload</button>
+          <button id="submitButton" class="btn btn-primary" type="submit">Analyze</button>
       </form>
-      <div style="color:white" id="WhatsAppFile_name">No file chosen.</div>
+      <div style="color:white" id="WhatsAppFile_name ">No file chosen.</div>
       <script type="text/javascript">
-        const fileUploadButton = document.getElementById("WhatsAppFile")
-        const customUploadButton = document.getElementById("custom_upload_button")
+        const fileUploadButton = document.getElementById("fileBrowserButton")
+        const customUploadButton = document.getElementById("customFileBrowserButton")
         const buttonText = document.getElementById("WhatsAppFile_name")
 
         customUploadButton.addEventListener("click", function() {
@@ -90,7 +93,6 @@
         fileUploadButton.addEventListener("change", function() {
           if (fileUploadButton.value) {
             buttonText.innerHTML = fileUploadButton.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
-            document.upload_form.submit();
           } else {
             buttonText.innerHTML = "No file chosen";
           }
