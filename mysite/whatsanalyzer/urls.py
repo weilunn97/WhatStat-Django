@@ -7,5 +7,5 @@ app_name = 'whatsanalyzer'
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('upload.html', views.upload, name='upload'),
+    path('upload/', views.upload, name='upload'),
 ]

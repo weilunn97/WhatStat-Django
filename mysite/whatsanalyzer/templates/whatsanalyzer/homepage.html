@@ -55,8 +55,8 @@
   <header class="masthead">
     <div class="container d-flex h-100 align-items-center">
       <div class="mx-auto text-center">
-        <h1 class="mx-auto my-0 text-uppercase">Grayscale</h1>
-        <h2 class="text-white-50 mx-auto mt-2 mb-5">A free, responsive, one page Bootstrap theme created by Start Bootstrap.</h2>
+        <h1 class="mx-auto my-0 text-uppercase">WhatsAnalyzer</h1>
+        <h2 class="text-white-50 mx-auto mt-2 mb-5">A quick analysis and visualization of your WhatsApp Chats.</h2>
         <a href="#about" class="btn btn-primary js-scroll-trigger">Get Started</a>
       </div>
     </div>
@@ -67,12 +67,35 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-8 mx-auto">
-          <h2 class="text-white mb-4">Built with Bootstrap 4</h2>
-          <p class="text-white-50">Grayscale is a free Bootstrap theme created by Start Bootstrap. It can be yours right now, simply download the template on
-            <a href="http://startbootstrap.com/template-overviews/grayscale/">the preview page</a>. The theme is open source, and you can use it for any purpose, personal or commercial.</p>
+          <h2 class="text-white mb-4">WhatsApp File Upload</h2>
+          <p class="text-white-50"> Simply head over to
+            <a href="https://web.whatsapp.com/" target="_blank">WhatsApp Web</a> and email any conversation you wish to analyze to yourself. Next, simply download the text file, and upload it below! </p>
         </div>
       </div>
-      <img src="{% static 'img/ipad.png' %}" class="img-fluid" alt="">
+      <form name="upload_form" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+        <input type="file" id="WhatsAppFile" hidden="hidden" />
+        <button type="button" class="btn btn-primary" id="custom_upload_button">Upload File</button>
+      </form>
+      <div style="color:white" id="WhatsAppFile_name">No file chosen.</div>
+      <script type="text/javascript">
+        const fileUploadButton = document.getElementById("WhatsAppFile")
+        const customUploadButton = document.getElementById("custom_upload_button")
+        const buttonText = document.getElementById("WhatsAppFile_name")
+
+        customUploadButton.addEventListener("click", function() {
+          fileUploadButton.click();
+        });
+
+        fileUploadButton.addEventListener("change", function() {
+          if (fileUploadButton.value) {
+            buttonText.innerHTML = fileUploadButton.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
+            document.upload_form.submit();
+          } else {
+            buttonText.innerHTML = "No file chosen";
+          }
+        });
+      </script>
     </div>
   </section>
 
