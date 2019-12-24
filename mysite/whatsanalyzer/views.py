@@ -21,36 +21,38 @@ def index(request):
         updateWhatsAppTextFileDB(uploadedFile, fileContents)
         updateMessageDB(fileContentsList)
         CountAnalysis.calculateMetrics()
-        
-        
-        # DEBUG STATEMENTS
-        s1 = CountAnalysis.senderOneTotalMessages
-        s2 = CountAnalysis.senderOneTotalWords
-        s3 = CountAnalysis.senderOneWordsPerMsg
-        s4 = len(CountAnalysis.senderOneTimeStamp)
-        s5 = len(CountAnalysis.senderOneReplyTimingInMinutes)
-        s6 = CountAnalysis.senderTwoTotalMessages
-        s7 = CountAnalysis.senderTwoTotalWords
-        s8 = CountAnalysis.senderTwoWordsPerMsg
-        s9 = len(CountAnalysis.senderTwoTimeStamp)
-        s10 = len(CountAnalysis.senderTwoReplyTimingInMinutes)
-    
 
-        # SERVE HTTP RESPONSE
-        return render(request, 'whatsanalyzer/upload.html', {'uploadedFile': uploadedFile,
-                                                             'fileContents': fileContents,
-                                                             'fileContentsList': fileContentsList,
-                                                             'fileContentsListLength': len(fileContentsList),
-                                                             's1': s1,
-                                                             's2': s2,
-                                                             's3': s3,
-                                                             's4': s4,
-                                                             's5': s5,
-                                                             's6': s6,
-                                                             's7': s7,
-                                                             's8': s8,
-                                                             's9': s9,
-                                                             's10': s10})
+        # # DEBUG STATEMENTS
+        # s1TotalMsg = CountAnalysis.senderOneTotalMessages
+        # s1TotalWords = CountAnalysis.senderOneTotalWords
+        # s1WPM = CountAnalysis.senderOneWordsPerMsg
+        # s4 = len(CountAnalysis.senderOneTimeStamp)
+        # s5 = len(CountAnalysis.senderOneReplyTimingInMinutes)
+        # s2TotalMsg = CountAnalysis.senderTwoTotalMessages
+        # s2TotalWords = CountAnalysis.senderTwoTotalWords
+        # s2WPM = CountAnalysis.senderTwoWordsPerMsg
+        # s9 = len(CountAnalysis.senderTwoTimeStamp)
+        # s10 = len(CountAnalysis.senderTwoReplyTimingInMinutes)
+        #
+        #
+        # # SERVE HTTP RESPONSE
+        # return render(request, 'whatsanalyzer/upload.html', {'uploadedFile': uploadedFile,
+        #                                                      'fileContents': fileContents,
+        #                                                      'fileContentsList': fileContentsList,
+        #                                                      'fileContentsListLength': len(fileContentsList),
+        #                                                      's1TotalMsg': s1TotalMsg,
+        #                                                      's1TotalWords': s1TotalWords,
+        #                                                      's1WPM': s1WPM,
+        #                                                      's4': s4,
+        #                                                      's5': s5,
+        #                                                      's2TotalMsg': s2TotalMsg,
+        #                                                      's2TotalWords': s2TotalWords,
+        #                                                      's2WPM': s2WPM,
+        #                                                      's9': s9,
+        #                                                      's10': s10})
+
+        # Redirect to metrics
+        return metrics(request)
 
     # Else, serve the page as per usual
     return render(request, 'whatsanalyzer/homepage.html')
@@ -81,3 +83,29 @@ def updateMessageDB(fileContentsList):
             myMessage = Message(lineNumber=ln, messageDate=md, messageSender=ms, messageText=mt)
             myMessage.save()
             ln += 1
+
+def metrics(request):
+
+    # DEBUG STATEMENTS
+    s1TotalMsg = CountAnalysis.senderOneTotalMessages
+    s1TotalWords = CountAnalysis.senderOneTotalWords
+    s1WPM = CountAnalysis.senderOneWordsPerMsg
+    # s4 = len(CountAnalysis.senderOneTimeStamp)
+    # s5 = len(CountAnalysis.senderOneReplyTimingInMinutes)
+    s2TotalMsg = CountAnalysis.senderTwoTotalMessages
+    s2TotalWords = CountAnalysis.senderTwoTotalWords
+    s2WPM = CountAnalysis.senderTwoWordsPerMsg
+    s9 = len(CountAnalysis.senderTwoTimeStamp)
+    s10 = len(CountAnalysis.senderTwoReplyTimingInMinutes)
+
+    # SERVE HTTP RESPONSE
+    return render(request, 'whatsanalyzer/metrics.html', {'s1TotalMsg': s1TotalMsg,
+                                                          's1TotalWords': s1TotalWords,
+                                                          's1WPM': s1WPM,
+                                                          # 's4': s4,
+                                                          # 's5': s5,
+                                                          's2TotalMsg': s2TotalMsg,
+                                                          's2TotalWords': s2TotalWords,
+                                                          's2WPM': s2WPM})
+                                                          # 's9': s9,
+                                                          # 's10': s10})

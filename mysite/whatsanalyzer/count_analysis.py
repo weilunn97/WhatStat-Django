@@ -1,7 +1,7 @@
 from .models import Message
 
-
 import logging
+
 logger = logging.getLogger(__name__)
 
 
@@ -38,7 +38,7 @@ class CountAnalysis():
 
     senderTwoTimeStamp = []
     senderTwoReplyTimingInMinutes = []
-    
+
     @staticmethod
     def calculateMetrics():
         '''
@@ -76,6 +76,16 @@ class CountAnalysis():
                 # Update firstMessage
                 firstMessage = msg
 
+        # 4. WPM Count
+        try:
+            CountAnalysis.senderOneWordsPerMsg = int(CountAnalysis.senderOneTotalWords / CountAnalysis.senderOneTotalMessages)
+        except ZeroDivisionError:
+            CountAnalysis.senderOneWordsPerMsg = 0   
+        try:
+            CountAnalysis.senderTwoWordsPerMsg = int(CountAnalysis.senderTwoTotalWords / CountAnalysis.senderTwoTotalMessages)
+        except ZeroDivisionError:
+            CountAnalysis.senderTwoWordsPerMsg = 0
+
     @staticmethod
     def analyzeReplyTimings(mOne, mTwo):
         '''
@@ -106,7 +116,7 @@ class CountAnalysis():
         else:
             CountAnalysis.senderTwoTimeStamp.append(mTwo.messageDate)
             CountAnalysis.senderTwoReplyTimingInMinutes.append(dateDiffInMins)
-    
+
     @staticmethod
     def debugFunction():
         print(CountAnalysis.senderOneTotalMessages)
@@ -120,4 +130,3 @@ class CountAnalysis():
         print(CountAnalysis.senderTwoWordsPerMsg)
         print(CountAnalysis.senderTwoTimeStamp)
         print(CountAnalysis.senderTwoReplyTimingInMinutes)
-        

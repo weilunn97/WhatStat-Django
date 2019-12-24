@@ -1,0 +1,141 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<html>
+	<head>
+		<title>Full Motion</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="{% static 'css/main.css' %}" />
+	</head>
+	<body id="top">
+
+			<!-- banner.jpg' %} -->
+			<!--
+				To use a video as your background, set data-video to the name of your video without
+				its extension (eg. {% static 'img/banner.jpg' %}). Your video must be available in both .mp4 and .webm
+				formats to work correctly.
+			-->
+				<section id="banner" data-video="{% static 'img/banner' %}">
+					<div class="inner">
+						<header>
+							<h1>Conversation Insights</h1>
+							<p>Keen to find out more about your chat patterns?<br />
+								Scroll down and have a look for yourself!</p>
+						</header>
+						<a href="#main" class="more">Learn More</a>
+					</div>
+				</section>
+
+			<!-- Main -->
+				<div id="main">
+					<div class="inner">
+
+					<!-- Boxes -->
+						<div class="thumbnails">
+
+							<div class="box">
+								<a class="image fit"><img src="{% static 'img/C1.jpg' %}" alt="" /></a>
+								<div class="inner">
+									<h2>{{s1TotalMsg}}<br>Messages</h2>
+									<p>Interdum amet accumsan placerat commodo ut amet aliquam blandit nunc tempor lobortis nunc non. Mi accumsan.</p>
+									<a href="https://youtu.be/s6zR2T9vn2c" class="button fit" data-poptrox="youtube,800x400">Watch</a>
+								</div>
+							</div>
+
+							<div class="box">
+								<a class="image fit"><img src="{% static 'img/C2.jpg' %}" alt="" /></a>
+								<div class="inner">
+									<h2>{{s2TotalMsg}}<br>Messages</h2>
+									<p>Interdum amet accumsan placerat commodo ut amet aliquam blandit nunc tempor lobortis nunc non. Mi accumsan.</p>
+									<a href="https://youtu.be/s6zR2T9vn2c" class="button style2 fit" data-poptrox="youtube,800x400">Watch</a>
+								</div>
+							</div>
+
+							<div class="box">
+								<a class="image fit"><img src="{% static 'img/C3.jpg' %}" alt="" /></a>
+								<div class="inner">
+									<h2>{{s1TotalWords}}<br>Words</h2>
+									<p>Interdum amet accumsan placerat commodo ut amet aliquam blandit nunc tempor lobortis nunc non. Mi accumsan.</p>
+									<a href="https://youtu.be/s6zR2T9vn2c" class="button fit" data-poptrox="youtube,800x400">Watch</a>
+								</div>
+							</div>
+
+							<div class="box">
+								<a class="image fit"><img src="{% static 'img/C4.jpg' %}" alt="" /></a>
+								<div class="inner">
+									<h2>{{s2TotalWords}}<br>Words</h2>
+									<p>Interdum amet accumsan placerat commodo ut amet aliquam blandit nunc tempor lobortis nunc non. Mi accumsan.</p>
+									<a href="https://youtu.be/s6zR2T9vn2c" class="button style2 fit" data-poptrox="youtube,800x400">Watch</a>
+								</div>
+							</div>
+
+							<div class="box">
+								<a class="image fit"><img src="{% static 'img/C5.jpg' %}" alt="" /></a>
+								<div class="inner">
+									<h2>{{s1WPM}}<br>Words / Message</h2>
+									<p>Interdum amet accumsan placerat commodo ut amet aliquam blandit nunc tempor lobortis nunc non. Mi accumsan.</p>
+									<a href="https://youtu.be/s6zR2T9vn2c" class="button fit" data-poptrox="youtube,800x400">Watch</a>
+								</div>
+							</div>
+
+							<div class="box">
+								<a class="image fit"><img src="{% static 'img/C6.jpg' %}" alt="" /></a>
+								<div class="inner">
+									<h2>{{s2WPM}}<br>Words / Message</h2>
+									<p>Interdum amet accumsan placerat commodo ut amet aliquam blandit nunc tempor lobortis nunc non. Mi accumsan.</p>
+									<a href="https://youtu.be/s6zR2T9vn2c" class="button style2 fit" data-poptrox="youtube,800x400">Watch</a>
+								</div>
+							</div>
+
+							<div class="box">
+								<a class="image fit"><img src="{% static 'img/C7.jpg' %}" alt="" /></a>
+								<div class="inner">
+									<h2>{{s1WPM}}<br>Minutes</h2>
+									<p>Interdum amet accumsan placerat commodo ut amet aliquam blandit nunc tempor lobortis nunc non. Mi accumsan.</p>
+									<a href="https://youtu.be/s6zR2T9vn2c" class="button fit" data-poptrox="youtube,800x400">Watch</a>
+								</div>
+							</div>
+
+							<div class="box">
+								<a class="image fit"><img src="{% static 'img/C8.jpg' %}" alt="" /></a>
+								<div class="inner">
+									<h2>{{s2WPM}}<br>Minutes</h2>
+									<p>Interdum amet accumsan placerat commodo ut amet aliquam blandit nunc tempor lobortis nunc non. Mi accumsan.</p>
+									<a href="https://youtu.be/s6zR2T9vn2c" class="button style2 fit" data-poptrox="youtube,800x400">Watch</a>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+
+			<!-- Footer -->
+				<footer id="footer">
+					<div class="inner">
+						<h1>Quick Summary</h1>
+						<p>Mhmm, seems like <b>{{"placeholder"}}</b> is a much chattier person, with an average of <b>{{"placeholder"}}</b> words for each text that he/she sends!
+						And deeper analysis into the reply timings reveal that <b>{{"placeholder"}}</b> takes a slightly longer time (around <b>{{"placeholder"}}</b>%) to reply to
+						his/her texts... Well, statistics can only tell us that much, so I shall leave the conclusions for you to make!</p>
+
+						<ul class="icons">
+							<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+							<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+							<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+							<li><a href="mailto:WTAN132@e.ntu.edu.sg" class="icon fa-envelope"><span class="label">Email</span></a></li>
+						</ul>
+						<p class="copyright">&copy; JourneyWithJed, 2020<br>Design Credits : <a href="https://templated.co">TEMPLATED</a>.</p>
+					</div>
+				</footer>
+
+		<!-- Scripts -->
+			<script src="{% static 'js/jquery.min.js' %}"></script>
+			<script src="{% static 'js/jquery.scrolly.min.js' %}"></script>
+			<script src="{% static 'js/jquery.poptrox.min.js' %}"></script>
+			<script src="{% static 'js/skel.min.js' %}"></script>
+			<script src="{% static 'js/util.js' %}"></script>
+			<script src="{% static 'js/main.js' %}"></script>
+
+	</body>
+</html>
