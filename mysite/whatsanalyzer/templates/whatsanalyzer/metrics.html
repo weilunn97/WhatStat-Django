@@ -38,7 +38,7 @@
 								<a class="image fit"><img src="{% static 'img/C1.jpg' %}" alt="" /></a>
 								<div class="inner">
 									<h2>{{s1TotalMsg}}<br>Messages</h2>
-									<p>Interdum amet accumsan placerat commodo ut amet aliquam blandit nunc tempor lobortis nunc non. Mi accumsan.</p>
+									<p>{{leftMessageText}}</p>
 									<a href="https://youtu.be/s6zR2T9vn2c" class="button fit" data-poptrox="youtube,800x400">Watch</a>
 								</div>
 							</div>
@@ -47,7 +47,7 @@
 								<a class="image fit"><img src="{% static 'img/C2.jpg' %}" alt="" /></a>
 								<div class="inner">
 									<h2>{{s2TotalMsg}}<br>Messages</h2>
-									<p>Interdum amet accumsan placerat commodo ut amet aliquam blandit nunc tempor lobortis nunc non. Mi accumsan.</p>
+									<p>{{rightMessageText}}</p>
 									<a href="https://youtu.be/s6zR2T9vn2c" class="button style2 fit" data-poptrox="youtube,800x400">Watch</a>
 								</div>
 							</div>
@@ -56,7 +56,7 @@
 								<a class="image fit"><img src="{% static 'img/C3.jpg' %}" alt="" /></a>
 								<div class="inner">
 									<h2>{{s1TotalWords}}<br>Words</h2>
-									<p>Interdum amet accumsan placerat commodo ut amet aliquam blandit nunc tempor lobortis nunc non. Mi accumsan.</p>
+									<p>{{leftWordsText}}</p>
 									<a href="https://youtu.be/s6zR2T9vn2c" class="button fit" data-poptrox="youtube,800x400">Watch</a>
 								</div>
 							</div>
@@ -65,7 +65,7 @@
 								<a class="image fit"><img src="{% static 'img/C4.jpg' %}" alt="" /></a>
 								<div class="inner">
 									<h2>{{s2TotalWords}}<br>Words</h2>
-									<p>Interdum amet accumsan placerat commodo ut amet aliquam blandit nunc tempor lobortis nunc non. Mi accumsan.</p>
+									<p>{{rightWordsText}}</p>
 									<a href="https://youtu.be/s6zR2T9vn2c" class="button style2 fit" data-poptrox="youtube,800x400">Watch</a>
 								</div>
 							</div>
@@ -74,7 +74,7 @@
 								<a class="image fit"><img src="{% static 'img/C5.jpg' %}" alt="" /></a>
 								<div class="inner">
 									<h2>{{s1WPM}}<br>Words / Message</h2>
-									<p>Interdum amet accumsan placerat commodo ut amet aliquam blandit nunc tempor lobortis nunc non. Mi accumsan.</p>
+									<p>{{leftWPMText}}</p>
 									<a href="https://youtu.be/s6zR2T9vn2c" class="button fit" data-poptrox="youtube,800x400">Watch</a>
 								</div>
 							</div>
@@ -83,7 +83,7 @@
 								<a class="image fit"><img src="{% static 'img/C6.jpg' %}" alt="" /></a>
 								<div class="inner">
 									<h2>{{s2WPM}}<br>Words / Message</h2>
-									<p>Interdum amet accumsan placerat commodo ut amet aliquam blandit nunc tempor lobortis nunc non. Mi accumsan.</p>
+									<p>{{rightWPMText}}</p>
 									<a href="https://youtu.be/s6zR2T9vn2c" class="button style2 fit" data-poptrox="youtube,800x400">Watch</a>
 								</div>
 							</div>
@@ -91,8 +91,8 @@
 							<div class="box">
 								<a class="image fit"><img src="{% static 'img/C7.jpg' %}" alt="" /></a>
 								<div class="inner">
-									<h2>{{s1WPM}}<br>Minutes</h2>
-									<p>Interdum amet accumsan placerat commodo ut amet aliquam blandit nunc tempor lobortis nunc non. Mi accumsan.</p>
+									<h2>{{s1AvgReply}}<br>Hours</h2>
+									<p>{{leftReplyText}}</p>
 									<a href="https://youtu.be/s6zR2T9vn2c" class="button fit" data-poptrox="youtube,800x400">Watch</a>
 								</div>
 							</div>
@@ -100,14 +100,12 @@
 							<div class="box">
 								<a class="image fit"><img src="{% static 'img/C8.jpg' %}" alt="" /></a>
 								<div class="inner">
-									<h2>{{s2WPM}}<br>Minutes</h2>
-									<p>Interdum amet accumsan placerat commodo ut amet aliquam blandit nunc tempor lobortis nunc non. Mi accumsan.</p>
+									<h2>{{s2AvgReply}}<br>Hours</h2>
+									<p>{{rightReplyText}}</p>
 									<a href="https://youtu.be/s6zR2T9vn2c" class="button style2 fit" data-poptrox="youtube,800x400">Watch</a>
 								</div>
 							</div>
-
 						</div>
-
 					</div>
 				</div>
 
@@ -115,8 +113,8 @@
 				<footer id="footer">
 					<div class="inner">
 						<h1>Quick Summary</h1>
-						<p>Mhmm, seems like <b>{{"placeholder"}}</b> is a much chattier person, with an average of <b>{{"placeholder"}}</b> words for each text that he/she sends!
-						And deeper analysis into the reply timings reveal that <b>{{"placeholder"}}</b> takes a slightly longer time (around <b>{{"placeholder"}}</b>%) to reply to
+						<p>Mhmm, seems like <b>{{chattierPerson}}</b> is a much chattier person, with an average of <b>{{chattierWPM}}</b> words for each text that he/she sends!
+						And deeper analysis into the reply timings reveal that <b>{{slowerPerson}}</b> takes a slightly longer time (around <b>{{slowerPercent}}</b>%) to reply to
 						his/her texts... Well, statistics can only tell us that much, so I shall leave the conclusions for you to make!</p>
 
 						<ul class="icons">

@@ -80,11 +80,11 @@
           <button id="customFileBrowserButton" class="btn btn-primary" type="button">Upload</button>
           <button id="submitButton" class="btn btn-primary" type="submit">Analyze</button>
       </form>
-      <div style="color:white" id="WhatsAppFile_name ">No file chosen.</div>
+      <div style="color:white" id="WhatsAppFile_name ">No file selected.</div>
       <script type="text/javascript">
-        const fileUploadButton = document.getElementById("fileBrowserButton")
-        const customUploadButton = document.getElementById("customFileBrowserButton")
-        const buttonText = document.getElementById("WhatsAppFile_name")
+        const fileUploadButton = document.getElementById("fileBrowserButton");
+        const customUploadButton = document.getElementById("customFileBrowserButton");
+        const buttonText = document.getElementById("WhatsAppFile_name");
 
         customUploadButton.addEventListener("click", function() {
           fileUploadButton.click();
@@ -92,9 +92,9 @@
 
         fileUploadButton.addEventListener("change", function() {
           if (fileUploadButton.value) {
-            buttonText.innerHTML = fileUploadButton.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
+            document.getElementById("WhatsAppFile_name").innerHTML = fileUploadButton.value.match(/^.+\\([^.]+)\.[^\.]+$/)[1];
           } else {
-            buttonText.innerHTML = "No file chosen";
+            document.getElementById("WhatsAppFile_name").innerHTML = "No file selected.";
           }
         });
       </script>
@@ -200,7 +200,7 @@
               <h4 class="text-uppercase m-0">Email</h4>
               <hr class="my-4">
               <div class="small text-black-50">
-                <a href="#">WTAN132@e.ntu.edu.sg</a>
+                <a href="mailto:WTAN132@e.ntu.edu.sg">WTAN132@e.ntu.edu.sg</a>
               </div>
             </div>
           </div>
@@ -225,7 +225,7 @@
         <a href="#" class="mx-2">
           <i class="fab fa-facebook-f"></i>
         </a>
-        <a href="#" class="mx-2">
+        <a href="https://github.com/weilunn97" class="mx-2">
           <i class="fab fa-github"></i>
         </a>
       </div>

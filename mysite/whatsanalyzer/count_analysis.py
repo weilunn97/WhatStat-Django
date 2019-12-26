@@ -130,3 +130,18 @@ class CountAnalysis():
         print(CountAnalysis.senderTwoWordsPerMsg)
         print(CountAnalysis.senderTwoTimeStamp)
         print(CountAnalysis.senderTwoReplyTimingInMinutes)
+        
+    @staticmethod
+    def clearMetrics():
+        CountAnalysis.senderList.clear()
+        CountAnalysis.senderOneTotalMessages = 0
+        CountAnalysis.senderOneTotalWords = 0
+        CountAnalysis.senderOneWordsPerMsg = 0
+        CountAnalysis.senderOneTimeStamp.clear()
+        CountAnalysis.senderList.clear()
+        CountAnalysis.senderTwoTotalMessages = 0
+        CountAnalysis.senderTwoTotalWords = 0
+        CountAnalysis.senderTwoWordsPerMsg = 0
+        CountAnalysis.senderTwoTimeStamp.clear()
+
+
