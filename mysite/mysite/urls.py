@@ -25,9 +25,11 @@ file of the corresponding app that we wish to serve the user
 '''
 urlpatterns = [
     path('', include('whatsanalyzer.urls')),
-    path('admin/', admin.site.urls),                                    # Default
-    path('polls/', include('polls.urls')),                              # "Importing" the polls app's url.py file
-    path ('WhatsAnalyzer/', include('whatsanalyzer.urls'))              # "Importing" the WhatsAnalyzer app
+    path('admin/', admin.site.urls),                                     # Default
+    path('polls/', include('polls.urls')),                               # "Importing" the polls app's url.py file
+    path ('WhatsAnalyzer/', include('whatsanalyzer.urls')),              # "Importing" the WhatsAnalyzer app
+    path('django_plotly_dash/', include('django_plotly_dash.urls')),     # "Importing" the module for Plotly support
+
 ]
 
 # "Importing" all CSS/JS templates

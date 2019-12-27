@@ -31,6 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'chartjs',
+    'django_plotly_dash.apps.DjangoPlotlyDashConfig',
     'whatsanalyzer.apps.WhatsanalyzerConfig',
     'polls.apps.PollsConfig',
     'django.contrib.admin',

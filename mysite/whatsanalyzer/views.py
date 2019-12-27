@@ -1,12 +1,9 @@
-from django.shortcuts import render, redirect
-from .line_processing import *
 from .count_analysis import *
+from .line_processing import *
 from .models import Message, WhatsAppTextFile
-
-
-import logging
-logger = logging.getLogger("myLogger")
-
+from django.shortcuts import render, redirect
+from datetime import datetime
+import json
 
 # Create your views here.
 def index(request):
@@ -69,11 +66,11 @@ def metrics(request):
     # VALUES
     s1 = CountAnalysis.senderList[0]
     s2 = CountAnalysis.senderList[1]
-    s1TotalMsg = CountAnalysis.senderOneTotalMessages
-    s1TotalWords = CountAnalysis.senderOneTotalWords
-    s1WPM = CountAnalysis.senderOneWordsPerMsg
-    # s4 = len(CountAnalysis.senderOneTimeStamp)
-    s1AvgReply = sum(CountAnalysis.senderOneReplyTimingInMinutes)/len(CountAnalysis.senderOneReplyTimingInMinutes)
+    s1TotalMsg = CountAnalysis.senderTwoTotalMessages
+    s1TotalWords = CountAnalysis.senderTwoTotalWords
+    s1WPM = CountAnalysis.senderTwoWordsPerMsg
+    # s4 = len(CountAnalysis.senderTwoTimeStamp)
+    s1AvgReply = sum(CountAnalysis.senderTwoReplyTimingInMinutes)/len(CountAnalysis.senderTwoReplyTimingInMinutes)
     s2TotalMsg = CountAnalysis.senderTwoTotalMessages
     s2TotalWords = CountAnalysis.senderTwoTotalWords
     s2WPM = CountAnalysis.senderTwoWordsPerMsg
@@ -95,8 +92,7 @@ def metrics(request):
         else:
             leftMessageText = f"Well, well, {s1}, nothing much to see here I guess, both you guys have sent nearly the same " \
                 f"number of texts to each other so far!"
-            rightMessageText = f"Well, well, {s2}, nothing much to see here I guess, both you guys have sent nearly the same " \
-                f"number of texts to each other so far!"
+            rightMessageText = f"{s2}, seems like the both of you are equally invested in the conversation, that's good!"
 
     else:
         # LARGE DIFF
@@ -111,8 +107,7 @@ def metrics(request):
             leftMessageText = f"Well, well, {s1}, nothing much to see here I guess, both you guys have sent nearly the same " \
                 f"number of texts to each other so far!"
 
-            rightMessageText = f"Well, well, {s2}, nothing much to see here I guess, both you guys have sent nearly the same " \
-                f"number of texts to each other so far!"
+            rightMessageText = f"Ahh, {s2}, all your texts are getting responded to, so no worries there!"
 
 
     # TOTAL WORDS
@@ -125,9 +120,8 @@ def metrics(request):
                 f"dominate the conversation ;)"
         # SMALL DIFF
         else:
-            leftWordsText = f"Well, well, {s1}, I guess the both of you are equally talkative in your conversations so far, " \
-                f"so keep that up!"
-            rightWordsText = f"Well, well, {s2}, I guess the both of you are equally talkative in your conversations so far, " \
+            leftWordsText = f"Well, {s1}, you're both equally chatty!"
+            rightWordsText = f"Well, well, {s2}, I guess the both of you are equally invested in your conversations so far, " \
                 f"so keep that up!"
     else:
         # LARGE DIFF
@@ -143,8 +137,7 @@ def metrics(request):
             leftWordsText = f"Well, well, {s1}, I guess the both of you are equally talkative in your conversations so far, " \
                 f"so keep that up!"
 
-            rightWordsText = f"Well, well, {s2}, I guess the both of you are equally talkative in your conversations so far, " \
-                f"so keep that up!"
+            rightWordsText = f"Well {s2}, you're both equally chatty!"
 
 
     # WPM
@@ -158,8 +151,8 @@ def metrics(request):
 
         # SMALL DIFF
         else:
-            leftWPMText = f"Ahh, seems like the both of you are equally engaged in the conversation!"
-            rightWPMText = f"Ahh, seems like the both of you are equally engaged in the conversation!"
+            leftWPMText = f"Ahh, {s1}, seems like the both of you are equally engaged in the conversation!"
+            rightWPMText = f"Dear {s2}, seems like the both of you are equally engaged in the conversation!"
     else:
         # LARGE DIFF
         if s2WPM / s1WPM > 1.25:
@@ -170,8 +163,8 @@ def metrics(request):
 
         # SMALL DIFF
         else:
-            leftWPMText = f"Ahh, seems like the both of you are equally engaged in the conversation!"
-            rightWPMText = f"Ahh, seems like the both of you are equally engaged in the conversation!"
+            leftWPMText = f"Dear {s1}, seems like the both of you are equally engaged in the conversation!"
+            rightWPMText = f"Ahh {s2}, seems like the both of you are equally engaged in the conversation!"
 
 
     # REPLY TIMINGS
@@ -182,8 +175,8 @@ def metrics(request):
             rightReplyText = f"Ahh, {s2}, you must hate waiting for {s1}'s texts, don't you? But do give {s1} just that little understanding!"
         # SMALL DIFF
         else:
-            leftReplyText = f"Seems like quite a healthy interaction going on here, nothing to worry about!"
-            rightReplyText = f"Seems like quite a healthy interaction going on here, nothing to worry about!"
+            leftReplyText = f"Seems like quite a healthy interaction going on here, nothing to worry about, {s1}!"
+            rightReplyText = f"Seems like quite a healthy interaction going on here, nothing to worry about, {s2}!"
     else:
         # LARGE DIFF
         if s2AvgReply / s1AvgReply > 1.25:
@@ -192,8 +185,8 @@ def metrics(request):
 
         # SMALL DIFF
         else:
-            leftReplyText = f"Seems like quite a healthy interaction going on here, nothing to worry about!"
-            rightReplyText = f"Seems like quite a healthy interaction going on here, nothing to worry about!"
+            leftReplyText = f"Seems like quite a healthy interaction going on here, nothing to worry about, {s1}!"
+            rightReplyText = f"Seems like quite a healthy interaction going on here, nothing to worry about, {s2}!"
 
 
     # PLACEHOLDERS
@@ -201,6 +194,7 @@ def metrics(request):
     chattierWPM = s1WPM if s1WPM > s2WPM else s2WPM
     slowerPerson = s1 if s1AvgReply > s2AvgReply else s2
     slowerPercent = int(s1AvgReply/s2AvgReply * 100) if s1AvgReply > s2AvgReply else int(s2AvgReply/s1AvgReply * 100)
+
     # SERVE HTTP RESPONSE
     return render(request, 'whatsanalyzer/metrics.html', {'s1TotalMsg': s1TotalMsg,
                                                           's1TotalWords': s1TotalWords,
@@ -222,3 +216,37 @@ def metrics(request):
                                                           'chattierWPM': chattierWPM,
                                                           'slowerPerson': slowerPerson,
                                                           'slowerPercent': slowerPercent})
+
+
+def charts(request):
+    ''' TESTING FOR GRAPHING LIBRARY '''
+    
+    # SENDER 1
+    senderOneDates = []
+    senderOneDates.append(str(datetime(2019, 1, 1)))
+    senderOneDates.append(str(datetime(2019, 2, 3)))
+    senderOneDates.append(str(datetime(2019, 3, 5)))
+
+    senderOneReplies = []
+    senderOneReplies.append(150)
+    senderOneReplies.append(50)
+    senderOneReplies.append(250)
+
+
+    # SENDER 2
+    senderTwoDates = []
+    senderTwoDates.append(str(datetime(2019, 1, 1)))
+    senderTwoDates.append(str(datetime(2019, 3, 2)))
+    senderTwoDates.append(str(datetime(2019, 5, 3)))
+
+    senderTwoReplies = []
+    senderTwoReplies.append(100)
+    senderTwoReplies.append(50)
+    senderTwoReplies.append(150)
+
+
+    return render(request, 'whatsanalyzer/charts.html', {'senderOneDates': json.dumps(senderOneDates),
+                                                                                 'senderOneReplies': senderOneReplies,
+                                                                                 'senderTwoDates': json.dumps(senderTwoDates),
+                                                                                 'senderTwoReplies': senderTwoReplies})
+

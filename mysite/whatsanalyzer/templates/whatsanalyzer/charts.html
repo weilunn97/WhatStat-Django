@@ -1,0 +1,41 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<html>
+	<canvas id="myChart" width="400" height="400"></canvas>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.js"></script>
+	<script type="text/javascript">
+		var senderOneDates = {{ senderOneDates|safe }};
+		alert(senderOneDates);
+		var senderOneReplies = {{senderOneReplies}};
+		var senderTwoDates = {{ senderTwoDates|safe }};
+		var senderTwoReplies = {{senderTwoReplies}};
+
+		var ctx = document.getElementById('myChart');
+		var chart = new Chart(ctx, {
+			type: 'scatter',
+			data: {
+				datasets: [
+					{
+						label: "senderOneTimings",
+						data: senderOneReplies,
+					},
+					{
+						label: "senderTwoTimings",
+						data: senderTwoReplies,
+					}
+        		],
+			},
+			options: {
+				scales: {
+					xAxes: [{
+						type: 'category',
+						labels: senderOneDates
+					}]
+				}
+			}
+		});
+	</script>
+</html>
