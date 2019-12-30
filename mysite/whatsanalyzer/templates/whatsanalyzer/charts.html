@@ -4,9 +4,12 @@
 <html lang="en">
 
 <html>
-	<canvas id="myChart" width="400" height="400"></canvas>
+	<canvas id="myChart" width="1920" height="1080"></canvas>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.js"></script>
 	<script type="text/javascript">
+		document.getElementById("myChart").style.padding = "0px 100px 0px 0px";
+		var senderOne = {{senderOne|safe}};
+		var senderTwo = {{senderTwo|safe}}
 		var senderOneDates = {{ senderOneDates|safe }};
 		var senderOneReplyTimingInMinutes = {{senderOneReplyTimingInMinutes}};
 		var senderTwoDates = {{ senderTwoDates|safe }};
@@ -15,23 +18,79 @@
 		var ctx = document.getElementById('myChart');
 		var chart = new Chart(ctx, {
 			type: 'scatter',
+
 			data: {
 				datasets: [
 					{
-						label: "senderOneTimings",
+						radius: 10,
+						pointHoverRadius: 15,
+						label: senderOne,
 						data: senderOneReplyTimingInMinutes,
+						borderColor: 'rgba(232, 67, 147, 1.0)',
+						backgroundColor: 'rgba(232, 67, 147, 0.2)'
 					},
 					{
-						label: "senderTwoTimings",
+						radius: 10,
+						pointHoverRadius: 15,
+						label: senderTwo,
 						data: senderTwoReplyTimingInMinutes,
+						borderColor: 'rgba(0, 184, 148, 1.0)',
+						backgroundColor: 'rgba(0, 184, 148, 0.2)'
 					}
         		],
 			},
+
 			options: {
+				legend: {
+					display: true,
+					labels: {
+						fontSize: 20,
+						fontStyle: 'Bold',
+						usePointStyle: true,
+					},
+				},
+				
+				title: {
+					display: true,
+					fontColor: 'rgba(0, 0, 0, 1.0)',
+					fontSize: 30,
+					fontStyle: 'Bold',
+					fontFamily: 'Helvetica',
+					lineHeight: 4,
+					text: `Yet another conversation between ${senderOne} and ${senderTwo}...`
+				},
+
 				scales: {
+					gridLines: [{
+						drawBorder: false,
+					}],
 					xAxes: [{
 						type: 'category',
-						labels: senderOneDates
+						labels: senderOneDates,
+						scaleLabel: {
+							display: true,
+							fontSize: 20,
+							fontStyle: 'Bold',
+							fontFamily: 'Helvetica',
+							labelString: 'Message Date',
+							lineHeight: 4,
+						},
+					}],
+
+					yAxes: [{
+						scaleLabel: {
+							display: true,
+							fontSize: 20,
+							fontStyle: 'Bold',
+							fontFamily: 'Helvetica',
+							labelString: 'Reply Timing',
+							lineHeight: 4,
+						},
+						ticks: {
+							callback: function(value, index, values) {
+								return value + ' Hours';
+							}
+						}
 					}]
 				}
 			}

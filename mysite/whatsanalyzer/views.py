@@ -1,6 +1,7 @@
 from .count_analysis import *
 from .line_processing import *
 from .models import Message, WhatsAppTextFile
+from datetime import timedelta
 from django.shortcuts import render, redirect
 import json
 
@@ -185,25 +186,25 @@ def metrics(request):
 
     # SERVE HTTP RESPONSE
     return render(request, 'whatsanalyzer/metrics.html', {'s1TotalMsg': s1TotalMsg,
-                                                                                  's1TotalWords': s1TotalWords,
-                                                                                  's1WPM': s1WPM,
-                                                                                  's2TotalMsg': s2TotalMsg,
-                                                                                  's2TotalWords': s2TotalWords,
-                                                                                  's2WPM': s2WPM,
-                                                                                  's1AvgReply': int(s1AvgReply / 60),
-                                                                                  's2AvgReply': int(s2AvgReply / 60),
-                                                                                  'leftMessageText': leftMessageText,
-                                                                                  'rightMessageText': rightMessageText,
-                                                                                  'leftWordsText': leftWordsText,
-                                                                                  'rightWordsText': rightWordsText,
-                                                                                  'leftWPMText': leftWPMText,
-                                                                                  'rightWPMText': rightWPMText,
-                                                                                  'leftReplyText': leftReplyText,
-                                                                                  'rightReplyText': rightReplyText,
-                                                                                  'chattierPerson': chattierPerson,
-                                                                                  'chattierWPM': chattierWPM,
-                                                                                  'slowerPerson': slowerPerson,
-                                                                                  'slowerPercent': slowerPercent})
+                                                          's1TotalWords': s1TotalWords,
+                                                          's1WPM': s1WPM,
+                                                          's2TotalMsg': s2TotalMsg,
+                                                          's2TotalWords': s2TotalWords,
+                                                          's2WPM': s2WPM,
+                                                          's1AvgReply': int(s1AvgReply / 60),
+                                                          's2AvgReply': int(s2AvgReply / 60),
+                                                          'leftMessageText': leftMessageText,
+                                                          'rightMessageText': rightMessageText,
+                                                          'leftWordsText': leftWordsText,
+                                                          'rightWordsText': rightWordsText,
+                                                          'leftWPMText': leftWPMText,
+                                                          'rightWPMText': rightWPMText,
+                                                          'leftReplyText': leftReplyText,
+                                                          'rightReplyText': rightReplyText,
+                                                          'chattierPerson': chattierPerson,
+                                                          'chattierWPM': chattierWPM,
+                                                          'slowerPerson': slowerPerson,
+                                                          'slowerPercent': slowerPercent})
 
 
 def charts(request):
@@ -243,9 +244,20 @@ def charts(request):
     # senderTwoReplies.append(50)
     # senderTwoReplies.append(150)
 
-    return render(request, 'whatsanalyzer/charts.html', {'senderOne': senderOne,
-                                                         'senderTwo': senderTwo,
-                                                         'senderOneDates': json.dumps(senderOneDates, indent=4, sort_keys=True, default=str),
-                                                         'senderOneReplyTimingInMinutes': senderOneReplyTimingInMinutes,
-                                                         'senderTwoDates': json.dumps(senderTwoDates, indent=4, sort_keys=True, default=str),
-                                                         'senderTwoReplyTimingInMinutes': senderTwoReplyTimingInMinutes})
+    # Custom date formatter for x-axis
+    def xAxisFormatter(date):
+        # Convert to GMT+8 timezone
+        date += timedelta(hours=8)
+        return date.strftime("%d %b %Y, %H:%M")
+
+    # Custom hour formatter for y-axis
+    def yAxisFormatter(replyTimeInMinutes):
+        return round(replyTimeInMinutes / 60, 2)
+
+    return render(request, 'whatsanalyzer/charts.html',
+                  {'senderOne': json.dumps(senderOne),
+                   'senderTwo': json.dumps(senderTwo),
+                   'senderOneDates': json.dumps(senderOneDates, indent=4, sort_keys=True, default=xAxisFormatter),
+                   'senderOneReplyTimingInMinutes': list(map(yAxisFormatter, senderOneReplyTimingInMinutes)),
+                   'senderTwoDates': json.dumps(senderTwoDates, indent=4, sort_keys=True, default=xAxisFormatter),
+                   'senderTwoReplyTimingInMinutes': list(map(yAxisFormatter, senderTwoReplyTimingInMinutes))})
