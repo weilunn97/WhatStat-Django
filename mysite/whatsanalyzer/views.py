@@ -3,8 +3,37 @@ from .line_processing import *
 from .models import Message, WhatsAppTextFile
 from datetime import timedelta
 from django.shortcuts import render, redirect
+from firebase import firebase
 import json
+import pyrebase
 
+# Configure connection to Firebase
+config = {
+    'apiKey': "AIzaSyDhJD_AENniovRoVttwWmwaKwlpKuHyVck",
+    'authDomain': "whatsapp-27255.firebaseapp.com",
+    'databaseURL': "https://whatsapp-27255.firebaseio.com",
+    'projectId': "whatsapp-27255",
+    'storageBucket': "whatsapp-27255.appspot.com",
+    'messagingSenderId': "998524713961",
+    'appId': "1:998524713961:web:dedfaf0cc4d5710d65e978",
+    'measurementId': "G-T5B7QLDPKN"
+}
+
+# Initialize the connection
+fb = firebase.FirebaseApplication('https://console.firebase.google.com/project/whatsapp-27255/storage/whatsapp-27255.appspot.com/files')
+auth = firebase.FirebaseAuthentication()
+result = fb.get('/users', None, {'print': 'pretty'})
+
+# Initialize user authentication
+auth = firebase.auth()
+
+# Sign-In Request (Google)
+def googleSignIn(request):
+    provider = auth
+    return render(request, 'sign_in.html')
+
+def postSign(request):
+    return render(request, 'post_sign.html')
 
 def index(request):
     # UPON SUCCESSFUL UPLOAD
