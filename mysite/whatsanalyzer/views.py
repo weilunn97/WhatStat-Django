@@ -3,38 +3,40 @@ from .line_processing import *
 from .models import Message, WhatsAppTextFile
 from datetime import timedelta
 from django.shortcuts import render, redirect
-from firebase import firebase
 import json
-import pyrebase
 
-# Configure connection to Firebase
-config = {
-    'apiKey': "AIzaSyDhJD_AENniovRoVttwWmwaKwlpKuHyVck",
-    'authDomain': "whatsapp-27255.firebaseapp.com",
-    'databaseURL': "https://whatsapp-27255.firebaseio.com",
-    'projectId': "whatsapp-27255",
-    'storageBucket': "whatsapp-27255.appspot.com",
-    'messagingSenderId': "998524713961",
-    'appId': "1:998524713961:web:dedfaf0cc4d5710d65e978",
-    'measurementId': "G-T5B7QLDPKN"
-}
+''' FIREBASE '''
+import firebase_admin
+from firebase_admin import credentials, storage, auth
+"""
+TODO :
+1. Implement Google Sign-In
+    (a) Create a Login button on the top right corner of Main Menu (in homepage.html)
+    (b) Style the button in the form of a Google Sign-In button 
+    (https://developers.google.com/identity/sign-in/web/build-button)
+    (c) Register your app with Firebase first - Step 3 : From Hosting URLs
+    (https://firebase.google.com/docs/web/setup)    
+    (c) onClick function will trigger the JS in the following doc
+    (https://firebase.google.com/docs/auth/web/google-signin)
+    (d) Retrieve the USER/DISPLAY NAME from JS code, then pass it via a form
+    from the JS template back to the view for further processing 
+    (https://stackoverflow.com/questions/29153593/passing-variable-from-django-template-to-view)
 
-# Initialize the connection
-fb = firebase.FirebaseApplication('https://console.firebase.google.com/project/whatsapp-27255/storage/whatsapp-27255.appspot.com/files')
-auth = firebase.FirebaseAuthentication()
-result = fb.get('/users', None, {'print': 'pretty'})
+2. Retrieve all user files from Firebase Storage
+3. Create ListView of FileName + FileDate
+4. Allow user to select the file for analysis
+5. Perform redirect to /metrics/ using this file
+6. WORKAROUND : CREATE NEW USER ACCOUNT VIA EMAIL IN ANDROID,
+THEN USE THE SAME PASSWORD, ALL YOU NEED IS THE USERNAME
+"""
+cred = credentials.Certificate("mysite/ServiceAccountKey.json")
+firebase_admin.initialize_app(cred)
+auth.generate_sign_in_with_email_link()
+storage = storage._StorageClient()
 
-# Initialize user authentication
-auth = firebase.auth()
 
-# Sign-In Request (Google)
-def googleSignIn(request):
-    provider = auth
-    return render(request, 'sign_in.html')
 
-def postSign(request):
-    return render(request, 'post_sign.html')
-
+''' FIREBASE '''
 def index(request):
     # UPON SUCCESSFUL UPLOAD
     if request.method == "POST" and request.FILES:
