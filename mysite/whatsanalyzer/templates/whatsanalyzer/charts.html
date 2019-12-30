@@ -8,10 +8,9 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.js"></script>
 	<script type="text/javascript">
 		var senderOneDates = {{ senderOneDates|safe }};
-		alert(senderOneDates);
-		var senderOneReplies = {{senderOneReplies}};
+		var senderOneReplyTimingInMinutes = {{senderOneReplyTimingInMinutes}};
 		var senderTwoDates = {{ senderTwoDates|safe }};
-		var senderTwoReplies = {{senderTwoReplies}};
+		var senderTwoReplyTimingInMinutes = {{senderTwoReplyTimingInMinutes}};
 
 		var ctx = document.getElementById('myChart');
 		var chart = new Chart(ctx, {
@@ -20,11 +19,11 @@
 				datasets: [
 					{
 						label: "senderOneTimings",
-						data: senderOneReplies,
+						data: senderOneReplyTimingInMinutes,
 					},
 					{
 						label: "senderTwoTimings",
-						data: senderTwoReplies,
+						data: senderTwoReplyTimingInMinutes,
 					}
         		],
 			},

@@ -1,6 +1,6 @@
 from django.db import models
 
-# Create your models here.
+
 class WhatsAppTextFile(models.Model):
     # Setup all attributes related to a WhatsAppTextFile
     fileName = models.CharField(max_length=260)
@@ -12,7 +12,6 @@ class WhatsAppTextFile(models.Model):
 
 
 class Message(models.Model):
-
     # Setup all attributes related to a Message
     lineNumber = models.IntegerField()
     messageDate = models.DateTimeField()

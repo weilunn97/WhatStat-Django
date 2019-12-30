@@ -6,7 +6,7 @@ from . import views
 app_name = 'whatsanalyzer'
 
 urlpatterns = [
-    path('', views.charts, name='charts'),
-    # path('', views.index, name='index'),
-    path('metrics/', views.metrics, name='metrics')
+    path('', views.index, name='index'),
+    path('metrics/', views.metrics, name='metrics'),
+    path('charts/', views.charts, name='charts'),
 ]

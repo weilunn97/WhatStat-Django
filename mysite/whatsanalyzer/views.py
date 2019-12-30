@@ -2,34 +2,29 @@ from .count_analysis import *
 from .line_processing import *
 from .models import Message, WhatsAppTextFile
 from django.shortcuts import render, redirect
-from datetime import datetime
 import json
 
-# Create your views here.
-def index(request):
 
-    # Serve up the success page if upload is successful
+def index(request):
+    # UPON SUCCESSFUL UPLOAD
     if request.method == "POST" and request.FILES:
         uploadedFile = request.FILES['WhatsAppFile']
         fileContents = uploadedFile.read().decode('utf-8')
         fileContentsList = fileContents.split('\n')
 
-        # CLEAR METRICS FIRST
-        CountAnalysis.clearMetrics()
+        # CLEAR EXISTING METRICS, IF ANY
+        # CountAnalysis.clearMetrics()
 
-        # Delete all existing messages
+        # DELETE ALL MESSAGE OBJECTS FROM DB
         Message.objects.all().delete()
 
-        # MAIN DRIVER FUNCTIONS
+        # PERFORM ANALYSIS
         updateWhatsAppTextFileDB(uploadedFile, fileContents)
         updateMessageDB(fileContentsList)
         CountAnalysis.calculateMetrics()
 
-        # # Redirect to metrics
-        # return metrics(request)
-
         # Redirect to metrics
-        return redirect('WhatsAnalyzer/metrics/')
+        return redirect('metrics/')
 
     # Else, serve the page as per usual
     return render(request, 'whatsanalyzer/homepage.html')
@@ -38,18 +33,18 @@ def index(request):
 def upload(request, requestFiles):
     return render(request, 'whatsanalyzer/upload.html', {'requestFiles': requestFiles})
 
+
 # Helper function to generate all relevant metrics
 def updateWhatsAppTextFileDB(uploadedFile, fileContents):
-
     # Update WhatsAppTextFile DB
     fn = uploadedFile.name
-    ft = uploadedFile.content_type # Should be of type text/plain
+    ft = uploadedFile.content_type  # Should be of type text/plain
     fc = fileContents
     myWhatsAppTextFile = WhatsAppTextFile(fileName=fn, fileType=ft, fileContents=fc)
     myWhatsAppTextFile.save()
 
-def updateMessageDB(fileContentsList):
 
+def updateMessageDB(fileContentsList):
     # Update Message DB
     ln = 1
     for msg in fileContentsList:
@@ -61,30 +56,26 @@ def updateMessageDB(fileContentsList):
             myMessage.save()
             ln += 1
 
-def metrics(request):
 
+def metrics(request):
     # VALUES
     s1 = CountAnalysis.senderList[0]
     s2 = CountAnalysis.senderList[1]
     s1TotalMsg = CountAnalysis.senderTwoTotalMessages
     s1TotalWords = CountAnalysis.senderTwoTotalWords
     s1WPM = CountAnalysis.senderTwoWordsPerMsg
-    # s4 = len(CountAnalysis.senderTwoTimeStamp)
-    s1AvgReply = sum(CountAnalysis.senderTwoReplyTimingInMinutes)/len(CountAnalysis.senderTwoReplyTimingInMinutes)
+    s1AvgReply = sum(CountAnalysis.senderTwoReplyTimingInMinutes) / len(CountAnalysis.senderTwoReplyTimingInMinutes)
     s2TotalMsg = CountAnalysis.senderTwoTotalMessages
     s2TotalWords = CountAnalysis.senderTwoTotalWords
     s2WPM = CountAnalysis.senderTwoWordsPerMsg
-    s9 = len(CountAnalysis.senderTwoTimeStamp)
-    s2AvgReply = sum(CountAnalysis.senderTwoReplyTimingInMinutes)/len(CountAnalysis.senderTwoReplyTimingInMinutes)
-
-    # TEXT DESCRIPTION
+    s2AvgReply = sum(CountAnalysis.senderTwoReplyTimingInMinutes) / len(CountAnalysis.senderTwoReplyTimingInMinutes)
 
     # TOTAL MESSAGES
     if s1TotalMsg > s2TotalMsg:
         # LARGE DIFF
         if s1TotalMsg / s2TotalMsg > 1.25:
             leftMessageText = f"Dear {s1}, you're obviously the more active person in this particular conversation, " \
-                f"sending over {'%.2f' % (s1TotalMsg/s2TotalMsg)} times more texts since the start of your conversation!"
+                f"sending over {'%.2f' % (s1TotalMsg / s2TotalMsg)} times more texts since the start of your conversation!"
             rightMessageText = f"Dear {s2}, guess you're more a quiet person, but that's okay! {s1} is definitely a really " \
                 f"good friend and chat buddy you'll always wanna keep around!"
 
@@ -108,7 +99,6 @@ def metrics(request):
                 f"number of texts to each other so far!"
 
             rightMessageText = f"Ahh, {s2}, all your texts are getting responded to, so no worries there!"
-
 
     # TOTAL WORDS
     if s1TotalWords > s2TotalWords:
@@ -139,7 +129,6 @@ def metrics(request):
 
             rightWordsText = f"Well {s2}, you're both equally chatty!"
 
-
     # WPM
     if s1WPM > s2WPM:
         # LARGE DIFF
@@ -166,7 +155,6 @@ def metrics(request):
             leftWPMText = f"Dear {s1}, seems like the both of you are equally engaged in the conversation!"
             rightWPMText = f"Ahh {s2}, seems like the both of you are equally engaged in the conversation!"
 
-
     # REPLY TIMINGS
     if s1AvgReply > s2AvgReply:
         # LARGE DIFF
@@ -188,65 +176,76 @@ def metrics(request):
             leftReplyText = f"Seems like quite a healthy interaction going on here, nothing to worry about, {s1}!"
             rightReplyText = f"Seems like quite a healthy interaction going on here, nothing to worry about, {s2}!"
 
-
     # PLACEHOLDERS
     chattierPerson = s1 if s1WPM > s2WPM else s2
     chattierWPM = s1WPM if s1WPM > s2WPM else s2WPM
     slowerPerson = s1 if s1AvgReply > s2AvgReply else s2
-    slowerPercent = int(s1AvgReply/s2AvgReply * 100) if s1AvgReply > s2AvgReply else int(s2AvgReply/s1AvgReply * 100)
+    slowerPercent = int(s1AvgReply / s2AvgReply * 100) if s1AvgReply > s2AvgReply else int(
+        s2AvgReply / s1AvgReply * 100)
 
     # SERVE HTTP RESPONSE
     return render(request, 'whatsanalyzer/metrics.html', {'s1TotalMsg': s1TotalMsg,
-                                                          's1TotalWords': s1TotalWords,
-                                                          's1WPM': s1WPM,
-                                                          's2TotalMsg': s2TotalMsg,
-                                                          's2TotalWords': s2TotalWords,
-                                                          's2WPM': s2WPM,
-                                                          's1AvgReply': int(s1AvgReply/60),
-                                                          's2AvgReply': int(s2AvgReply/60),
-                                                          'leftMessageText': leftMessageText,
-                                                          'rightMessageText': rightMessageText,
-                                                          'leftWordsText': leftWordsText,
-                                                          'rightWordsText': rightWordsText,
-                                                          'leftWPMText': leftWPMText,
-                                                          'rightWPMText': rightWPMText,
-                                                          'leftReplyText': leftReplyText,
-                                                          'rightReplyText': rightReplyText,
-                                                          'chattierPerson': chattierPerson,
-                                                          'chattierWPM': chattierWPM,
-                                                          'slowerPerson': slowerPerson,
-                                                          'slowerPercent': slowerPercent})
+                                                                                  's1TotalWords': s1TotalWords,
+                                                                                  's1WPM': s1WPM,
+                                                                                  's2TotalMsg': s2TotalMsg,
+                                                                                  's2TotalWords': s2TotalWords,
+                                                                                  's2WPM': s2WPM,
+                                                                                  's1AvgReply': int(s1AvgReply / 60),
+                                                                                  's2AvgReply': int(s2AvgReply / 60),
+                                                                                  'leftMessageText': leftMessageText,
+                                                                                  'rightMessageText': rightMessageText,
+                                                                                  'leftWordsText': leftWordsText,
+                                                                                  'rightWordsText': rightWordsText,
+                                                                                  'leftWPMText': leftWPMText,
+                                                                                  'rightWPMText': rightWPMText,
+                                                                                  'leftReplyText': leftReplyText,
+                                                                                  'rightReplyText': rightReplyText,
+                                                                                  'chattierPerson': chattierPerson,
+                                                                                  'chattierWPM': chattierWPM,
+                                                                                  'slowerPerson': slowerPerson,
+                                                                                  'slowerPercent': slowerPercent})
 
 
 def charts(request):
     ''' TESTING FOR GRAPHING LIBRARY '''
-    
+
     # SENDER 1
-    senderOneDates = []
-    senderOneDates.append(str(datetime(2019, 1, 1)))
-    senderOneDates.append(str(datetime(2019, 2, 3)))
-    senderOneDates.append(str(datetime(2019, 3, 5)))
+    # senderOneDates = []
+    # senderOneDates.append(str(datetime(2019, 1, 1)))
+    # senderOneDates.append(str(datetime(2019, 2, 3)))
+    # senderOneDates.append(str(datetime(2019, 3, 5)))
+    # 
+    # senderOneReplies = []
+    # senderOneReplies.append(150)
+    # senderOneReplies.append(50)
+    # senderOneReplies.append(250)
+    #
 
-    senderOneReplies = []
-    senderOneReplies.append(150)
-    senderOneReplies.append(50)
-    senderOneReplies.append(250)
+    # DEBUG INFO
+    CountAnalysis.debugPrint()
 
+    senderOne = CountAnalysis.senderList[0]
+    senderTwo = CountAnalysis.senderList[1]
+    senderOneDates = CountAnalysis.senderOneTimeStamp
+    senderTwoDates = CountAnalysis.senderTwoTimeStamp
+    senderOneReplyTimingInMinutes = CountAnalysis.senderOneReplyTimingInMinutes
+    senderTwoReplyTimingInMinutes = CountAnalysis.senderTwoReplyTimingInMinutes
 
+    #
     # SENDER 2
-    senderTwoDates = []
-    senderTwoDates.append(str(datetime(2019, 1, 1)))
-    senderTwoDates.append(str(datetime(2019, 3, 2)))
-    senderTwoDates.append(str(datetime(2019, 5, 3)))
+    # senderTwoDates = []
+    # senderTwoDates.append(str(datetime(2019, 1, 1)))
+    # senderTwoDates.append(str(datetime(2019, 3, 2)))
+    # senderTwoDates.append(str(datetime(2019, 5, 3)))
+    # 
+    # senderTwoReplies = []
+    # senderTwoReplies.append(100)
+    # senderTwoReplies.append(50)
+    # senderTwoReplies.append(150)
 
-    senderTwoReplies = []
-    senderTwoReplies.append(100)
-    senderTwoReplies.append(50)
-    senderTwoReplies.append(150)
-
-
-    return render(request, 'whatsanalyzer/charts.html', {'senderOneDates': json.dumps(senderOneDates),
-                                                                                 'senderOneReplies': senderOneReplies,
-                                                                                 'senderTwoDates': json.dumps(senderTwoDates),
-                                                                                 'senderTwoReplies': senderTwoReplies})
-
+    return render(request, 'whatsanalyzer/charts.html', {'senderOne': senderOne,
+                                                         'senderTwo': senderTwo,
+                                                         'senderOneDates': json.dumps(senderOneDates, indent=4, sort_keys=True, default=str),
+                                                         'senderOneReplyTimingInMinutes': senderOneReplyTimingInMinutes,
+                                                         'senderTwoDates': json.dumps(senderTwoDates, indent=4, sort_keys=True, default=str),
+                                                         'senderTwoReplyTimingInMinutes': senderTwoReplyTimingInMinutes})

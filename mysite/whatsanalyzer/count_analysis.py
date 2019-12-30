@@ -118,18 +118,18 @@ class CountAnalysis():
             CountAnalysis.senderTwoReplyTimingInMinutes.append(dateDiffInMins)
 
     @staticmethod
-    def debugFunction():
-        print(CountAnalysis.senderOneTotalMessages)
-        print(CountAnalysis.senderOneTotalWords)
-        print(CountAnalysis.senderOneWordsPerMsg)
-        print(CountAnalysis.senderOneTimeStamp)
-        print(CountAnalysis.senderOneReplyTimingInMinutes)
-        print("\n\n")
-        print(CountAnalysis.senderTwoTotalMessages)
-        print(CountAnalysis.senderTwoTotalWords)
-        print(CountAnalysis.senderTwoWordsPerMsg)
-        print(CountAnalysis.senderTwoTimeStamp)
-        print(CountAnalysis.senderTwoReplyTimingInMinutes)
+    def debugPrint():
+        print(f"s1TM : {CountAnalysis.senderOneTotalMessages}")
+        print(f"s1TW : {CountAnalysis.senderOneTotalWords}")
+        print(f"s1WPM : {CountAnalysis.senderOneWordsPerMsg}")
+        print(f"s1TS : {CountAnalysis.senderOneTimeStamp}")
+        print(f"s1RTIM : {CountAnalysis.senderOneReplyTimingInMinutes}")
+        print("")
+        print(f"s2TM : {CountAnalysis.senderTwoTotalMessages}")
+        print(f"s2TW : {CountAnalysis.senderTwoTotalWords}")
+        print(f"s2WPM : {CountAnalysis.senderTwoWordsPerMsg}")
+        print(f"s2TS : {CountAnalysis.senderTwoTimeStamp}")
+        print(f"s2RTIM : {CountAnalysis.senderTwoReplyTimingInMinutes}")
         
     @staticmethod
     def clearMetrics():
