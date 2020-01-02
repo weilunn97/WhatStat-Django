@@ -1,254 +1,332 @@
+{% load socialaccount %}
 {% load static %}
+{% providers_media_js %}
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
+    <title>Grayscale - Start Bootstrap Theme</title>
 
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
 
-  <title>Grayscale - Start Bootstrap Theme</title>
+    <!-- Custom fonts for this template -->
+    <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+          rel="stylesheet">
 
-  <!-- Bootstrap core CSS -->
-  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-
-  <!-- Custom fonts for this template -->
-  <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-
-  <!-- Custom styles for this template -->
-  <link href="{% static 'css/grayscale.min.css' %}" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/grayscale.min.css' %}" rel="stylesheet">
 
 </head>
 
 <body id="page-top">
 
-  <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="#page-top">Start Bootstrap</a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        Menu
-        <i class="fas fa-bars"></i>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#about">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#projects">Projects</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#signup">Contact</a>
-          </li>
-        </ul>
-      </div>
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">Start Bootstrap</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation">
+            Menu
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#projects">Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#signup">Contact</a>
+                </li>
+                <li class="nav-item">
+<!--                    {% if user.is_authenticated %}-->
+<!--                    <a class="nav-link js-scroll-trigger" href="{% provider_login_url 'google' %}">Login</a>-->
+<!--                    {% else %}-->
+<!--                    <a class="nav-link js-scroll-trigger">Welcome, {{user.first_name}}</a>-->
+<!--                    {% endif %}-->
+                    <a class="nav-link js-scroll-trigger" onclick="firebaseGoogleLogin()">Login</a>-->
+                </li>
+            </ul>
+        </div>
     </div>
-  </nav>
+</nav>
 
-  <!-- Header -->
-  <header class="masthead">
+
+<!-- Header -->
+<header class="masthead">
     <div class="container d-flex h-100 align-items-center">
-      <div class="mx-auto text-center">
-        <h1 class="mx-auto my-0 text-uppercase">WhatsAnalyzer</h1>
-        <h2 class="text-white-50 mx-auto mt-2 mb-5">A quick analysis and visualization of your WhatsApp Chats.</h2>
-        <a href="#about" class="btn btn-primary js-scroll-trigger">Get Started</a>
-      </div>
+        <div class="mx-auto text-center">
+            <h1 class="mx-auto my-0 text-uppercase">WhatsAnalyzer</h1>
+            <h2 class="text-white-50 mx-auto mt-2 mb-5">A quick analysis and visualization of your WhatsApp Chats.</h2>
+            <a href="#about" class="btn btn-primary js-scroll-trigger">Get Started</a>
+        </div>
     </div>
-  </header>
+</header>
 
-  <!-- About Section -->
-  <section id="about" class="about-section text-center">
+<!-- About Section -->
+<section id="about" class="about-section text-center">
     <div class="container">
-      <div class="row">
-        <div class="col-lg-8 mx-auto">
-          <h2 class="text-white mb-4">WhatsApp File Upload</h2>
-          <p class="text-white-50"> Simply head over to
-            <a href="https://web.whatsapp.com/" target="_blank">WhatsApp Web</a> and email any conversation you wish to analyze to yourself. Next, simply download the text file, and upload it below! </p>
-        </div>
-      </div>
-
-      <!--CORRECT FORM-->
-      <form method="post" enctype="multipart/form-data">
-      {% csrf_token %}
-          <input id="fileBrowserButton" style="display:none" class="btn btn-primary" type="file" name="WhatsAppFile">
-          <button id="customFileBrowserButton" class="btn btn-primary" type="button">Upload</button>
-          <button id="submitButton" class="btn btn-primary" type="submit">Analyze</button>
-      </form>
-      <div style="color:white" id="WhatsAppFile_name ">No file selected.</div>
-      <script type="text/javascript">
-        const fileUploadButton = document.getElementById("fileBrowserButton");
-        const customUploadButton = document.getElementById("customFileBrowserButton");
-        const buttonText = document.getElementById("WhatsAppFile_name");
-
-        customUploadButton.addEventListener("click", function() {
-          fileUploadButton.click();
-        });
-
-        fileUploadButton.addEventListener("change", function() {
-          if (fileUploadButton.value) {
-            document.getElementById("WhatsAppFile_name").innerHTML = fileUploadButton.value.match(/^.+\\([^.]+)\.[^\.]+$/)[1];
-          } else {
-            document.getElementById("WhatsAppFile_name").innerHTML = "No file selected.";
-          }
-        });
-      </script>
-    </div>
-  </section>
-
-  <!-- Projects Section -->
-  <section id="projects" class="projects-section bg-light">
-    <div class="container">
-
-      <!-- Featured Project Row -->
-      <div class="row align-items-center no-gutters mb-4 mb-lg-5">
-        <div class="col-xl-8 col-lg-7">
-          <img class="img-fluid mb-3 mb-lg-0" src="{% static 'img/bg-masthead.jpg' %}" alt="">
-        </div>
-        <div class="col-xl-4 col-lg-5">
-          <div class="featured-text text-center text-lg-left">
-            <h4>Shoreline</h4>
-            <p class="text-black-50 mb-0">Grayscale is open source and MIT licensed. This means you can use it for any project - even commercial projects! Download it, customize it, and publish your website!</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Project One Row -->
-      <div class="row justify-content-center no-gutters mb-5 mb-lg-0">
-        <div class="col-lg-6">
-          <img class="img-fluid" src="{% static 'img/demo-image-01.jpg' %}" alt="">
-        </div>
-        <div class="col-lg-6">
-          <div class="bg-black text-center h-100 project">
-            <div class="d-flex h-100">
-              <div class="project-text w-100 my-auto text-center text-lg-left">
-                <h4 class="text-white">Misty</h4>
-                <p class="mb-0 text-white-50">An example of where you can put an image of a project, or anything else, along with a description.</p>
-                <hr class="d-none d-lg-block mb-0 ml-0">
-              </div>
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <h2 class="text-white mb-4">WhatsApp File Upload</h2>
+                <p class="text-white-50"> Simply head over to
+                    <a href="https://web.whatsapp.com/" target="_blank">WhatsApp Web</a> and email any conversation you
+                    wish to analyze to yourself. Next, simply download the text file, and upload it below! </p>
             </div>
-          </div>
         </div>
-      </div>
 
-      <!-- Project Two Row -->
-      <div class="row justify-content-center no-gutters">
-        <div class="col-lg-6">
-          <img class="img-fluid" src="{% static 'img/demo-image-02.jpg' %}" alt="">
-        </div>
-        <div class="col-lg-6 order-lg-first">
-          <div class="bg-black text-center h-100 project">
-            <div class="d-flex h-100">
-              <div class="project-text w-100 my-auto text-center text-lg-right">
-                <h4 class="text-white">Mountains</h4>
-                <p class="mb-0 text-white-50">Another example of a project with its respective description. These sections work well responsively as well, try this theme on a small screen!</p>
-                <hr class="d-none d-lg-block mb-0 mr-0">
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+        <!--CORRECT FORM-->
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input id="fileBrowserButton" style="display:none" class="btn btn-primary" type="file" name="WhatsAppFile">
+            <button id="customFileBrowserButton" class="btn btn-primary" type="button">Upload</button>
+            <button id="submitButton" class="btn btn-primary" type="submit" onclick="firebaseUpload()">Analyze</button>
+        </form>
+        <div style="color:white" id="WhatsAppFile_name ">No File Uploaded</div>
 
+        <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-analytics.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-storage.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-auth.js"></script>
+
+        <!-- TODO : JS USER AUTH, LOGIN, AND UPLOAD (NO PYTHON SIDE CODE)-->
+        <script type="text/javascript">
+            const fileUploadButton = document.getElementById("fileBrowserButton");
+            const customUploadButton = document.getElementById("customFileBrowserButton");
+            const buttonText = document.getElementById("WhatsAppFile_name");
+
+            customUploadButton.addEventListener("click", function() {
+            fileUploadButton.click();
+            });
+
+            fileUploadButton.addEventListener("change", function() {
+            if (fileUploadButton.value) {
+              document.getElementById("WhatsAppFile_name").innerHTML = fileUploadButton.value.match(/^.+\\([^.]+)\.[^\.]+$/)[1];
+            } else {
+              document.getElementById("WhatsAppFile_name").innerHTML = "No file selected.";
+            }
+            });
+
+            // GENERATE FIREBASE CONFIG FILE
+            var firebaseConfig = {
+                  apiKey: "AIzaSyDhJD_AENniovRoVttwWmwaKwlpKuHyVck",
+                  authDomain: "whatsapp-27255.firebaseapp.com",
+                  databaseURL: "https://whatsapp-27255.firebaseio.com",
+                  projectId: "whatsapp-27255",
+                  storageBucket: "whatsapp-27255.appspot.com",
+                  messagingSenderId: "998524713961",
+                  appId: "1:998524713961:web:dedfaf0cc4d5710d65e978",
+                  measurementId: "G-T5B7QLDPKN"
+              };
+
+            // INITIALIZE FIREBASE APP AND START ANALYTICS
+            firebase.initializeApp(firebaseConfig);
+            firebase.analytics();
+
+            // GOOGLE LOGIN HELPER FUNCTION
+            function firebaseGoogleLogin() {
+            alert("firebaseGoogleLogin() triggered")
+            var provider = new firebase.auth.GoogleAuthProvider();
+            provider.addScope('profile');
+            provider.addScope('email');
+            firebase.auth().signInWithPopup(provider).then(function(result) {
+                var token = result.credential.accessToken;
+                var user = result.user;
+                });
+            }
+
+            // FIREBASE FILE UPLOAD FUNCTION
+             function firebaseUpload(){
+                alert("firebaseUpload() triggered")
+                var storage = firebase.storage();
+                var file = document.getElementById("uploadedFile");
+                var storageRef = storage.ref();
+                var firstName = user.first_name
+                var lastName = user.last_name
+                var displayName = str.concat(firstName, " ", lastName)
+                alert(displayName)
+                var thisref = storageRef.child(displayName).put(file);
+                thisref.on('state_changed',function(snapshot){
+                alert("file uplaoded succesfully");
+                },
+                function(error) {
+                },
+                function() {
+                    // Upload completed successfully, now we can get the download URL
+                    var downloadURL = thisref.snapshot.downloadURL;
+                    console.log("got url");
+                    document.getElementById("url").value = downloadURL;
+                    alert(downloadURL);
+                });
+            }
+        </script>
     </div>
-  </section>
+</section>
 
-  <!-- Signup Section -->
-  <section id="signup" class="signup-section">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-10 col-lg-8 mx-auto text-center">
-
-          <i class="far fa-paper-plane fa-2x mb-2 text-white"></i>
-          <h2 class="text-white mb-5">Subscribe to receive updates!</h2>
-
-          <form class="form-inline d-flex">
-            <input type="email" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="inputEmail" placeholder="Enter email address...">
-            <button type="submit" class="btn btn-primary mx-auto">Subscribe</button>
-          </form>
-
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section class="contact-section bg-black">
+<!-- Projects Section -->
+<section id="projects" class="projects-section bg-light">
     <div class="container">
 
-      <div class="row">
-
-        <div class="col-md-4 mb-3 mb-md-0">
-          <div class="card py-4 h-100">
-            <div class="card-body text-center">
-              <i class="fas fa-map-marked-alt text-primary mb-2"></i>
-              <h4 class="text-uppercase m-0">LinkedIn</h4>
-              <hr class="my-4">
-              <a href="https://www.linkedin.com/in/tan-wei-lun/" target="_blank">TAKE ME THERE</a>
+        <!-- Featured Project Row -->
+        <div class="row align-items-center no-gutters mb-4 mb-lg-5">
+            <div class="col-xl-8 col-lg-7">
+                <img class="img-fluid mb-3 mb-lg-0" src="{% static 'img/bg-masthead.jpg' %}" alt="">
             </div>
-          </div>
+            <div class="col-xl-4 col-lg-5">
+                <div class="featured-text text-center text-lg-left">
+                    <h4>Shoreline</h4>
+                    <p class="text-black-50 mb-0">Grayscale is open source and MIT licensed. This means you can use it
+                        for any project - even commercial projects! Download it, customize it, and publish your
+                        website!</p>
+                </div>
+            </div>
         </div>
 
-        <div class="col-md-4 mb-3 mb-md-0">
-          <div class="card py-4 h-100">
-            <div class="card-body text-center">
-              <i class="fas fa-envelope text-primary mb-2"></i>
-              <h4 class="text-uppercase m-0">Email</h4>
-              <hr class="my-4">
-              <div class="small text-black-50">
-                <a href="mailto:WTAN132@e.ntu.edu.sg">WTAN132@e.ntu.edu.sg</a>
-              </div>
+        <!-- Project One Row -->
+        <div class="row justify-content-center no-gutters mb-5 mb-lg-0">
+            <div class="col-lg-6">
+                <img class="img-fluid" src="{% static 'img/demo-image-01.jpg' %}" alt="">
             </div>
-          </div>
+            <div class="col-lg-6">
+                <div class="bg-black text-center h-100 project">
+                    <div class="d-flex h-100">
+                        <div class="project-text w-100 my-auto text-center text-lg-left">
+                            <h4 class="text-white">Misty</h4>
+                            <p class="mb-0 text-white-50">An example of where you can put an image of a project, or
+                                anything else, along with a description.</p>
+                            <hr class="d-none d-lg-block mb-0 ml-0">
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="col-md-4 mb-3 mb-md-0">
-          <div class="card py-4 h-100">
-            <div class="card-body text-center">
-              <i class="fas fa-mobile-alt text-primary mb-2"></i>
-              <h4 class="text-uppercase m-0">Phone</h4>
-              <hr class="my-4">
-              <div class="small text-black-50">(+65) 9862 4042</div>
+        <!-- Project Two Row -->
+        <div class="row justify-content-center no-gutters">
+            <div class="col-lg-6">
+                <img class="img-fluid" src="{% static 'img/demo-image-02.jpg' %}" alt="">
             </div>
-          </div>
+            <div class="col-lg-6 order-lg-first">
+                <div class="bg-black text-center h-100 project">
+                    <div class="d-flex h-100">
+                        <div class="project-text w-100 my-auto text-center text-lg-right">
+                            <h4 class="text-white">Mountains</h4>
+                            <p class="mb-0 text-white-50">Another example of a project with its respective description.
+                                These sections work well responsively as well, try this theme on a small screen!</p>
+                            <hr class="d-none d-lg-block mb-0 mr-0">
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
 
-      <div class="social d-flex justify-content-center">
-        <a href="#" class="mx-2">
-          <i class="fab fa-twitter"></i>
-        </a>
-        <a href="#" class="mx-2">
-          <i class="fab fa-facebook-f"></i>
-        </a>
-        <a href="https://github.com/weilunn97" class="mx-2">
-          <i class="fab fa-github"></i>
-        </a>
-      </div>
     </div>
-  </section>
+</section>
 
-  <!-- Footer -->
-  <footer class="bg-black small text-center text-white-50">
+<!-- Signup Section -->
+<section id="signup" class="signup-section">
     <div class="container">
-      Copyright &copy; Your Website 2019
+        <div class="row">
+            <div class="col-md-10 col-lg-8 mx-auto text-center">
+
+                <i class="far fa-paper-plane fa-2x mb-2 text-white"></i>
+                <h2 class="text-white mb-5">Subscribe to receive updates!</h2>
+
+                <form class="form-inline d-flex">
+                    <input type="email" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="inputEmail"
+                           placeholder="Enter email address...">
+                    <button type="submit" class="btn btn-primary mx-auto">Subscribe</button>
+                </form>
+
+            </div>
+        </div>
     </div>
-  </footer>
+</section>
 
-  <!-- Bootstrap core JavaScript -->
-  <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
-  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<!-- Contact Section -->
+<section class="contact-section bg-black">
+    <div class="container">
 
-  <!-- Plugin JavaScript -->
-  <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+        <div class="row">
 
-  <!-- Custom scripts for this template -->
-  <script src="{% static 'js/grayscale.min.js' %}"></script>
+            <div class="col-md-4 mb-3 mb-md-0">
+                <div class="card py-4 h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-map-marked-alt text-primary mb-2"></i>
+                        <h4 class="text-uppercase m-0">LinkedIn</h4>
+                        <hr class="my-4">
+                        <a href="https://www.linkedin.com/in/tan-wei-lun/" target="_blank">TAKE ME THERE</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-3 mb-md-0">
+                <div class="card py-4 h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-envelope text-primary mb-2"></i>
+                        <h4 class="text-uppercase m-0">Email</h4>
+                        <hr class="my-4">
+                        <div class="small text-black-50">
+                            <a href="mailto:WTAN132@e.ntu.edu.sg">WTAN132@e.ntu.edu.sg</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-3 mb-md-0">
+                <div class="card py-4 h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-mobile-alt text-primary mb-2"></i>
+                        <h4 class="text-uppercase m-0">Phone</h4>
+                        <hr class="my-4">
+                        <div class="small text-black-50">(+65) 9862 4042</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="social d-flex justify-content-center">
+            <a href="#" class="mx-2">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="mx-2">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://github.com/weilunn97" class="mx-2">
+                <i class="fab fa-github"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-black small text-center text-white-50">
+    <div class="container">
+        Copyright &copy; Your Website 2019
+    </div>
+</footer>
+
+<!-- Bootstrap core JavaScript -->
+<script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+<!-- Plugin JavaScript -->
+<script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+
+<!-- Custom scripts for this template -->
+<script src="{% static 'js/grayscale.min.js' %}"></script>
 
 </body>
 

@@ -1,24 +1,26 @@
+from django.core.files import File
+
 from .count_analysis import *
 from .line_processing import *
 from .models import Message, WhatsAppTextFile
 from datetime import timedelta
 from django.shortcuts import render, redirect
 import json
+import pdb
 
 ''' FIREBASE '''
-import firebase_admin
-from firebase_admin import credentials, storage, auth
+from pyrebase import pyrebase
+
+# TODO
 """
-TODO :
 1. Implement Google Sign-In
-    (a) Create a Login button on the top right corner of Main Menu (in homepage.html)
-    (b) Style the button in the form of a Google Sign-In button 
-    (https://developers.google.com/identity/sign-in/web/build-button)
+    (b) Retrieve user's attributes via user.first_name, etc 
+    (https://docs.djangoproject.com/en/3.0/ref/contrib/auth/)
     (c) Register your app with Firebase first - Step 3 : From Hosting URLs
     (https://firebase.google.com/docs/web/setup)    
-    (c) onClick function will trigger the JS in the following doc
+    (d) onClick function will trigger the JS in the following doc
     (https://firebase.google.com/docs/auth/web/google-signin)
-    (d) Retrieve the USER/DISPLAY NAME from JS code, then pass it via a form
+    (e) Retrieve the USER/DISPLAY NAME from JS code, then pass it via a form
     from the JS template back to the view for further processing 
     (https://stackoverflow.com/questions/29153593/passing-variable-from-django-template-to-view)
 
@@ -29,23 +31,63 @@ TODO :
 6. WORKAROUND : CREATE NEW USER ACCOUNT VIA EMAIL IN ANDROID,
 THEN USE THE SAME PASSWORD, ALL YOU NEED IS THE USERNAME
 """
-cred = credentials.Certificate("mysite/ServiceAccountKey.json")
-firebase_admin.initialize_app(cred)
-auth.generate_sign_in_with_email_link()
-storage = storage._StorageClient()
 
 
+def firebaseUpload(request):
+
+    # Generate the config file
+    config = {
+        "apiKey": "AIzaSyDhJD_AENniovRoVttwWmwaKwlpKuHyVck",
+        "authDomain": "whatsapp-27255.firebaseapp.com",
+        "databaseURL": "https://whatsapp-27255.firebaseio.com",
+        "projectId": "whatsapp-27255",
+        "storageBucket": "whatsapp-27255.appspot.com",
+        "messagingSenderId": "998524713961",
+        "appId": "1:998524713961:web:dedfaf0cc4d5710d65e978",
+        "measurementId": "G-T5B7QLDPKN",
+        "serviceAccount": "ServiceAccountKey.json"
+    }
+
+    # Create all our references
+    firebase = pyrebase.initialize_app(config)
+    auth_ref = firebase.auth()
+    storage_ref = firebase.storage()
+
+    # Retrieve the first and last name of current user
+    first_name = request.user.first_name
+    last_name = request.user.last_name
+    display_name = f"{first_name} {last_name}"
+    print("display_name : ", display_name)
+
+    # Retrieve the uploaded file
+    uploaded_file = request.FILES['WhatsAppFile']
+    uploaded_file_proper = uploaded_file.open()
+    print("proper type : ", type(uploaded_file_proper))
+
+    # Set the upload file path
+    upload_path = storage_ref.child(display_name)
+    # BUG HERE --> UPLOADEDFILEOBJECT
+    # SOLUTION : USE JS DIRECTLY IN TEMPLATE
+    # upload_path.put(uploaded_file)
 
 ''' FIREBASE '''
 def index(request):
+
     # UPON SUCCESSFUL UPLOAD
     if request.method == "POST" and request.FILES:
+
+        # Retrieve the uploaded file
         uploadedFile = request.FILES['WhatsAppFile']
         fileContents = uploadedFile.read().decode('utf-8')
         fileContentsList = fileContents.split('\n')
 
+        # Upload the file to Firebase Storage
+        print("before firebaseUpload()")
+        firebaseUpload(request)
+        print("after firebaseUpload()")
+
         # CLEAR EXISTING METRICS, IF ANY
-        # CountAnalysis.clearMetrics()
+        CountAnalysis.clearMetrics()
 
         # DELETE ALL MESSAGE OBJECTS FROM DB
         Message.objects.all().delete()
@@ -56,9 +98,11 @@ def index(request):
         CountAnalysis.calculateMetrics()
 
         # Redirect to metrics
+        print("RETURNING METRICS")
         return redirect('metrics/')
 
     # Else, serve the page as per usual
+    print("RETURNING HOMEPAGE")
     return render(request, 'whatsanalyzer/homepage.html')
 
 
@@ -239,20 +283,7 @@ def metrics(request):
 
 
 def charts(request):
-    ''' TESTING FOR GRAPHING LIBRARY '''
-
-    # SENDER 1
-    # senderOneDates = []
-    # senderOneDates.append(str(datetime(2019, 1, 1)))
-    # senderOneDates.append(str(datetime(2019, 2, 3)))
-    # senderOneDates.append(str(datetime(2019, 3, 5)))
-    # 
-    # senderOneReplies = []
-    # senderOneReplies.append(150)
-    # senderOneReplies.append(50)
-    # senderOneReplies.append(250)
-    #
-
+    # TODO : PLACE BUTTON FOR REDIRECT IN METRICS.HTML
     # DEBUG INFO
     CountAnalysis.debugPrint()
 
@@ -262,18 +293,6 @@ def charts(request):
     senderTwoDates = CountAnalysis.senderTwoTimeStamp
     senderOneReplyTimingInMinutes = CountAnalysis.senderOneReplyTimingInMinutes
     senderTwoReplyTimingInMinutes = CountAnalysis.senderTwoReplyTimingInMinutes
-
-    #
-    # SENDER 2
-    # senderTwoDates = []
-    # senderTwoDates.append(str(datetime(2019, 1, 1)))
-    # senderTwoDates.append(str(datetime(2019, 3, 2)))
-    # senderTwoDates.append(str(datetime(2019, 5, 3)))
-    # 
-    # senderTwoReplies = []
-    # senderTwoReplies.append(100)
-    # senderTwoReplies.append(50)
-    # senderTwoReplies.append(150)
 
     # Custom date formatter for x-axis
     def xAxisFormatter(date):

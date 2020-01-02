@@ -27,21 +27,45 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# User Registration and Login
+AUTHENTICATION_BACKENDS = (
+    # Django-side login
+    'django.contrib.auth.backends.ModelBackend',
+    # All-auth-side login
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+
 
 # Application definition
 
 INSTALLED_APPS = [
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
     'chartjs',
     'django_plotly_dash.apps.DjangoPlotlyDashConfig',
-    'whatsanalyzer.apps.WhatsanalyzerConfig',
-    'polls.apps.PollsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
     'django.contrib.sessions',
+    'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'polls.apps.PollsConfig',
+    'whatsanalyzer.apps.WhatsanalyzerConfig',
 ]
+
+# Django allauth settings
+ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS =1
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = "none"
+ACCOUNT_LOGIN_ATTEMPTS_LIMIT = 10
+ACCOUNT_LOGIN_ATTEMPTS_TIMEOUT = 30             # seconds
+ACCOUNT_LOGOUT_REDIRECT_URL ='/'
+LOGIN_REDIRECT_URL = '/'
+SITE_ID = 1
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
