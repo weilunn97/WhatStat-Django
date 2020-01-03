@@ -79,10 +79,10 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 mx-auto">
-                <h2 class="text-white mb-4">WhatsApp File Upload</h2>
+                <h2 class="text-white mb-4">Let's get started!</h2>
                 <p class="text-white-50"> Simply head over to
                     <a href="https://web.whatsapp.com/" target="_blank">WhatsApp Web</a> and email any conversation you
-                    wish to analyze to yourself. Next, simply download the text file, and upload it below! </p>
+                    wish to analyze to yourself. Next, download the text file, and upload it below! </p>
             </div>
         </div>
 
@@ -92,8 +92,8 @@
             <input id="fileBrowserButton" style="display:none" class="btn btn-primary" type="file" name="WhatsAppFile">
             <button id="customFileBrowserButton" class="btn btn-primary" type="button">Upload</button>
             <button id="submitButton" class="btn btn-primary" type="submit" onclick="firebaseUpload()">Analyze</button>
+             <div style="color:white" id="WhatsAppFile_name">No File Uploaded</div>
         </form>
-        <div style="color:white" id="WhatsAppFile_name ">No File Uploaded</div>
 
         <!-- TODO : JS USER AUTH, LOGIN, AND UPLOAD (NO PYTHON SIDE CODE)-->
         <!--FIREBASE CONFIGURATION AND SETUP -->
@@ -104,16 +104,34 @@
 
         <script type="text/javascript">
             <!--BUTTON UI-->
-            const fileUploadButton = document.getElementById("fileBrowserButton");
-            const customUploadButton = document.getElementById("customFileBrowserButton");
-            const buttonText = document.getElementById("WhatsAppFile_name");
-
+            var fileUploadButton = document.getElementById("fileBrowserButton");
+            var customUploadButton = document.getElementById("customFileBrowserButton");
+            var uploadedFileNameText = document.getElementById("WhatsAppFile_name");
+            if (uploadedFileNameText == null) {
+                alert("uploadedFileNameText IS NULL");
+            }
             customUploadButton.addEventListener("click", function() {
             fileUploadButton.click();
             });
 
-            fileUploadButton.addEventListener("change", function() {
+            fileUploadButton.addEventListener("change", function(e) {
             if (fileUploadButton.value) {
+              var file = e.target.files[0];
+              var userDisplayName = authRef.currentUser.displayName;
+              var uploadTask = storageRef.child(userDisplayName).child(file.name).put(file);
+
+              uploadTask.on('state_changed',function(snapshot){
+                    alert("File Upload Successful");
+                },
+                function(error) {
+                    alert("Firebase Upload Failed");
+                },
+                function() {
+                    var downloadURL = snapshot.downloadURL;
+                    document.getElementById("url").value = downloadURL;
+                    alert("Download URL : " + downloadURL);
+                });
+
               document.getElementById("WhatsAppFile_name").innerHTML = fileUploadButton.value.match(/^.+\\([^.]+)\.[^\.]+$/)[1];
             } else {
               document.getElementById("WhatsAppFile_name").innerHTML = "No file selected.";
@@ -170,21 +188,8 @@
 
             // FIREBASE FILE UPLOAD FUNCTION
              function firebaseUpload() {
-                const file = document.getElementById("uploadedFile");
-                const displayName = authRef.currentUser.displayName;
-                alert("Display Name (FB UPLOAD) : " + displayName);
-                var uploadRef = storageRef.child(displayName).put(file);
-                uploadRef.on('state_changed',function(snapshot){
-                    alert("File Upload Successful");
-                },
-                function(error) {
-                    alert("Firebase Upload Failed");
-                },
-                function() {
-                    var downloadURL = thisref.snapshot.downloadURL;
-                    document.getElementById("url").value = downloadURL;
-                    alert("Download URL : " + downloadURL);
-                });
+
+
             }
         </script>
     </div>
