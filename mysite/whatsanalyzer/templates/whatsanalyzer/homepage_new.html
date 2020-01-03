@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+
+{% load socialaccount %}
+{% load static %}
+{% static  providers_media_js %}
+
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>WhatsAnalyzer</title>
+
+  <!-- Bootstrap Core CSS -->
+  <link href="{% static  'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static  'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+  <!-- Custom Fonts -->
+  <link href="{% static  'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+  <link href="{% static  'vendor/simple-line-icons/css/simple-line-icons.css' %}" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link href="{% static 'css/stylish-portfolio.min.css' %}" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+  <!-- Navigation -->
+  <a class="menu-toggle rounded" href="#">
+    <i class="fas fa-bars"></i>
+  </a>
+  <nav id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+      <li class="sidebar-brand">
+        <a class="js-scroll-trigger" href="#page-top">Start Bootstrap</a>
+      </li>
+      <li class="sidebar-nav-item">
+        <a class="js-scroll-trigger" href="#page-top">Home</a>
+      </li>
+      <li class="sidebar-nav-item">
+        <a class="js-scroll-trigger" href="#about">About</a>
+      </li>
+      <li class="sidebar-nav-item">
+        <a class="js-scroll-trigger" href="#features">Features</a>
+      </li>
+      <li class="sidebar-nav-item">
+        <a class="js-scroll-trigger" href="#portfolio">Portfolio</a>
+      </li>
+      <li class="sidebar-nav-item">
+        <a class="js-scroll-trigger" href="#contact">Contact</a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Header -->
+  <header class="masthead d-flex">
+    <div class="container text-center my-auto">
+      <h1 class="mb-1">WhatsAnalyzer</h1>
+      <h3 class="mb-5">
+        <em>Providing insights into your daily conversations</em>
+      </h3>
+      <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">About</a>
+      <a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</a>
+      <a id="loginButton" class="btn btn-primary btn-xl js-scroll-trigger" href="" onclick="firebaseGoogleLogin()" target="_blank">LOGIN</a>
+    </div>
+    <div class="overlay"></div>
+  </header>
+
+  <!-- About -->
+  <section class="content-section bg-light" id="about">
+    <div class="container text-center">
+      <div class="row">
+        <div class="col-lg-10 mx-auto">
+          <h2>Curious to find out more about your conversations with your loved ones?</h2>
+          <p class="lead mb-5">Let simple analytics and data from your chat logs tell the story.</p>
+          <a class="btn btn-dark btn-xl js-scroll-trigger" href="#features">What We Offer</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="content-section bg-primary text-white text-center" id="features">
+    <div class="container">
+    <div class="container">
+      <div class="content-section-heading">
+        <h3 class="text-secondary mb-0">Features</h3>
+        <h2 class="mb-5">What We Offer</h2>
+      </div>
+      <div class="row">
+        <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+          <span class="service-icon rounded-circle mx-auto mb-3">
+            <i class="icon-screen-smartphone"></i>
+          </span>
+          <h4>
+            <strong>Engagement</strong>
+          </h4>
+          <p class="text-faded mb-0">Measuring message counts!</p>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+          <span class="service-icon rounded-circle mx-auto mb-3">
+            <i class="icon-pencil"></i>
+          </span>
+          <h4>
+            <strong>Expressiveness</strong>
+          </h4>
+          <p class="text-faded mb-0">Revealed through word counts.</p>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-5 mb-md-0">
+          <span class="service-icon rounded-circle mx-auto mb-3">
+            <i class="icon-like"></i>
+          </span>
+          <h4>
+            <strong>Responsiveness</strong>
+          </h4>
+          <p class="text-faded mb-0">Through figures and graphs on reply timings.</p>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <span class="service-icon rounded-circle mx-auto mb-3">
+            <i class="icon-mustache"></i>
+          </span>
+          <h4>
+            <strong>Coming Soon</strong>
+          </h4>
+          <p class="text-faded mb-0">Coming Soon...</p>
+        </div>
+      </div>
+      <h2>&zwnj;</h2>
+      <div class="col-lg-10 mx-auto">
+        <a class="btn btn-dark btn-xl js-scroll-trigger" href="#callout">Let's Start!</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Callout -->
+  <section class="callout" id="callout">
+    <div class="container text-center">
+      <h2 class="mx-auto mb-5">Analysis Time</h2>
+      <!--USER FILE UPLOAD FORM-->
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input id="fileBrowserButton" style="display:none" class="btn btn-primary btn-xl" type="file" name="WhatsAppFile">
+            <button id="customFileBrowserButton" class="btn btn-primary btn-xl" type="button">Upload</button>
+            <button id="submitButton" class="btn btn-primary btn-xl" type="submit">Analyze</button>
+            <div id="upload_text_padding">&zwnj;</div>
+          <div style="color:black" id="WhatsAppFile_name">Mhm... you haven't given me a file yet!</div>
+        </form>
+    </div>
+  </section>
+
+
+
+  <!--FIREBASE CONFIGURATION AND SETUP -->
+        <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-analytics.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-storage.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-auth.js"></script>
+        <script type="text/javascript">
+            <!--BUTTON UI-->
+            var fileUploadButton = document.getElementById("fileBrowserButton");
+            var customUploadButton = document.getElementById("customFileBrowserButton");
+            var uploadedFileNameText = document.getElementById("WhatsAppFile_name");
+            var loginButton = document.getElementById("loginButton");
+            if (uploadedFileNameText == null) {
+                alert("uploadedFileNameText IS NULL");
+            }
+            customUploadButton.addEventListener("click", function() {
+            fileUploadButton.click();
+            });
+
+            fileUploadButton.addEventListener("change", function(e) {
+            if (fileUploadButton.value) {
+
+                // CHANGE FILE NAME DESCRIPTION
+                document.getElementById("WhatsAppFile_name").innerHTML = fileUploadButton.value.match(/^.+\\([^.]+)\.[^\.]+$/)[1];
+
+                // UPLOAD TO FIREBASE STORAGE
+                var file = e.target.files[0];
+                var userDisplayName = authRef.currentUser.displayName;
+                var uploadTask = storageRef.child(userDisplayName).child(file.name).put(file);
+
+                // SETUP ON SUCCESS/FAILURE LISTENERS
+                uploadTask.on('state_changed',function(snapshot){
+                },
+                function(error) {
+                    alert("Firebase Upload Failed");
+                });
+            } else {
+                document.getElementById("WhatsAppFile_name").innerHTML = "Mhm... you haven't given me a file yet!";
+               }
+            });
+
+            // GENERATE FIREBASE CONFIG FILE
+            var firebaseConfig = {
+                  apiKey: "AIzaSyDhJD_AENniovRoVttwWmwaKwlpKuHyVck",
+                  authDomain: "whatsapp-27255.firebaseapp.com",
+                  databaseURL: "https://whatsapp-27255.firebaseio.com",
+                  projectId: "whatsapp-27255",
+                  storageBucket: "whatsapp-27255.appspot.com",
+                  messagingSenderId: "998524713961",
+                  appId: "1:998524713961:web:dedfaf0cc4d5710d65e978",
+                  measurementId: "G-T5B7QLDPKN"
+              };
+
+            // INITIALIZE FIREBASE MAIN APP AND START ANALYTICS
+            firebase.initializeApp(firebaseConfig);
+            firebase.analytics();
+
+            // INITIALIZE REQUIRED FIREBASE REFERENCES
+            var authRef = firebase.auth();
+            var storageRef = firebase.storage().ref();
+
+            // INITIALIZE THE CURRENT USER (IF ANY)
+            firebase.auth().onAuthStateChanged(function(user) {
+                if (user) {
+                    loginButton.innerHTML = user.displayName + "'s "+ "Stash";
+                } else {
+                    // No user is signed in
+                    loginButton.innerHTML = "LOGIN";
+                }
+            });
+
+            // GOOGLE LOGIN HELPER FUNCTION
+            function firebaseGoogleLogin() {
+                var provider = new firebase.auth.GoogleAuthProvider();
+                provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
+                firebase.auth().signInWithPopup(provider).then(function(result) {
+                    var token = result.credential.accessToken;
+                    var user = result.user;
+<!--                    loginButton.innerHTML = user.displayName.toUpperCase() + "'S "+ "FILE STASH";-->
+                    alert("Current User : " + user.displayName);
+                 }).catch(function(error) {
+                        var errorCode = error.code;
+                        var errorMessage = error.message;
+                        var email = error.email;
+                        var credential = error.credential;
+                        console.log(errorCode, errorMessage);
+                        alert("Google Sign-In failed");
+                     });
+              }
+
+
+            // FIREBASE FILE UPLOAD FUNCTION
+             function firebaseUpload() {
+
+
+            }
+        </script>
+
+
+
+  <!-- Portfolio -->
+  <section class="content-section" id="portfolio">
+    <div class="container">
+      <div class="content-section-heading text-center">
+        <h3 class="text-secondary mb-0">Portfolio</h3>
+        <h2 class="mb-5">Recent Projects</h2>
+      </div>
+      <div class="row no-gutters">
+        <div class="col-lg-6">
+          <a class="portfolio-item" href="#">
+            <span class="caption">
+              <span class="caption-content">
+                <h2>Stationary</h2>
+                <p class="mb-0">A yellow pencil with envelopes on a clean, blue backdrop!</p>
+              </span>
+            </span>
+            <img class="img-fluid" src="{% static  'img/portfolio-1.jpg' %}" alt="">
+          </a>
+        </div>
+        <div class="col-lg-6">
+          <a class="portfolio-item" href="#">
+            <span class="caption">
+              <span class="caption-content">
+                <h2>Ice Cream</h2>
+                <p class="mb-0">A dark blue background with a colored pencil, a clip, and a tiny ice cream cone!</p>
+              </span>
+            </span>
+            <img class="img-fluid" src="{% static  'img/portfolio-2.jpg' %}" alt="">
+          </a>
+        </div>
+        <div class="col-lg-6">
+          <a class="portfolio-item" href="#">
+            <span class="caption">
+              <span class="caption-content">
+                <h2>Strawberries</h2>
+                <p class="mb-0">Strawberries are such a tasty snack, especially with a little sugar on top!</p>
+              </span>
+            </span>
+            <img class="img-fluid" src="{% static  'img/portfolio-3.jpg' %}" alt="">
+          </a>
+        </div>
+        <div class="col-lg-6">
+          <a class="portfolio-item" href="#">
+            <span class="caption">
+              <span class="caption-content">
+                <h2>Workspace</h2>
+                <p class="mb-0">A yellow workspace with some scissors, pencils, and other objects.</p>
+              </span>
+            </span>
+            <img class="img-fluid" src="{% static  'img/portfolio-4.jpg' %}" alt="">
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="content-section bg-primary text-white">
+    <div class="container text-center">
+      <h2 class="mb-4">The buttons below are impossible to resist...</h2>
+      <a href="#" class="btn btn-xl btn-light mr-4">Click Me!</a>
+      <a href="#" class="btn btn-xl btn-dark">Look at Me!</a>
+    </div>
+  </section>
+
+
+
+  <!-- Footer -->
+  <footer class="footer text-center">
+    <div class="container">
+      <ul class="list-inline mb-5">
+        <li class="list-inline-item">
+          <a class="social-link rounded-circle text-white mr-3" href="#">
+            <i class="icon-social-facebook"></i>
+          </a>
+        </li>
+        <li class="list-inline-item">
+          <a class="social-link rounded-circle text-white mr-3" href="#">
+            <i class="icon-social-twitter"></i>
+          </a>
+        </li>
+        <li class="list-inline-item">
+          <a class="social-link rounded-circle text-white" href="#">
+            <i class="icon-social-github"></i>
+          </a>
+        </li>
+      </ul>
+      <p class="text-muted small mb-0">Copyright &copy; JourneyWithJed 2020</p>
+    </div>
+  </footer>
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded js-scroll-trigger" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="{% static  'vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static  'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="{% static  'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="{% static 'js/stylish-portfolio.min.js' %}"></script>
+
+</body>
+
+</html>

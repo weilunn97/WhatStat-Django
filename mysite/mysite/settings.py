@@ -153,12 +153,12 @@ file), and place all static content (css, js, img, etc) there
 
 2. Specify the DJANGO STATIC_ROOT DIRECTORY. This is the folder where
 Django LOOKS AT DURING RUNTIME (optimized for speed/convenience) to 
-obtain all its static assets
+obtain all its static assets --> this folder is the 'assets' folder in the root dir
 
 3. This STATIC_ROOT directory is initially non-existent. You've to do
 python manage.py collectstatic in the directory containing both manage.py
-and your created static folder in Step 1 to CREATE AND POPULATE this
-Django-specific folder in Step 2
+and your created static folder in Step 1 to TRANSFER ALL FILES from 'static' 
+folder to the 'assets' folder
 
 4. Once that is done, we need to ALTER THE HTML FILE LINKS to these
 static files

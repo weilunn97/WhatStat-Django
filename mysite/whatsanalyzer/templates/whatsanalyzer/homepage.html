@@ -91,7 +91,7 @@
             {% csrf_token %}
             <input id="fileBrowserButton" style="display:none" class="btn btn-primary" type="file" name="WhatsAppFile">
             <button id="customFileBrowserButton" class="btn btn-primary" type="button">Upload</button>
-            <button id="submitButton" class="btn btn-primary" type="submit" onclick="firebaseUpload()">Analyze</button>
+            <button id="submitButton" class="btn btn-primary" type="submit">Analyze</button>
              <div style="color:white" id="WhatsAppFile_name">No File Uploaded</div>
         </form>
 
@@ -116,26 +116,24 @@
 
             fileUploadButton.addEventListener("change", function(e) {
             if (fileUploadButton.value) {
-              var file = e.target.files[0];
-              var userDisplayName = authRef.currentUser.displayName;
-              var uploadTask = storageRef.child(userDisplayName).child(file.name).put(file);
 
-              uploadTask.on('state_changed',function(snapshot){
-                    alert("File Upload Successful");
+                // CHANGE FILE NAME DESCRIPTION
+                document.getElementById("WhatsAppFile_name").innerHTML = fileUploadButton.value.match(/^.+\\([^.]+)\.[^\.]+$/)[1];
+
+                // UPLOAD TO FIREBASE STORAGE
+                var file = e.target.files[0];
+                var userDisplayName = authRef.currentUser.displayName;
+                var uploadTask = storageRef.child(userDisplayName).child(file.name).put(file);
+
+                // SETUP ON SUCCESS/FAILURE LISTENERS
+                uploadTask.on('state_changed',function(snapshot){
                 },
                 function(error) {
                     alert("Firebase Upload Failed");
-                },
-                function() {
-                    var downloadURL = snapshot.downloadURL;
-                    document.getElementById("url").value = downloadURL;
-                    alert("Download URL : " + downloadURL);
                 });
-
-              document.getElementById("WhatsAppFile_name").innerHTML = fileUploadButton.value.match(/^.+\\([^.]+)\.[^\.]+$/)[1];
             } else {
-              document.getElementById("WhatsAppFile_name").innerHTML = "No file selected.";
-            }
+                document.getElementById("WhatsAppFile_name").innerHTML = "No file selected.";
+               }
             });
 
             // GENERATE FIREBASE CONFIG FILE
