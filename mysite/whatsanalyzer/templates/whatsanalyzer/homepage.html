@@ -51,12 +51,11 @@
                     <a class="nav-link js-scroll-trigger" href="#signup">Contact</a>
                 </li>
                 <li class="nav-item">
-<!--                    {% if user.is_authenticated %}-->
-<!--                    <a class="nav-link js-scroll-trigger" href="{% provider_login_url 'google' %}">Login</a>-->
-<!--                    {% else %}-->
-<!--                    <a class="nav-link js-scroll-trigger">Welcome, {{user.first_name}}</a>-->
-<!--                    {% endif %}-->
-                    <a class="nav-link js-scroll-trigger" onclick="firebaseGoogleLogin()">Login</a>-->
+                    {% if user.is_authenticated %}
+                        <a class="nav-link js-scroll-trigger" href="" onclick="firebaseGoogleLogin()" target="_blank">Login</a>
+                    {% else %}
+                        <a class="nav-link js-scroll-trigger">Welcome, {{user.first_name}}</a>
+                    {% endif %}
                 </li>
             </ul>
         </div>
@@ -87,7 +86,7 @@
             </div>
         </div>
 
-        <!--CORRECT FORM-->
+        <!--USER FILE UPLOAD FORM-->
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <input id="fileBrowserButton" style="display:none" class="btn btn-primary" type="file" name="WhatsAppFile">
@@ -96,13 +95,15 @@
         </form>
         <div style="color:white" id="WhatsAppFile_name ">No File Uploaded</div>
 
+        <!-- TODO : JS USER AUTH, LOGIN, AND UPLOAD (NO PYTHON SIDE CODE)-->
+        <!--FIREBASE CONFIGURATION AND SETUP -->
         <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-analytics.js"></script>
         <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-storage.js"></script>
         <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-auth.js"></script>
 
-        <!-- TODO : JS USER AUTH, LOGIN, AND UPLOAD (NO PYTHON SIDE CODE)-->
         <script type="text/javascript">
+            <!--BUTTON UI-->
             const fileUploadButton = document.getElementById("fileBrowserButton");
             const customUploadButton = document.getElementById("customFileBrowserButton");
             const buttonText = document.getElementById("WhatsAppFile_name");
@@ -131,44 +132,58 @@
                   measurementId: "G-T5B7QLDPKN"
               };
 
-            // INITIALIZE FIREBASE APP AND START ANALYTICS
+            // INITIALIZE FIREBASE MAIN APP AND START ANALYTICS
             firebase.initializeApp(firebaseConfig);
             firebase.analytics();
 
+            // INITIALIZE REQUIRED FIREBASE REFERENCES
+            var authRef = firebase.auth();
+            var storageRef = firebase.storage().ref();
+
+            // INITIALIZE THE CURRENT USER (IF ANY)
+            firebase.auth().onAuthStateChanged(function(user) {
+                if (user) {
+                    // User is signed in
+                } else {
+                    // No user is signed in
+                }
+            });
+
             // GOOGLE LOGIN HELPER FUNCTION
             function firebaseGoogleLogin() {
-            alert("firebaseGoogleLogin() triggered")
-            var provider = new firebase.auth.GoogleAuthProvider();
-            provider.addScope('profile');
-            provider.addScope('email');
-            firebase.auth().signInWithPopup(provider).then(function(result) {
-                var token = result.credential.accessToken;
-                var user = result.user;
-                });
-            }
+                var provider = new firebase.auth.GoogleAuthProvider();
+                provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
+                firebase.auth().signInWithPopup(provider).then(function(result) {
+                    var token = result.credential.accessToken;
+                    var user = result.user;
+                    alert("Current User : " + user.displayName);
+                 }).catch(function(error) {
+                        var errorCode = error.code;
+                        var errorMessage = error.message;
+                        var email = error.email;
+                        var credential = error.credential;
+                        console.log(errorCode, errorMessage);
+                        alert("Google Sign-In failed");
+                     });
+              }
+
 
             // FIREBASE FILE UPLOAD FUNCTION
-             function firebaseUpload(){
-                alert("firebaseUpload() triggered")
-                var storage = firebase.storage();
-                var file = document.getElementById("uploadedFile");
-                var storageRef = storage.ref();
-                var firstName = user.first_name
-                var lastName = user.last_name
-                var displayName = str.concat(firstName, " ", lastName)
-                alert(displayName)
-                var thisref = storageRef.child(displayName).put(file);
-                thisref.on('state_changed',function(snapshot){
-                alert("file uplaoded succesfully");
+             function firebaseUpload() {
+                const file = document.getElementById("uploadedFile");
+                const displayName = authRef.currentUser.displayName;
+                alert("Display Name (FB UPLOAD) : " + displayName);
+                var uploadRef = storageRef.child(displayName).put(file);
+                uploadRef.on('state_changed',function(snapshot){
+                    alert("File Upload Successful");
                 },
                 function(error) {
+                    alert("Firebase Upload Failed");
                 },
                 function() {
-                    // Upload completed successfully, now we can get the download URL
                     var downloadURL = thisref.snapshot.downloadURL;
-                    console.log("got url");
                     document.getElementById("url").value = downloadURL;
-                    alert(downloadURL);
+                    alert("Download URL : " + downloadURL);
                 });
             }
         </script>
