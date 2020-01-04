@@ -1,27 +1,13 @@
-from re import findall
-from datetime import datetime
+from dateutil.parser import parse
+from re import findall, search
 
 
 def extractDate(entireLine):
-    # PM times (hours) are non zero-padded
-    try:
-        if entireLine[18] == "m":
-            return parseDateString(entireLine[:19])
-        # AM times (hours) are zero-padded
-        elif entireLine[19] == "m":
-            return parseDateString(entireLine[:20])
-        # For multi-line message bodies
-        else:
-            return None
-    except IndexError:
-        return None
 
-
-def parseDateString(date):
     try:
-        date = date.replace('pm', 'PM', 1).replace('am', 'AM')
-        return datetime.strptime(date, '%d/%m/%Y, %H:%M %p')
-    except ValueError:
+        lineDatetime = search(r'^.*?(am|pm)', entireLine).group()
+        return parse(lineDatetime)
+    except (AttributeError, ValueError):
         return None
 
 

@@ -1,5 +1,9 @@
-from .models import Message
+# from .models import Message
+from .line_processing import *
+from .message_storage import MessageStorage
+from .message import Message
 
+import pdb
 import logging
 
 logger = logging.getLogger(__name__)
@@ -40,6 +44,22 @@ class CountAnalysis():
     senderTwoReplyTimingInMinutes = []
 
     @staticmethod
+    def extractMessages(fileContentsList):
+
+        for msg in fileContentsList:
+            md = extractDate(msg)
+            ms = extractSender(msg)
+            mt = extractTextBody(msg)
+
+            if md and ms and mt:
+                myMessage = Message(date=md, sender=ms, text=mt)
+                MessageStorage.addMessage(myMessage)
+
+        # DEBUG
+        print("Actual Message Count : ", len(fileContentsList))
+        print("Processed Message Count : ", MessageStorage.countMessages())
+
+    @staticmethod
     def calculateMetrics():
         '''
         Logic function to process all Message objects in our backend SQL DB.
@@ -49,8 +69,11 @@ class CountAnalysis():
         # Setup pointer to first message in a string of messages
         firstMessage = None
 
-        # Loop through all Message objects
-        for msg in Message.objects.all():
+        # Get the list of processed Message objects
+        messageList = MessageStorage.getMessageList()
+
+        # Loop through these Message objects
+        for msg in messageList:
 
             # 1. Add to Sender List
             if len(CountAnalysis.senderList) == 0:
@@ -72,29 +95,31 @@ class CountAnalysis():
                 firstMessage = msg
             elif firstMessage.messageSender != msg.messageSender:
                 # Trigger reply timing analysis
-                CountAnalysis.analyzeReplyTimings(firstMessage, msg)
+                CountAnalysis.calculateTimeDiff(firstMessage, msg)
                 # Update firstMessage
                 firstMessage = msg
 
         # 4. WPM Count
         try:
-            CountAnalysis.senderOneWordsPerMsg = int(CountAnalysis.senderOneTotalWords / CountAnalysis.senderOneTotalMessages)
+            CountAnalysis.senderOneWordsPerMsg = int(
+                CountAnalysis.senderOneTotalWords / CountAnalysis.senderOneTotalMessages)
         except ZeroDivisionError:
-            CountAnalysis.senderOneWordsPerMsg = 0   
+            CountAnalysis.senderOneWordsPerMsg = 0
         try:
-            CountAnalysis.senderTwoWordsPerMsg = int(CountAnalysis.senderTwoTotalWords / CountAnalysis.senderTwoTotalMessages)
+            CountAnalysis.senderTwoWordsPerMsg = int(
+                CountAnalysis.senderTwoTotalWords / CountAnalysis.senderTwoTotalMessages)
         except ZeroDivisionError:
             CountAnalysis.senderTwoWordsPerMsg = 0
 
     @staticmethod
-    def analyzeReplyTimings(mOne, mTwo):
+    def calculateTimeDiff(mOne, mTwo):
         '''
         Processes the reply timing of the sender who sent the message "mTwo", and stores it
         into the Reply Timing Specific Metrics attributes of this class.
 
         :param mOne (Message): First message from the "earlier" sender
         :param mTwo (Message): First message from the "later" sender
-        :return: None, None, performs in-place modification of Reply Timing Specific Metrics (above)
+        :return: None, performs in-place modification of Reply Timing Specific Metrics (above)
         '''
         # Do not process further if messageList is not filled
         if len(CountAnalysis.senderList) < 2: return
@@ -105,8 +130,8 @@ class CountAnalysis():
             dateDiffInMins = dateDiff.seconds / 60
             if dateDiffInMins < 0:
                 raise ValueError("Negative DateDiff")
-        except:
-            print("dateDiff FAILED")
+        except ValueError:
+            print("Negative DateDiff!")
             print(f"mOne : {mOne}")
             print(f"mTwo : {mTwo}")
 
@@ -130,7 +155,7 @@ class CountAnalysis():
         print(f"s2WPM : {CountAnalysis.senderTwoWordsPerMsg}")
         print(f"s2TS : {CountAnalysis.senderTwoTimeStamp}")
         print(f"s2RTIM : {CountAnalysis.senderTwoReplyTimingInMinutes}")
-        
+
     @staticmethod
     def clearMetrics():
         CountAnalysis.senderList.clear()
@@ -143,5 +168,3 @@ class CountAnalysis():
         CountAnalysis.senderTwoTotalWords = 0
         CountAnalysis.senderTwoWordsPerMsg = 0
         CountAnalysis.senderTwoTimeStamp.clear()
-
-

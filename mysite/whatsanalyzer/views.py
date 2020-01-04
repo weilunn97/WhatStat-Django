@@ -1,15 +1,8 @@
-from django.core.files import File
-
 from .count_analysis import *
-from .line_processing import *
-from .models import Message, WhatsAppTextFile
 from datetime import timedelta
 from django.shortcuts import render, redirect
 import json
 import pdb
-
-''' FIREBASE '''
-from pyrebase import pyrebase
 
 # TODO
 """
@@ -29,15 +22,12 @@ def index(request):
         fileContents = uploadedFile.read().decode('utf-8')
         fileContentsList = fileContents.split('\n')
 
-        # CLEAR EXISTING METRICS, IF ANY
+        # CLEAR EXISTING MESSAGES AND METRICS, IF ANY
+        MessageStorage.clearMessageList()
         CountAnalysis.clearMetrics()
 
-        # DELETE ALL MESSAGE OBJECTS FROM DB
-        Message.objects.all().delete()
-
         # PERFORM ANALYSIS
-        updateWhatsAppTextFileDB(uploadedFile, fileContents)
-        updateMessageDB(fileContentsList)
+        CountAnalysis.extractMessages(fileContentsList)
         CountAnalysis.calculateMetrics()
 
         # Redirect to metrics
@@ -51,37 +41,15 @@ def upload(request, requestFiles):
     return render(request, 'whatsanalyzer/upload.html', {'requestFiles': requestFiles})
 
 
-# Helper function to generate all relevant metrics
-def updateWhatsAppTextFileDB(uploadedFile, fileContents):
-    # Update WhatsAppTextFile DB
-    fn = uploadedFile.name
-    ft = uploadedFile.content_type  # Should be of type text/plain
-    fc = fileContents
-    myWhatsAppTextFile = WhatsAppTextFile(fileName=fn, fileType=ft, fileContents=fc)
-    myWhatsAppTextFile.save()
-
-
-def updateMessageDB(fileContentsList):
-    # Update Message DB
-    ln = 1
-    for msg in fileContentsList:
-        md = extractDate(msg)
-        ms = extractSender(msg)
-        mt = extractTextBody(msg)
-        if md and ms and mt:
-            myMessage = Message(lineNumber=ln, messageDate=md, messageSender=ms, messageText=mt)
-            myMessage.save()
-            ln += 1
-
-
 def metrics(request):
-    # VALUES
+
+    # RETRIEVE METRICS FROM CountAnalysis
     s1 = CountAnalysis.senderList[0]
     s2 = CountAnalysis.senderList[1]
-    s1TotalMsg = CountAnalysis.senderTwoTotalMessages
-    s1TotalWords = CountAnalysis.senderTwoTotalWords
-    s1WPM = CountAnalysis.senderTwoWordsPerMsg
-    s1AvgReply = sum(CountAnalysis.senderTwoReplyTimingInMinutes) / len(CountAnalysis.senderTwoReplyTimingInMinutes)
+    s1TotalMsg = CountAnalysis.senderOneTotalMessages
+    s1TotalWords = CountAnalysis.senderOneTotalWords
+    s1WPM = CountAnalysis.senderOneWordsPerMsg
+    s1AvgReply = sum(CountAnalysis.senderOneReplyTimingInMinutes) / len(CountAnalysis.senderOneReplyTimingInMinutes)
     s2TotalMsg = CountAnalysis.senderTwoTotalMessages
     s2TotalWords = CountAnalysis.senderTwoTotalWords
     s2WPM = CountAnalysis.senderTwoWordsPerMsg
@@ -197,8 +165,8 @@ def metrics(request):
     chattierPerson = s1 if s1WPM > s2WPM else s2
     chattierWPM = s1WPM if s1WPM > s2WPM else s2WPM
     slowerPerson = s1 if s1AvgReply > s2AvgReply else s2
-    slowerPercent = int(s1AvgReply / s2AvgReply * 100) if s1AvgReply > s2AvgReply else int(
-        s2AvgReply / s1AvgReply * 100)
+    slowerPercent = int(s1AvgReply / s2AvgReply * 100 - 100) if s1AvgReply > s2AvgReply else int(
+        s2AvgReply / s1AvgReply * 100 - 100)
 
     # SERVE HTTP RESPONSE
     return render(request, 'whatsanalyzer/metrics.html', {'s1TotalMsg': s1TotalMsg,
@@ -207,8 +175,8 @@ def metrics(request):
                                                           's2TotalMsg': s2TotalMsg,
                                                           's2TotalWords': s2TotalWords,
                                                           's2WPM': s2WPM,
-                                                          's1AvgReply': int(s1AvgReply / 60),
-                                                          's2AvgReply': int(s2AvgReply / 60),
+                                                          's1AvgReply': round(s1AvgReply / 60, 1),
+                                                          's2AvgReply': round(s2AvgReply / 60, 1),
                                                           'leftMessageText': leftMessageText,
                                                           'rightMessageText': rightMessageText,
                                                           'leftWordsText': leftWordsText,
@@ -225,8 +193,9 @@ def metrics(request):
 
 def charts(request):
     # TODO : PLACE BUTTON FOR REDIRECT IN METRICS.HTML
+
     # DEBUG INFO
-    CountAnalysis.debugPrint()
+    # CountAnalysis.debugPrint()
 
     senderOne = CountAnalysis.senderList[0]
     senderTwo = CountAnalysis.senderList[1]
