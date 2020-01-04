@@ -2,19 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2c75543a-9fb0-4d81-8380-858a63f0b24d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/mysite/whatsanalyzer/message.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/whatsanalyzer/message_storage.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/whatsanalyzer/migrations/0005_auto_20200104_1307.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/WhatsAnalyzer--Django-.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/WhatsAnalyzer--Django-.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/whatsanalyzer/count_analysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/whatsanalyzer/count_analysis.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysite/whatsanalyzer/line_processing.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/whatsanalyzer/line_processing.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/whatsanalyzer/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/whatsanalyzer/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/whatsanalyzer/templates/whatsanalyzer/homepage.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/whatsanalyzer/templates/whatsanalyzer/homepage.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysite/whatsanalyzer/templates/whatsanalyzer/metrics.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/whatsanalyzer/templates/whatsanalyzer/metrics.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/whatsanalyzer/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/whatsanalyzer/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,19 +43,19 @@
     <option name="myShowDebugConsoleByDefault" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\TanWeiLun\PycharmProjects\mysite\WhatsAnalyzer--Django-\mysite\static\js" />
-      <recent name="C:\Users\TanWeiLun\PycharmProjects\mysite\WhatsAnalyzer--Django-\mysite\static" />
-      <recent name="C:\Users\TanWeiLun\PycharmProjects\mysite\WhatsAnalyzer--Django-\mysite\static\img" />
-      <recent name="C:\Users\TanWeiLun\PycharmProjects\mysite\WhatsAnalyzer--Django-\mysite\static\css" />
-      <recent name="C:\Users\TanWeiLun\PycharmProjects\mysite\WhatsAnalyzer--Django-\mysite\whatsanalyzer\templates" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\TanWeiLun\PycharmProjects\mysite\WhatsAnalyzer--Django-\mysite\static\img" />
       <recent name="C:\Users\TanWeiLun\PycharmProjects\mysite\WhatsAnalyzer--Django-\mysite\static" />
       <recent name="C:\Users\TanWeiLun\PycharmProjects\mysite\WhatsAnalyzer--Django-\mysite\whatsanalyzer\templates\whatsanalyzer" />
       <recent name="C:\Users\TanWeiLun\PycharmProjects\mysite\WhatsAnalyzer--Django-\mysite\polls\templates\whatsanalyzer" />
       <recent name="C:\Users\TanWeiLun\PycharmProjects\mysite\WhatsAnalyzer--Django-\mysite\polls" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\TanWeiLun\PycharmProjects\mysite\WhatsAnalyzer--Django-\mysite\static\js" />
+      <recent name="C:\Users\TanWeiLun\PycharmProjects\mysite\WhatsAnalyzer--Django-\mysite\static" />
+      <recent name="C:\Users\TanWeiLun\PycharmProjects\mysite\WhatsAnalyzer--Django-\mysite\static\img" />
+      <recent name="C:\Users\TanWeiLun\PycharmProjects\mysite\WhatsAnalyzer--Django-\mysite\static\css" />
+      <recent name="C:\Users\TanWeiLun\PycharmProjects\mysite\WhatsAnalyzer--Django-\mysite\whatsanalyzer\templates" />
     </key>
   </component>
   <component name="RunManager">

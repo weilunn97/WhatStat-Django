@@ -3,10 +3,9 @@ from re import findall, search
 
 
 def extractDate(entireLine):
-
     try:
         lineDatetime = search(r'^.*?(am|pm)', entireLine).group()
-        return parse(lineDatetime)
+        return parse(lineDatetime, dayfirst=True)
     except (AttributeError, ValueError):
         return None
 
