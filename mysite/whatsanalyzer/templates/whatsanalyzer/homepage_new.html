@@ -156,103 +156,122 @@
   </section>
 
 
+  <!-- FIREBASE CONFIGURATION AND SETUP -->
+  <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-storage.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-auth.js"></script>
+  <script type="text/javascript">
 
-  <!--FIREBASE CONFIGURATION AND SETUP -->
-        <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-analytics.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-storage.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-auth.js"></script>
-        <script type="text/javascript">
-            <!--BUTTON UI-->
-            var fileUploadButton = document.getElementById("fileBrowserButton");
-            var customUploadButton = document.getElementById("customFileBrowserButton");
-            var uploadedFileNameText = document.getElementById("WhatsAppFile_name");
-            var loginButton = document.getElementById("loginButton");
-            if (uploadedFileNameText == null) {
-                alert("uploadedFileNameText IS NULL");
-            }
-            customUploadButton.addEventListener("click", function() {
-            fileUploadButton.click();
+    <!-- SETTING UP FIREBASE CREDENTIALS -->
+    var firebaseConfig = {
+          apiKey: "AIzaSyDhJD_AENniovRoVttwWmwaKwlpKuHyVck",
+          authDomain: "whatsapp-27255.firebaseapp.com",
+          databaseURL: "https://whatsapp-27255.firebaseio.com",
+          projectId: "whatsapp-27255",
+          storageBucket: "whatsapp-27255.appspot.com",
+          messagingSenderId: "998524713961",
+          appId: "1:998524713961:web:dedfaf0cc4d5710d65e978",
+          measurementId: "G-T5B7QLDPKN"
+      };
+
+    // INITIALIZE FIREBASE MAIN APP AND START ANALYTICS
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+
+    // INITIALIZE REQUIRED FIREBASE REFERENCES
+    var authRef = firebase.auth();
+    var storageRef = firebase.storage().ref();
+
+    <!--SETTING UP BUTTON ON-CLICK LISTENERS -->
+    var customUploadButton = document.getElementById("customFileBrowserButton");
+    var fileUploadButton = document.getElementById("fileBrowserButton");
+    var loginButton = document.getElementById("loginButton");
+    var uploadedFileNameText = document.getElementById("WhatsAppFile_name");
+
+    // CUSTOM-STYLE FILE UPLOAD BUTTON
+    customUploadButton.addEventListener("click", function() {
+      fileUploadButton.click();
+    });
+
+    // ACTUAL FILE UPLOAD BUTTON (HIDDEN)
+    fileUploadButton.addEventListener("change", function(e) {
+    if (fileUploadButton.value) {
+
+        // CHANGE FILE NAME DESCRIPTION
+        document.getElementById("WhatsAppFile_name").innerHTML = fileUploadButton.value.match(/^.+\\([^.]+)\.[^\.]+$/)[1];
+
+        // UPLOAD TO FIREBASE STORAGE
+        var file = e.target.files[0];
+        var userDisplayName = authRef.currentUser.displayName;
+        var uploadTask = storageRef.child(userDisplayName).child(file.name).put(file);
+
+        // SETUP ON SUCCESS/FAILURE LISTENERS
+        uploadTask.on('state_changed',function(snapshot){
+        },
+        function(error) {
+            alert("Firebase Upload Failed");
+        });
+    } else {
+        document.getElementById("WhatsAppFile_name").innerHTML = "Mhm... you haven't given me a file yet!";
+       }
+    });
+
+    // LOGIN BUTTON
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            loginButton.innerHTML = user.displayName + "'s "+ "Stash";
+        } else {
+            // No user is signed in
+            loginButton.innerHTML = "LOGIN";
+        }
+    });
+
+    // HELPER : GOOGLE LOGIN
+    function firebaseGoogleLogin() {
+
+        // HEAD TO STASH IF USER ALREADY LOGGED IN
+        if (authRef.currentUser != null) {
+            retrieveFirebaseFiles(authRef.currentUser.displayName);
+        } else {
+            var provider = new firebase.auth.GoogleAuthProvider();
+            provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
+            firebase.auth().signInWithPopup(provider).then(function(result) {
+                var token = result.credential.accessToken;
+                var user = result.user;
+            }).catch(function(error) {
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                var email = error.email;
+                var credential = error.credential;
+                alert("Google Sign-In failed");
             });
+        }
+    }
 
-            fileUploadButton.addEventListener("change", function(e) {
-            if (fileUploadButton.value) {
-
-                // CHANGE FILE NAME DESCRIPTION
-                document.getElementById("WhatsAppFile_name").innerHTML = fileUploadButton.value.match(/^.+\\([^.]+)\.[^\.]+$/)[1];
-
-                // UPLOAD TO FIREBASE STORAGE
-                var file = e.target.files[0];
-                var userDisplayName = authRef.currentUser.displayName;
-                var uploadTask = storageRef.child(userDisplayName).child(file.name).put(file);
-
-                // SETUP ON SUCCESS/FAILURE LISTENERS
-                uploadTask.on('state_changed',function(snapshot){
-                },
-                function(error) {
-                    alert("Firebase Upload Failed");
-                });
-            } else {
-                document.getElementById("WhatsAppFile_name").innerHTML = "Mhm... you haven't given me a file yet!";
-               }
-            });
-
-            // GENERATE FIREBASE CONFIG FILE
-            var firebaseConfig = {
-                  apiKey: "AIzaSyDhJD_AENniovRoVttwWmwaKwlpKuHyVck",
-                  authDomain: "whatsapp-27255.firebaseapp.com",
-                  databaseURL: "https://whatsapp-27255.firebaseio.com",
-                  projectId: "whatsapp-27255",
-                  storageBucket: "whatsapp-27255.appspot.com",
-                  messagingSenderId: "998524713961",
-                  appId: "1:998524713961:web:dedfaf0cc4d5710d65e978",
-                  measurementId: "G-T5B7QLDPKN"
-              };
-
-            // INITIALIZE FIREBASE MAIN APP AND START ANALYTICS
-            firebase.initializeApp(firebaseConfig);
-            firebase.analytics();
-
-            // INITIALIZE REQUIRED FIREBASE REFERENCES
-            var authRef = firebase.auth();
-            var storageRef = firebase.storage().ref();
-
-            // INITIALIZE THE CURRENT USER (IF ANY)
-            firebase.auth().onAuthStateChanged(function(user) {
-                if (user) {
-                    loginButton.innerHTML = user.displayName + "'s "+ "Stash";
-                } else {
-                    // No user is signed in
-                    loginButton.innerHTML = "LOGIN";
-                }
-            });
-
-            // GOOGLE LOGIN HELPER FUNCTION
-            function firebaseGoogleLogin() {
-                var provider = new firebase.auth.GoogleAuthProvider();
-                provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
-                firebase.auth().signInWithPopup(provider).then(function(result) {
-                    var token = result.credential.accessToken;
-                    var user = result.user;
-<!--                    loginButton.innerHTML = user.displayName.toUpperCase() + "'S "+ "FILE STASH";-->
-                    alert("Current User : " + user.displayName);
-                 }).catch(function(error) {
-                        var errorCode = error.code;
-                        var errorMessage = error.message;
-                        var email = error.email;
-                        var credential = error.credential;
-                        console.log(errorCode, errorMessage);
-                        alert("Google Sign-In failed");
-                     });
-              }
+    // HELPER : COOKIE SETTER TO PASS ON CURRENT USER'S DISPLAY NAME
+    function setCookie(name,value,days) {
+        var expires = "";
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days*24*60*60*1000));
+            expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+    }
 
 
-            // FIREBASE FILE UPLOAD FUNCTION
-             function firebaseUpload() {
+    // HELPER : FIREBASE FILE RETRIEVAL
+    function retrieveFirebaseFiles(currentUserName) {
 
+        // CREATE THE COOKIES
+        setCookie('currentUserName', currentUserName, 1);
+        setCookie('storageRef', storageRef, 1);
 
-            }
-        </script>
+        // PERFORM HTTP REDIRECT
+        window.location.replace("/stash/");
+    }
+  </script>
 
 
 

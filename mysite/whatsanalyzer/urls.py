@@ -7,6 +7,7 @@ app_name = 'whatsanalyzer'
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('metrics/', views.metrics, name='metrics'),
     path('charts/', views.charts, name='charts'),
+    path('metrics/', views.metrics, name='metrics'),
+    path('stash/', views.stash, name='stash'),
 ]

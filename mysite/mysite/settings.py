@@ -52,7 +52,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-    'polls.apps.PollsConfig',
     'whatsanalyzer.apps.WhatsanalyzerConfig',
 ]
 
