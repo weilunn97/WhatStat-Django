@@ -2,109 +2,49 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2c75543a-9fb0-4d81-8380-858a63f0b24d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/mysite/assets/admin/js/timeparse.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/assets/css/file-picker.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/assets/css/main.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/assets/img/graphOriginal.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/static/css/file-picker.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/static/img/graphOriginal.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/whatsanalyzer/templates/whatsanalyzer/stash.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysite/assets/css/cards-gallery.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysite/assets/fonts/montserrat-semibold-webfont.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysite/assets/fonts/montserrat-semibold-webfont.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysite/assets/fonts/montserratalternates-bold-webfont.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysite/assets/fonts/montserratalternates-bold-webfont.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysite/assets/img/card1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysite/assets/img/card10.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysite/assets/img/card2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysite/assets/img/card3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysite/assets/img/card4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysite/assets/img/card5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysite/assets/img/card6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysite/assets/img/card7.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysite/assets/img/card8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysite/assets/img/card9.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysite/static/css/cards-gallery.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysite/static/fonts/montserrat-semibold-webfont.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysite/static/fonts/montserrat-semibold-webfont.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysite/static/fonts/montserratalternates-bold-webfont.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysite/static/fonts/montserratalternates-bold-webfont.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysite/static/img/card1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysite/static/img/card10.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysite/static/img/card2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysite/static/img/card3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysite/static/img/card4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysite/static/img/card5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysite/static/img/card6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysite/static/img/card7.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysite/static/img/card8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysite/static/img/card9.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysite/whatsanalyzer/templates/whatsanalyzer/stash_new.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/css/changelists.css" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/admin/css/changelists.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/css/responsive.css" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/admin/css/responsive.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/css/vendor/select2/LICENSE-SELECT2.md" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/admin/css/vendor/select2/LICENSE-SELECT2.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/css/vendor/select2/select2.css" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/admin/css/vendor/select2/select2.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/css/vendor/select2/select2.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/admin/css/vendor/select2/select2.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/css/widgets.css" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/admin/css/widgets.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/js/SelectBox.js" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/admin/js/SelectBox.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/js/SelectFilter2.js" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/admin/js/SelectFilter2.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/js/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/admin/js/actions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/js/admin/DateTimeShortcuts.js" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/admin/js/admin/DateTimeShortcuts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/js/cancel.js" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/admin/js/cancel.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/js/core.js" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/admin/js/core.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/js/inlines.js" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/admin/js/inlines.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/js/inlines.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/admin/js/inlines.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/js/urlify.js" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/admin/js/urlify.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/jquery/LICENSE.txt" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/jquery/LICENSE.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/jquery/jquery.js" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/jquery/jquery.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/jquery/jquery.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/jquery/jquery.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/LICENSE.md" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/LICENSE.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/af.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/ar.js" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/ar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/az.js" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/az.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/bg.js" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/bg.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/bn.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/bs.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/ca.js" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/ca.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/cs.js" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/cs.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/da.js" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/da.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/de.js" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/de.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/dsb.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/el.js" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/el.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/en.js" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/en.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/es.js" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/es.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/et.js" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/et.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/eu.js" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/eu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/fa.js" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/fa.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/fi.js" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/fi.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/fr.js" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/fr.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/gl.js" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/gl.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/he.js" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/he.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/hi.js" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/hi.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/hr.js" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/hr.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/hsb.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/hu.js" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/hu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/hy.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/id.js" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/id.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/is.js" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/is.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/it.js" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/it.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/ja.js" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/ja.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/ka.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/km.js" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/km.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/ko.js" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/ko.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/lt.js" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/lt.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/lv.js" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/lv.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/mk.js" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/mk.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/ms.js" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/ms.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/nb.js" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/nb.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/ne.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/nl.js" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/nl.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/pl.js" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/pl.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/ps.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/pt-BR.js" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/pt-BR.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/pt.js" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/pt.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/ro.js" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/ro.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/ru.js" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/ru.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/sk.js" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/sk.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/sl.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/sq.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/sr-Cyrl.js" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/sr-Cyrl.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/sr.js" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/sr.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/sv.js" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/sv.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/th.js" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/th.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/tk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/tr.js" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/tr.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/uk.js" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/uk.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/vi.js" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/vi.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/zh-CN.js" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/zh-CN.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/zh-TW.js" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/i18n/zh-TW.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/select2.full.js" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/select2.full.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/select2.full.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/admin/js/vendor/select2/select2.full.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/mysite/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/mysite/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/mysite/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/mysite/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/polls/admin.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/polls/apps.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/polls/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/polls/models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/polls/templates/polls/details.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/polls/templates/polls/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/polls/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/polls/urls.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/polls/views.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/assets/css/file-picker.css" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/css/file-picker.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/assets/css/grayscale.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/assets/css/grayscale.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/assets/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/css/metrics.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/static/css/file-picker.css" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/static/css/file-picker.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/static/css/metrics.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysite/whatsanalyzer/templates/whatsanalyzer/homepage_new.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/whatsanalyzer/templates/whatsanalyzer/homepage_new.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/whatsanalyzer/templates/whatsanalyzer/index.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/mysite/whatsanalyzer/templates/whatsanalyzer/metrics.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/whatsanalyzer/templates/whatsanalyzer/metrics.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/whatsanalyzer/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/whatsanalyzer/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/whatsanalyzer/templates/whatsanalyzer/stash.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/whatsanalyzer/templates/whatsanalyzer/stash.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/whatsanalyzer/templates/whatsanalyzer/upload.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/mysite/whatsanalyzer/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/whatsanalyzer/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -136,7 +76,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/mysite/static/css" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/mysite/static/fonts" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
@@ -144,19 +84,19 @@
     <option name="myShowDebugConsoleByDefault" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\User\Desktop\My Personal Notes\Y2S2\Miscellaneous\WhatsAnalyzer--Django-\mysite\static\css" />
-      <recent name="C:\Users\User\Desktop\My Personal Notes\Y2S2\Miscellaneous\WhatsAnalyzer--Django-\mysite\static\img" />
-      <recent name="C:\Users\TanWeiLun\PycharmProjects\mysite\WhatsAnalyzer--Django-\mysite\static\img" />
-      <recent name="C:\Users\TanWeiLun\PycharmProjects\mysite\WhatsAnalyzer--Django-\mysite\static" />
-      <recent name="C:\Users\TanWeiLun\PycharmProjects\mysite\WhatsAnalyzer--Django-\mysite\whatsanalyzer\templates\whatsanalyzer" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\TanWeiLun\PycharmProjects\mysite\WhatsAnalyzer--Django-\mysite\static\js" />
       <recent name="C:\Users\TanWeiLun\PycharmProjects\mysite\WhatsAnalyzer--Django-\mysite\static" />
       <recent name="C:\Users\TanWeiLun\PycharmProjects\mysite\WhatsAnalyzer--Django-\mysite\static\img" />
       <recent name="C:\Users\TanWeiLun\PycharmProjects\mysite\WhatsAnalyzer--Django-\mysite\static\css" />
       <recent name="C:\Users\TanWeiLun\PycharmProjects\mysite\WhatsAnalyzer--Django-\mysite\whatsanalyzer\templates" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\User\Desktop\My Personal Notes\Y2S2\Miscellaneous\WhatsAnalyzer--Django-\mysite\static\fonts" />
+      <recent name="C:\Users\User\Desktop\My Personal Notes\Y2S2\Miscellaneous\WhatsAnalyzer--Django-\mysite\static\css" />
+      <recent name="C:\Users\User\Desktop\My Personal Notes\Y2S2\Miscellaneous\WhatsAnalyzer--Django-\mysite\static\img" />
+      <recent name="C:\Users\User\Desktop\My Personal Notes\Y2S2\Miscellaneous\WhatsAnalyzer--Django-\mysite\whatsanalyzer\templates\whatsanalyzer" />
+      <recent name="C:\Users\TanWeiLun\PycharmProjects\mysite\WhatsAnalyzer--Django-\mysite\static\img" />
     </key>
   </component>
   <component name="RunManager">
@@ -233,22 +173,22 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="233" y="3" key="#Plugins/0.0.1280.680@0.0.1280.680" timestamp="1577593369519" />
-    <state width="1259" height="143" key="GridCell.Tab.0.bottom" timestamp="1578110314136">
+    <state width="1259" height="143" key="GridCell.Tab.0.bottom" timestamp="1578147276770">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1259" height="143" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1578110314136" />
-    <state width="1259" height="143" key="GridCell.Tab.0.center" timestamp="1578110314136">
+    <state width="1259" height="143" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1578147276770" />
+    <state width="1259" height="143" key="GridCell.Tab.0.center" timestamp="1578147276770">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1259" height="143" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1578110314136" />
-    <state width="1259" height="143" key="GridCell.Tab.0.left" timestamp="1578110314135">
+    <state width="1259" height="143" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1578147276770" />
+    <state width="1259" height="143" key="GridCell.Tab.0.left" timestamp="1578147276770">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1259" height="143" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1578110314135" />
-    <state width="1259" height="143" key="GridCell.Tab.0.right" timestamp="1578110314136">
+    <state width="1259" height="143" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1578147276770" />
+    <state width="1259" height="143" key="GridCell.Tab.0.right" timestamp="1578147276770">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1259" height="143" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1578110314136" />
+    <state width="1259" height="143" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1578147276770" />
     <state x="117" y="0" key="SettingsEditor" timestamp="1578128377048">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -257,10 +197,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="348" y="169" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1577593118059" />
-    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1578129543182">
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1578209140463">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1578129543182" />
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1578209140463" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

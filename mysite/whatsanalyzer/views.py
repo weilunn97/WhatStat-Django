@@ -16,28 +16,28 @@ import pdb
 def index(request):
     # UPON SUCCESSFUL UPLOAD
     if request.method == "POST" and request.FILES:
-        # Retrieve the uploaded file
-        uploadedFile = request.FILES['WhatsAppFile']
-        fileContents = uploadedFile.read().decode('utf-8')
-        fileContentsList = fileContents.split('\n')
 
-        # CLEAR EXISTING MESSAGES AND METRICS, IF ANY
-        MessageStorage.clearMessageList()
-        CountAnalysis.clearMetrics()
+        # DEBUG
+        request.session.flush()
 
-        # PERFORM ANALYSIS
-        CountAnalysis.extractMessages(fileContentsList)
-        CountAnalysis.calculateMetrics()
+        # EXTRACT INTO LIST OF STRINGS (1 LINE = 1 STRING)
+        fileContentsList = readFile(request)
 
-        # Redirect to metrics
+        # CALCULATE ALL RELEVANT METRICS FOR DISPLAY
+        # calculateMetrics(fileContentsList);
+
+        # Put into session
+        request.session['fileContentsList'] = fileContentsList
+
+        # REDIRECT TO METRICS PAGE
         return redirect('metrics/')
+        # return render(request, 'whatsanalyzer/metrics.html')
 
     # Else, serve the page as per usual
     return render(request, 'whatsanalyzer/homepage_new.html')
 
 
 def charts(request):
-
     # DEBUG INFO
     # CountAnalysis.debugPrint()
 
@@ -68,6 +68,30 @@ def charts(request):
 
 
 def metrics(request):
+
+    print("METRICS CALLED")
+
+    # FROM CLOUD
+    if request.method == "POST":
+        print("Metrics Type : Cloud")
+        textFile = request.POST.get('textFile')
+        fileContentsList = textFile.split('\n')
+        # print("fileContentsList : ", fileContentsList)
+        print("CLOUD METRICS() EXECUTED")
+
+        calculateMetrics(fileContentsList)
+
+    # FROM LOCAL PC
+    else:
+        try:
+            print("Metrics Type : Local PC")
+            calculateMetrics(request.session['fileContentsList'])
+            # DEBUG
+            request.session.flush()
+        except KeyError:
+            pass
+
+
     # RETRIEVE METRICS FROM CountAnalysis
     s1 = CountAnalysis.senderList[0]
     s2 = CountAnalysis.senderList[1]
@@ -184,6 +208,9 @@ def metrics(request):
     slowerPerson = s1 if s1AvgReply > s2AvgReply else s2
     slowerPercent = int(s1AvgReply / s2AvgReply * 100 - 100) if s1AvgReply > s2AvgReply else int(
         s2AvgReply / s1AvgReply * 100 - 100)
+    
+    print(s1, s1TotalMsg, s1TotalWords, s1WPM)
+    print(s2, s2TotalMsg, s2TotalWords, s2WPM)
 
     # SERVE HTTP RESPONSE
     return render(request, 'whatsanalyzer/metrics.html', {'s1TotalMsg': s1TotalMsg,
@@ -208,9 +235,25 @@ def metrics(request):
                                                           'slowerPercent': slowerPercent})
 
 
+def calculateMetrics(fileContentsList):
+    # CLEAR HISTORY OF METRICS
+    MessageStorage.clearMessageList()
+    CountAnalysis.clearMetrics()
+
+    # PERFORM ANALYSIS
+    CountAnalysis.extractMessages(fileContentsList)
+    CountAnalysis.calculateMetrics()
+
+
+def readFile(request):
+    uploadedFile = request.FILES['WhatsAppFile']
+    fileContents = uploadedFile.read().decode('utf-8')
+    fileContentsList = fileContents.split('\n')
+    return fileContentsList
+
+
+
 def stash(request):
-    return render(request, 'whatsanalyzer/stash.html')
+    return render(request, 'whatsanalyzer/stash_new.html')
 
 
-def upload(request, requestFiles):
-    return render(request, 'whatsanalyzer/upload.html', {'requestFiles': requestFiles})
