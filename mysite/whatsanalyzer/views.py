@@ -6,10 +6,23 @@ import pdb
 
 # TODO
 """
-2. Retrieve all user files from Firebase Storage
-3. Create ListView of FileName + FileDate
-4. Allow user to select the file for analysis
-5. Perform redirect to /metrics/ using this file
+1. False/Artificial Waiting Screen while we wait for the transition from
+stash --> metrics
+
+2. Clean up the following debug
+- DEBUG tags
+- pdb.set_trace() functions
+- print(...) functions
+
+3. Recombine readFile() back into its original, since nobody else called it
+
+4. Remove all unnecessary request.session.flush() commands
+
+5. Remove unnecessary alerts and console.log from stash_new
+
+6. Refactor-rename all _new template files to the original version
+
+7. Delete all old unused html templates
 """
 
 

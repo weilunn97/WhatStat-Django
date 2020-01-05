@@ -2,49 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2c75543a-9fb0-4d81-8380-858a63f0b24d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/mysite/assets/css/cards-gallery.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/assets/fonts/montserrat-semibold-webfont.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/assets/fonts/montserrat-semibold-webfont.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/assets/fonts/montserratalternates-bold-webfont.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/assets/fonts/montserratalternates-bold-webfont.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/assets/img/card1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/assets/img/card10.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/assets/img/card2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/assets/img/card3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/assets/img/card4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/assets/img/card5.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/assets/img/card6.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/assets/img/card7.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/assets/img/card8.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/assets/img/card9.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/static/css/cards-gallery.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/static/fonts/montserrat-semibold-webfont.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/static/fonts/montserrat-semibold-webfont.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/static/fonts/montserratalternates-bold-webfont.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/static/fonts/montserratalternates-bold-webfont.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/static/img/card1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/static/img/card10.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/static/img/card2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/static/img/card3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/static/img/card4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/static/img/card5.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/static/img/card6.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/static/img/card7.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/static/img/card8.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/static/img/card9.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/whatsanalyzer/templates/whatsanalyzer/stash_new.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/css/file-picker.css" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/css/file-picker.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/css/grayscale.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/css/grayscale.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/css/metrics.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/static/css/file-picker.css" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/static/css/file-picker.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/static/css/metrics.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/whatsanalyzer/templates/whatsanalyzer/homepage_new.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/whatsanalyzer/templates/whatsanalyzer/homepage_new.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/whatsanalyzer/templates/whatsanalyzer/metrics.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/whatsanalyzer/templates/whatsanalyzer/metrics.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/whatsanalyzer/templates/whatsanalyzer/stash.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/whatsanalyzer/templates/whatsanalyzer/stash.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/whatsanalyzer/templates/whatsanalyzer/upload.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/whatsanalyzer/templates/whatsanalyzer/stash_new.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/whatsanalyzer/templates/whatsanalyzer/stash_new.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysite/whatsanalyzer/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/whatsanalyzer/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
