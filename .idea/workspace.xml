@@ -2,7 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2c75543a-9fb0-4d81-8380-858a63f0b24d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/mysite/assets/css/centre_spinner.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysite/assets/img/stash_bg.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysite/static/css/centre_spinner.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysite/static/img/stash_bg.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/assets/css/cards-gallery.css" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/static/css/stash.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/assets/css/metrics.css" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/css/metrics.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/assets/css/stash.css" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/css/stash.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/static/css/cards-gallery.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/static/css/grayscale.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/static/css/grayscale.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/static/css/metrics.css" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/static/css/metrics.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/static/js/grayscale.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/static/js/grayscale.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/whatsanalyzer/templates/whatsanalyzer/metrics.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/whatsanalyzer/templates/whatsanalyzer/metrics.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/whatsanalyzer/templates/whatsanalyzer/stash_new.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/whatsanalyzer/templates/whatsanalyzer/stash_new.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/whatsanalyzer/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/whatsanalyzer/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,7 +49,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/mysite/static/fonts" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/mysite/static/css" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
@@ -41,19 +57,19 @@
     <option name="myShowDebugConsoleByDefault" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\User\Desktop\My Personal Notes\Y2S2\Miscellaneous\WhatsAnalyzer--Django-\mysite\static\css" />
+      <recent name="C:\Users\User\Desktop\My Personal Notes\Y2S2\Miscellaneous\WhatsAnalyzer--Django-\mysite\static\fonts" />
+      <recent name="C:\Users\User\Desktop\My Personal Notes\Y2S2\Miscellaneous\WhatsAnalyzer--Django-\mysite\static\img" />
+      <recent name="C:\Users\User\Desktop\My Personal Notes\Y2S2\Miscellaneous\WhatsAnalyzer--Django-\mysite\whatsanalyzer\templates\whatsanalyzer" />
+      <recent name="C:\Users\TanWeiLun\PycharmProjects\mysite\WhatsAnalyzer--Django-\mysite\static\img" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\TanWeiLun\PycharmProjects\mysite\WhatsAnalyzer--Django-\mysite\static\js" />
       <recent name="C:\Users\TanWeiLun\PycharmProjects\mysite\WhatsAnalyzer--Django-\mysite\static" />
       <recent name="C:\Users\TanWeiLun\PycharmProjects\mysite\WhatsAnalyzer--Django-\mysite\static\img" />
       <recent name="C:\Users\TanWeiLun\PycharmProjects\mysite\WhatsAnalyzer--Django-\mysite\static\css" />
       <recent name="C:\Users\TanWeiLun\PycharmProjects\mysite\WhatsAnalyzer--Django-\mysite\whatsanalyzer\templates" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\User\Desktop\My Personal Notes\Y2S2\Miscellaneous\WhatsAnalyzer--Django-\mysite\static\fonts" />
-      <recent name="C:\Users\User\Desktop\My Personal Notes\Y2S2\Miscellaneous\WhatsAnalyzer--Django-\mysite\static\css" />
-      <recent name="C:\Users\User\Desktop\My Personal Notes\Y2S2\Miscellaneous\WhatsAnalyzer--Django-\mysite\static\img" />
-      <recent name="C:\Users\User\Desktop\My Personal Notes\Y2S2\Miscellaneous\WhatsAnalyzer--Django-\mysite\whatsanalyzer\templates\whatsanalyzer" />
-      <recent name="C:\Users\TanWeiLun\PycharmProjects\mysite\WhatsAnalyzer--Django-\mysite\static\img" />
     </key>
   </component>
   <component name="RunManager">
@@ -130,6 +146,14 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="233" y="3" key="#Plugins/0.0.1280.680@0.0.1280.680" timestamp="1577593369519" />
+    <state x="367" y="129" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1578315034027">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="367" y="129" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.680@0.0.1280.680" timestamp="1578315034027" />
+    <state x="381" y="173" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1578315957115">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="381" y="173" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1280.680@0.0.1280.680" timestamp="1578315957115" />
     <state width="1259" height="143" key="GridCell.Tab.0.bottom" timestamp="1578147276770">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -154,10 +178,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="348" y="169" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1577593118059" />
-    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1578209140463">
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1578316060926">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1578209140463" />
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1578316060926" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

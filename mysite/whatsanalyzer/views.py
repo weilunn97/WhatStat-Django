@@ -201,7 +201,7 @@ def metrics(request):
         # LARGE DIFF
         if s1AvgReply / s2AvgReply > 1.25:
             leftReplyText = f"You're a really busy person, {s1}! That's all right, but do make some time to respond to your texts :)"
-            rightReplyText = f"Ahh, {s2}, you must hate waiting for {s1}'s texts, don't you? But do give {s1} just that little understanding!"
+            rightReplyText = f"Ahh, {s2}, you must hate waiting for {s1}'s texts, don't you? But do give {s1} some space!"
         # SMALL DIFF
         else:
             leftReplyText = f"Seems like quite a healthy interaction going on here, nothing to worry about there, {s1}!"
@@ -209,7 +209,7 @@ def metrics(request):
     else:
         # LARGE DIFF
         if s2AvgReply / s1AvgReply > 1.25:
-            leftReplyText = f"Ahh, {s1}, you must hate waiting for {s2}'s texts, don't you? But do give {s2} just that little understanding!"
+            leftReplyText = f"Ahh, {s1}, you must hate waiting for {s2}'s texts, don't you?  But do give {s2} some space!"
             rightReplyText = f"You're a really busy person, {s2}! That's all right, but do make some time to respond to your texts :)"
 
         # SMALL DIFF

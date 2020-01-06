@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<body style="background-color:#FFC312;">
+
 {% load static %}
 
 <html>
@@ -11,6 +11,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css" />
     <link rel="stylesheet" href="{% static 'css/stash.css' %}">
+	<link rel="stylesheet" href="{% static 'css/centre_spinner.css' %}">
 	<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-storage.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-auth.js"></script>
@@ -19,40 +20,31 @@
 </head>
 
 
-
-
-<body>
-    <div class="overlay">my_overlay</div>
+<body background="{% static 'img/stash_bg.jpg' %}">
 
     <!--LOADING SPINNER-->
-	<!--TODO : Centre the loading spinner-->
-
-    <div class="spinner">
-        <img class="spinner" src="{% static 'img/spinner.gif' %}" />
-    </div>
-
-<!--        <script>-->
-<!--            var overlay = $('#overlay').show();-->
-
-<!--            //Attach the event handler to any element-->
-<!--           $(document)-->
-<!--             .ajaxStart(function () {-->
-<!--                //ajax request went so show the loading image-->
-<!--                 overlay.show();-->
-<!--                 document.getElementById("overlay").style.display = "block";-->
-
-<!--             })-->
-<!--           .ajaxStop(function () {-->
-<!--               //got response so hide the loading image-->
-<!--                overlay.hide();-->
-<!--            });-->
-<!--        </script>-->
+	<div id="spinner" class="loading"></div>
+	<script>
+		document.getElementById("spinner").style.display = "block";
+		var spinner = $('#spinner').hide();
+		$(document)
+		.ajaxStart(function () {
+			spinner.show();
+		})
+		.ajaxStop(function () {
+			spinner.hide();
+		});
+	</script>
 
 
    <section class="gallery-block cards-gallery">
+
+
+	   <div class="loading">Loading</div>
+
 	    <div class="container">
 	        <div class="heading">
-	          <h2>Chats Selector</h2>
+	          <h2>YOUR STASH</h2>
 	        </div>
 
 			<!--CARD LIST VIEW-->

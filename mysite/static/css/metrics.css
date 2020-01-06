@@ -89,7 +89,7 @@
 	body, input, select, textarea {
 		color: rgba(255, 255, 255, 0.75);
 		font-family: "Source Sans Pro", sans-serif;
-		font-size: 18pt;
+		font-size: 16pt;
 		font-weight: 300;
 		line-height: 1.65;
 	}
@@ -161,7 +161,7 @@
 
 	p {
 		margin: 0 0 2em 0;
-		font-size: 1.8em;
+		font-size: 1.5em;
 	}
 
 	h1, h2, h3, h4, h5, h6 {
@@ -1387,7 +1387,7 @@
 
 		#footer .copyright {
 			color: rgba(255, 255, 255, 0.5);
-			font-size: 0.9em;
+			font-size: 1em;
 			margin: 0 0 2em 0;
 			padding: 0;
 			text-align: center;

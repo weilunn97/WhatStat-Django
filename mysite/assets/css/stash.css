@@ -14,27 +14,6 @@
     font-style: normal;
 }
 
-.overlay{
-    position: fixed; /* Sit on top of the page content */
-    display: block;
-    width: 100%; /* Full width (cover the whole page) */
-    height: 100%; /* Full height (cover the whole page) */
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0,0,0, 1);
-}
-
-#spinner{
-    position: absolute;
-    margin: auto;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-
-}
 
 .gallery-block{
 	padding-bottom: 60px;
@@ -48,6 +27,7 @@
 }
 
 .gallery-block .heading h2{
+    color: white;
     font-weight: bold;
     font-size: 3rem;
     text-transform: uppercase;
