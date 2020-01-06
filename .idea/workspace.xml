@@ -2,23 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2c75543a-9fb0-4d81-8380-858a63f0b24d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/mysite/assets/css/centre_spinner.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/assets/img/stash_bg.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/static/css/centre_spinner.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/static/img/stash_bg.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/css/cards-gallery.css" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/static/css/stash.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/css/metrics.css" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/css/metrics.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/assets/css/stash.css" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/assets/css/stash.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/static/css/cards-gallery.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/static/css/grayscale.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/static/css/grayscale.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/static/css/metrics.css" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/static/css/metrics.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/static/js/grayscale.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/static/js/grayscale.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/whatsanalyzer/templates/whatsanalyzer/metrics.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/whatsanalyzer/templates/whatsanalyzer/metrics.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/whatsanalyzer/templates/whatsanalyzer/stash_new.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/whatsanalyzer/templates/whatsanalyzer/stash_new.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/whatsanalyzer/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/whatsanalyzer/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/static/css/stylish-portfolio.css" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/static/css/stylish-portfolio.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/whatsanalyzer/templates/whatsanalyzer/homepage_new.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/whatsanalyzer/templates/whatsanalyzer/homepage_new.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
