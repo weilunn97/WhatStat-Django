@@ -23,6 +23,8 @@ stash --> metrics
 6. Refactor-rename all _new template files to the original version
 
 7. Delete all old unused html templates
+
+8. Set flags to prevent further processing upon upload
 """
 
 
@@ -150,8 +152,8 @@ def metrics(request):
     if s1TotalWords > s2TotalWords:
         # LARGE DIFF
         if s1TotalWords / s2TotalWords > 1.25:
-            leftWordsText = f"You're quite a chatty person, {s1}, I hope {s2} is okay with it! Well, do keep up " \
-                            f"this excellent chemistry between the both of you!"
+            leftWordsText = f"You're quite a chatty person, {s1}, I hope {s2} likes it! Well, do keep up " \
+                            f"this excellent chemistry you guys have!"
             rightWordsText = f"On behalf of {s1}, thanks for being such a great listener, {s2}, and try not to let {s1} " \
                              f"dominate the conversation ;)"
         # SMALL DIFF
@@ -163,7 +165,7 @@ def metrics(request):
         if s2TotalWords / s1TotalWords > 1.25:
             leftWordsText = f"On behalf of {s2}, thanks for being such a great listener, {s1}, and try not to let {s2} " \
                             f"dominate the conversation ;)"
-            rightWordsText = f"You're quite a chatty person, {s2}! Do keep up this excellent chemistry between the both of you!"
+            rightWordsText = f"You're quite a chatty person, {s2}! Do keep up this excellent chemistry you guys have!"
 
         # SMALL DIFF
         else:

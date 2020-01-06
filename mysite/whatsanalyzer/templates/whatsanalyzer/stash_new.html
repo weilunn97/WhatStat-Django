@@ -10,17 +10,50 @@
     <title>Cards Gallery</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css" />
-    <link rel="stylesheet" href="{% static 'css/cards-gallery.css' %}">
+    <link rel="stylesheet" href="{% static 'css/stash.css' %}">
 	<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-storage.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-auth.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 </head>
+
+
+
+
 <body>
+    <div class="overlay">my_overlay</div>
+
+    <!--LOADING SPINNER-->
+    <div class="spinner">
+        <img class="spinner" src="{% static 'img/spinner.gif' %}" />
+    </div>
+
+<!--        <script>-->
+<!--            var overlay = $('#overlay').show();-->
+
+<!--            //Attach the event handler to any element-->
+<!--           $(document)-->
+<!--             .ajaxStart(function () {-->
+<!--                //ajax request went so show the loading image-->
+<!--                 overlay.show();-->
+<!--                 document.getElementById("overlay").style.display = "block";-->
+
+<!--             })-->
+<!--           .ajaxStop(function () {-->
+<!--               //got response so hide the loading image-->
+<!--                overlay.hide();-->
+<!--            });-->
+<!--        </script>-->
+
+
    <section class="gallery-block cards-gallery">
 	    <div class="container">
 	        <div class="heading">
 	          <h2>Chats Selector</h2>
 	        </div>
+
+			<!--CARD LIST VIEW-->
 	        <div class="row">
 
 	            <div id="card1" class="col-md-6 col-lg-4">
@@ -135,8 +168,7 @@
 	   <h6>Powered by Google Firebase.</h6>
 
     </section>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
-	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+
 	<script>
 
     	// RUNNING ANIMATION
@@ -161,6 +193,7 @@
 		// COOKIE GETTER HELPER TO RETRIEVE CURRENT USER'S DISPLAY NAME
 		function getCookie(name) {
 			var nameEQ = name + "=";
+			var ca = document.cookie.split(';');
 			var ca = document.cookie.split(';');
 			for (var i = 0; i < ca.length; i++) {
 				var c = ca[i];

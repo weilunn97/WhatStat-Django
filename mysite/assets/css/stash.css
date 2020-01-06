@@ -1,0 +1,100 @@
+@font-face {
+    font-family: 'montserrat_alternatesbold';
+    src: url('../fonts/montserratalternates-bold-webfont.woff2') format('woff2'),
+         url('../fonts/montserratalternates-bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'montserratsemibold';
+    src: url('../fonts/montserrat-semibold-webfont.woff2') format('woff2'),
+         url('../fonts/montserrat-semibold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.overlay{
+    position: fixed; /* Sit on top of the page content */
+    display: block;
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0, 1);
+}
+
+#spinner{
+    position: absolute;
+    margin: auto;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+
+}
+
+.gallery-block{
+	padding-bottom: 60px;
+	padding-top: 60px;
+}
+
+.gallery-block .heading{
+    font-family: 'montserrat_alternatesbold';
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.gallery-block .heading h2{
+    font-weight: bold;
+    font-size: 3rem;
+    text-transform: uppercase;
+}
+
+.gallery-block.cards-gallery h6 {
+  font-family: 'montserratsemibold';
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center
+}
+
+.gallery-block.cards-gallery .card{
+  cursor: pointer;
+  transition: 0.4s ease; 
+}
+
+.gallery-block.cards-gallery .card img {
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+.gallery-block.cards-gallery .card-body {
+  text-align: center; 
+}
+
+.gallery-block.cards-gallery .card-body p {
+  font-family: 'montserratsemibold';
+  font-size: 15px;
+}
+
+.gallery-block.cards-gallery a {
+  color: #212529; 
+}
+
+.gallery-block.cards-gallery a:hover {
+  text-decoration: none; 
+}
+
+.gallery-block.cards-gallery .card {
+  margin-bottom: 30px; 
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+@media (min-width: 576px) {
+
+	.gallery-block .transform-on-hover:hover {
+	    transform: translateY(-15px) scale(1.1);
+	    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.15) !important; 
+	}
+}
