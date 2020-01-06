@@ -15,6 +15,7 @@ class CountAnalysis():
     and attributes that we shall subsequently access and serve to the user on request
 
     Attributes:
+        initialized (boolean): Whether or not these metrics have been calculated
         senderOneTotalMessages (int): Total messages sent by sender 1
         senderTwoTotalMessages (int): Total messages sent by sender 2
         senderOneTotalWords (int): Total words sent by sender 1
@@ -25,6 +26,8 @@ class CountAnalysis():
         of the 2 parties in the conversation
     '''
     # General Metrics
+    initialized = False
+
     senderOneTotalMessages = 0
     senderTwoTotalMessages = 0
 
@@ -42,6 +45,14 @@ class CountAnalysis():
 
     senderTwoTimeStamp = []
     senderTwoReplyTimingInMinutes = []
+
+    @staticmethod
+    def getInitialized():
+        return CountAnalysis.initialized
+
+    @staticmethod
+    def setInitialized(init):
+        CountAnalysis.initialized = init
 
     @staticmethod
     def extractMessages(fileContentsList):
