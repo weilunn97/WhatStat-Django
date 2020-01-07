@@ -112,9 +112,9 @@ def metrics(request):
 
             # SMALL DIFF
             else:
-                leftMessageText = f"Mhm, {s1}, the both of you have sent nearly the same " \
+                leftMessageText = f"Mhm, {s1}, you both have sent nearly the same " \
                     f"number of texts to each other so far!"
-                rightMessageText = f"{s2}, seems like the both of you are equally invested in the conversation, that's good!"
+                rightMessageText = f"{s2}, seems like you're both equally invested in the conversation, that's good!"
 
         else:
             # LARGE DIFF
@@ -141,7 +141,7 @@ def metrics(request):
             # SMALL DIFF
             else:
                 leftWordsText = f"Well, {s1}, you're both equally chatty! So nothing you need to worry about here!"
-                rightWordsText = f"Great, {s2}, you're both equally invested in your conversations so far, so keep that up!"
+                rightWordsText = f"Great, {s2}, you're both equally invested in your conversations, so keep that up!"
         else:
             # LARGE DIFF
             if s2TotalWords / s1TotalWords > 1.25:
@@ -164,8 +164,8 @@ def metrics(request):
 
             # SMALL DIFF
             else:
-                leftWPMText = f"Ahh, {s1}, seems like the both of you are equally engaged in the conversation, so do keep that up!!"
-                rightWPMText = f"Dear {s2}, seems like the both of you are equally engaged in the conversation, so do keep that up!!"
+                leftWPMText = f"Ahh, {s1}, seems like you're both equally engaged in the conversation, so do keep that up!!"
+                rightWPMText = f"Dear {s2}, seems like you're both equally engaged in the conversation, so do keep that up!!"
         else:
             # LARGE DIFF
             if s2WPM / s1WPM > 1.25:
@@ -175,8 +175,8 @@ def metrics(request):
 
             # SMALL DIFF
             else:
-                leftWPMText = f"Dear {s1}, seems like the both of you are equally engaged in the conversation, so do keep that up!!"
-                rightWPMText = f"Ahh {s2}, seems like the both of you are equally engaged in the conversation, so do keep that up!!"
+                leftWPMText = f"Dear {s1}, seems like you're both equally engaged in the conversation, so do keep that up!!"
+                rightWPMText = f"Ahh {s2}, seems like you're both equally engaged in the conversation, so do keep that up!!"
 
         # REPLY TIMINGS
         if s1AvgReply > s2AvgReply:
