@@ -1,169 +1,112 @@
-// RUNNING ANIMATION
-baguetteBox.run('.cards-gallery', { animation: 'slideIn'});
+(function($) {
 
-// SETTING UP FIREBASE CREDENTIALS
-var firebaseConfig = {
-    apiKey: "AIzaSyDhJD_AENniovRoVttwWmwaKwlpKuHyVck",
-    authDomain: "whatsapp-27255.firebaseapp.com",
-    databaseURL: "https://whatsapp-27255.firebaseio.com",
-    projectId: "whatsapp-27255",
-    storageBucket: "whatsapp-27255.appspot.com",
-    messagingSenderId: "998524713961",
-    appId: "1:998524713961:web:dedfaf0cc4d5710d65e978",
-    measurementId: "G-T5B7QLDPKN"
-};
+	metrics.skel.breakpoints({
+		xlarge:	'(max-width: 1680px)',
+		large:	'(max-width: 1280px)',
+		medium:	'(max-width: 980px)',
+		small:	'(max-width: 736px)',
+		xsmall:	'(max-width: 480px)'
+	});
 
-// CONFIGURE REFERENCES
-firebase.initializeApp(firebaseConfig);
-var storageRef = firebase.storage().ref();
+	$(function() {
 
-// COOKIE GETTER HELPER TO RETRIEVE CURRENT USER'S DISPLAY NAME
-function getCookie(name) {
-    var nameEQ = name + "=";
-    var ca = document.cookie.split(';');
-    for (var i = 0; i < ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
-    }
-    return null;
-}
+		var $window = $(window),
+			$body = $('body');
 
-// HELPER : COOKIE SETTER TO PASS ON fileContentsList
-function setCookie(name,value,days) {
-    var expires = "";
-    if (days) {
-        var date = new Date();
-        date.setTime(date.getTime() + (days*24*60*60*1000));
-        expires = "; expires=" + date.toUTCString();
-    }
-    document.cookie = name + "=" + (value || "")  + expires + "; path=/";
-    alert("COOKIE SET : " + document.cookie);
-}
+		// Disable animations/transitions until the page has loaded.
+			$body.addClass('is-loading');
 
-// GET CURRENT USER'S NAME VIA COOKIE
-var currentUserName = getCookie('currentUserName');
+			$window.on('load', function() {
+				window.setTimeout(function() {
+					$body.removeClass('is-loading');
+				}, 100);
+			});
 
-// SETUP CLOUD DIRECTORY TO PULL FROM
-var folderRef = storageRef.child(currentUserName);
-var fileList = [];
+		// Fix: Placeholder polyfill.
+			$('form').placeholder();
 
-// CREATE A LIST OF TRUNCATED FILENAMES
-var textFileNames = []; // ["... with ABC.txt", "... with XYZ.txt"];
+		// Banner.
+			var $banner = $('#banner');
 
-// PULL ALL FILES BELONGING TO THE USER
-folderRef.listAll().then(function (res) {
-    res.items.forEach(function (itemRef) {
-        fileList.push(itemRef);
-    });
+			if ($banner.length > 0) {
 
-<!--			// DEBUG AND CHECK IF FILES ARE THERE-->
-<!--			alert(fileList.join("\n"));-->
+				// IE fix.
+					if (metrics.skel.vars.IEVersion < 12) {
 
-    // POPULATE THE LISTVIEW
-    var historyListView = document.getElementById('historyListView');
-    for (var i = 1; i < 10; i++) {
+						$window.on('resize', function() {
 
-        // RENDER CARD
-        if (i < fileList.length + 1) {
+							var wh = $window.height() * 0.60,
+								bh = $banner.height();
 
-            // GET COMPONENT
-            var fileNameID = 'name' + i;  // name1, name2, ...
-            var fileDateID = 'date' + i;  // date1, date2, ...
-            var fileName = document.getElementById(fileNameID);
-            var fileDate = document.getElementById(fileDateID);
+							$banner.css('height', 'auto');
 
-            // SET COMPONENT NAME
-            var regExp = /WhatsApp Chat with .*.txt$/g;
-            var match = regExp.exec(fileList[i-1]);
-            var newName = match[0].substring(0, match[0].length - 4);
-            fileName.innerHTML = newName;
+							window.setTimeout(function() {
 
-            // ADD FILENAME TO LIST FOR ACCESSING FIREBASE STORAGE
-            var newNameWithExtension = newName + '.txt';
-            textFileNames.push(newNameWithExtension);
-        }
-        // REMOVE CARD
-        else {
-            var cardID = 'card' + i;
-            var fileCard = document.getElementById(cardID);
-            fileCard.style.display = "none";
-        }
-    }
-    }).catch(function (error) {
-        alert(error.message);
-    });
+								if (bh < wh)
+									$banner.css('height', wh + 'px');
 
+							}, 0);
 
-// CARD VIEW 1 ONCLICK
-function card1Click() {
-<!--			alert("Card 1");-->
-    var fileRef = folderRef.child(textFileNames[0]);
-    fileRef.getDownloadURL().then(function(url) {
-        var xhr = new XMLHttpRequest();
-        xhr.responseType = 'text';
-        xhr.onload = function(event) {
-            var textFile = xhr.response;
+						});
 
-            $.ajax({
-              url: 'http://127.0.0.1:8000/metrics/',
-              type: 'POST',
-              data: {'textFile': textFile},
-              headers: {"X-CSRFToken":'{{ csrf_token }}'},
-              success: function() {
-                window.location.href = 'http://127.0.0.1:8000/metrics/';
-              },
-              error: function (result) {
-                console.log(result);
-              }
-            });
+						$window.on('load', function() {
+							$window.triggerHandler('resize');
+						});
 
+					}
 
+				// Video check.
+					var video = $banner.data('video');
 
-        };
-        xhr.open('GET', url);
-        xhr.send();
-    }).catch(function(error) {
-        alert(error.code);
-    });
-}
+					if (video)
+						$window.on('load.banner', function() {
 
-// CARD VIEW 2 ONCLICK
-function card2Click() {
-    alert("Card 2");
-}
+							// Disable banner load event (so it doesn't fire again).
+								$window.off('load.banner');
 
-// CARD VIEW 3 ONCLICK
-function card3Click() {
-    alert("Card 3");
-}
+							// Append video if supported.
+								if (!metrics.skel.vars.mobile
+								&&	!metrics.skel.breakpoint('large').active
+								&&	metrics.skel.vars.IEVersion > 9)
+									$banner.append('<video autoplay loop><source src="' + video + '.mp4" type="video/mp4" /><source src="' + video + '.webm" type="video/webm" /></video>');
 
-// CARD VIEW 4 ONCLICK
-function card4Click() {
-    alert("Card 4");
-}
+						});
 
-// CARD VIEW 5 ONCLICK
-function card5Click() {
-    alert("Card 5");
-}
+				// More button.
+					$banner.find('.more')
+						.addClass('scrolly');
 
-// CARD VIEW 6 ONCLICK
-function card6Click() {
-    alert("Card 6");
-}
+			}
 
-// CARD VIEW 7 ONCLICK
-function card7Click() {
-    alert("Card 7");
-}
+		// Scrolly.
+			$('.scrolly').scrolly();
 
-// CARD VIEW 8 ONCLICK
-function card8Click() {
-    alert("Card 8");
-}
+		// Poptrox.
+			$window.on('load', function() {
 
-// CARD VIEW 9 ONCLICK
-function card9lick() {
-    alert("Card 9");
-}
+				var $thumbs = $('.thumbnails');
+
+				if ($thumbs.length > 0)
+					$thumbs.poptrox({
+						onPopupClose: function() { $body.removeClass('is-covered'); },
+						onPopupOpen: function() { $body.addClass('is-covered'); },
+						baseZIndex: 10001,
+						useBodyOverflow: false,
+						overlayColor: '#222226',
+						overlayOpacity: 0.75,
+						popupLoaderText: '',
+						fadeSpeed: 500,
+						usePopupDefaultStyling: false,
+						windowMargin: (metrics.skel.breakpoint('small').active ? 5 : 50)
+					});
+
+			});
+
+		// Initial scroll.
+			$window.on('load', function() {
+				$window.trigger('scroll');
+			});
+
+	});
+
+})(jQuery);

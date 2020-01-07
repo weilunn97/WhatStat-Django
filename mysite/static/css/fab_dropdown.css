@@ -71,12 +71,14 @@ li i {
 	opacity:0;
 }
 
-p{
+fab_p{
 	font-family:'Futura PT Regular',sans-serif;
-	color:#2ECC71;
+	color: white;
 	font-size:18px;
-	opacity:0;
+	opacity:1;
 }
+
+
 
 .icon,
 .link { animation:fadeIn 0.3s ease-in-out forwards; }

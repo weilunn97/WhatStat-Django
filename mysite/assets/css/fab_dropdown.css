@@ -1,0 +1,97 @@
+* {
+	box-sizing:border-box;
+}
+
+@mixin object($width, $height, $bg) {
+	width: $width;
+	height: $height;
+	background: $bg;
+}
+
+body {
+	height:100vh;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+}
+
+nav {
+	@include object(auto,250px,null);
+	ul {
+		@include object(50px,50px,#2ECC71);
+		border-radius:90px;
+		cursor:pointer;
+		box-shadow:4px 4px 20px -5px rgba(#000,0.3);
+		transition:0.7s cubic-bezier(.98,.23,.16,1.28);
+	}
+}
+
+li {
+	@include object(120px,50px,null);
+	display:flex;
+	align-items:center;
+	&:not(.menuButton){
+		justify-content:space-between;
+		margin-left: -70px;
+	}
+	&.menuButton {
+		@include object(50px,50px,null);
+		justify-content:center;
+		.bar {
+			@include object(20px,2px,#fff);
+			transition:1s linear;
+			&:nth-child(2){
+				margin:3px 0;
+			}
+		}
+	}
+}
+
+@mixin menu($name,$transY,$rotate){
+	animation :$name 0.5s ease-in-out forwards;
+	@keyframes #{$name}{
+		0%{ transform:none; }
+		25%{ transform:translateY($transY); }
+		100%{ transform:translateY($transY) rotate($rotate); }
+	}
+}
+
+.active {
+	.bar {
+		&:first-child{ @include menu(barOne,5px,45deg); }
+		&:nth-child(2){ transform:scale(0); }
+		&:last-child{ @include menu(barTwo,-5px,-45deg); }
+	}
+}
+
+
+li i {
+	margin-right: 13px;
+	color:#fff;
+	opacity:0;
+}
+
+p{
+	font-family:'Futura PT Regular',sans-serif;
+	color:#2ECC71;
+	font-size:18px;
+	opacity:0;
+}
+
+.icon,
+.link { animation:fadeIn 0.3s ease-in-out forwards; }
+
+$list : cloud upload stash chart;
+
+@for $i from 1 through 4 {
+	##{nth($list,$i)},
+	.#{nth($list,$i)} {
+		animation-delay:0.1s * $i;
+	}
+}
+
+@keyframes fadeIn{
+	0%{ opacity:0; }
+	100%{ opacity:1; }
+}
+
