@@ -1,8 +1,25 @@
+'''
+This raw-string-processing utility module serves a single purpose : to extract the
+following 3 attributes from each message in a WhatsApp conversation text file.
+1. Message Datetime
+2. Message Sender
+3. Message Content/Text
+'''
+
+
 from dateutil.parser import parse
 from re import findall, search
 
 
 def extractDate(entireLine):
+    '''
+    Extracts a Python naive datetime object from the line.
+    :param entireLine:
+            The line we obtain after performing str.split('\n') on the entire file contents
+    :return:
+            Returns a :class:`datetime.datetime` object
+    '''
+
     try:
         lineDatetime = search(r'^.*?(am|pm)', entireLine).group()
         return parse(lineDatetime, dayfirst=True)
@@ -11,6 +28,14 @@ def extractDate(entireLine):
 
 
 def extractSender(entireLine):
+    '''
+    Extracts the message sender's name, as a string, from the line.
+    :param entireLine:
+            The line we obtain after performing str.split('\n') on the entire file contents
+    :return:
+            Returns the sender's name as a string
+    '''
+
     matchList = findall("m - .*?:", entireLine)
     try:
         if matchList:
@@ -22,6 +47,14 @@ def extractSender(entireLine):
 
 
 def extractTextBody(entireLine):
+    '''
+    Extracts the message contents, as a string, from the line.
+    :param entireLine:
+            The line we obtain after performing str.split('\n') on the entire file contents
+    :return:
+            Returns the message contents as a string
+    '''
+
     # Extract first half of redundant string
     matchList = findall(".*?m - .*?: ", entireLine)
     try:

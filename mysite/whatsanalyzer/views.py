@@ -7,38 +7,33 @@ import pdb
 # TODO
 """
 
-
 2. Clean up the following debug
 - DEBUG tags
-- print(...) functions
 
-
-
-
-6. Refactor-rename all _new template files to the original version
-
-7. Delete all old unused html templates
 
 8. Set flags to prevent further processing upon upload
 """
 
 
 def index(request):
-    # UPON SUCCESSFUL UPLOAD
-    if request.method == "POST" and request.FILES:
-        # DEBUG
+    # UPON SUCCESSFUL LOCAL FILE UPLOAD
+    if request.method == "POST" and request.FILES['WhatsAppFile']:
+        # RESET SERVER SIDE COOKIE STORING fileContentsList
         request.session.flush()
 
-        # EXTRACT INTO LIST OF STRINGS (1 LINE = 1 STRING)
-        fileContentsList = readFile(request)
+        # CLEAR EXISTING METRICS
+        CountAnalysis.clearMetrics()
 
-        # PLACE FILE INTO BROWSER SESSION
+        # PERFORM FILE READ AND PARSE INTO LIST OF STRINGS
+        fileContentsList = readFile(request.FILES['WhatsAppFile'])
+
+        # PLACE THE LIST OF PARSED STRINGS INTO fileContentsList
         request.session['fileContentsList'] = fileContentsList
 
         # REDIRECT TO METRICS PAGE
         return redirect('metrics/')
 
-    # Else, serve the page as per usual
+    # SERVE THE HOMEPAGE AS USUAL
     return render(request, 'whatsanalyzer/homepage.html')
 
 
@@ -73,22 +68,23 @@ def metrics(request):
 
     # FROM CLOUD
     if request.method == "POST":
-        print("CLOUD TRIGGERED")
-        CountAnalysis.setInitialized(False)
-        CountAnalysis.clearMetrics()
-        MessageStorage.clearMessageList()
+        # CountAnalysis.setInitialized(False)
+        # CountAnalysis.clearMetrics()
+        # MessageStorage.clearMessageList()
         textFile = request.POST.get('textFile')
         fileContentsList = textFile.split('\n')
-        calculateMetrics(fileContentsList)
+        setMetrics(fileContentsList)
+        print("CLOUD EXECUTED")
 
     # FROM LOCAL PC
     else:
         try:
-            if request.session['fileContentsList']:
-                print("LOCAL PC TRIGGERED")
-                # CALCULATE THE METRICS FOR DISPLAY AND REMOVE IT
-                calculateMetrics(request.session.pop('fileContentsList'))
+            # CALCULATE THE METRICS FOR DISPLAY AND REMOVE IT
+            fileContentsList = request.session.pop('fileContentsList')
+            setMetrics(fileContentsList)
+            print("LOCAL EXECUTED")
 
+        # TRIGGERED BY ABSENCE OF 'fileContentsList' IN THE SESSION KEYS
         except KeyError:
             pass
 
@@ -110,24 +106,24 @@ def metrics(request):
             # LARGE DIFF
             if s1TotalMsg / s2TotalMsg > 1.25:
                 leftMessageText = f"Dear {s1}, you're obviously the more active person in this particular conversation, " \
-                                  f"sending over {'%d' % ((s1TotalMsg / s2TotalMsg) * 100 - 100)}% more texts since the start of your conversation!"
+                    f"sending over {'%d' % ((s1TotalMsg / s2TotalMsg) * 100 - 100)}% more texts since the start of your conversation!"
                 rightMessageText = f"Dear {s2}, guess you're more a quiet person, but that's okay! {s1} is definitely a really " \
-                                   f"good friend and chat buddy you'll always wanna keep!"
+                    f"good friend and chat buddy you'll always wanna keep!"
 
             # SMALL DIFF
             else:
                 leftMessageText = f"Mhm, {s1}, the both of you have sent nearly the same " \
-                                  f"number of texts to each other so far!"
+                    f"number of texts to each other so far!"
                 rightMessageText = f"{s2}, seems like the both of you are equally invested in the conversation, that's good!"
 
         else:
             # LARGE DIFF
             if s2TotalMsg / s1TotalMsg > 1.25:
                 leftMessageText = f"Dear {s1}, guess you're more a quiet person, but that's okay! {s2} is definitely a really " \
-                                  f"good friend and chat buddy you'll always wanna keep around!"
+                    f"good friend and chat buddy you'll always wanna keep around!"
 
                 rightMessageText = f"Dear {s2}, you're obviously the more active person in this particular conversation, " \
-                                   f"sending over {'%.2f' % (s2TotalMsg / s1TotalMsg)} times more texts since the start of your conversation!"
+                    f"sending over {'%.2f' % (s2TotalMsg / s1TotalMsg)} times more texts since the start of your conversation!"
             # SMALL DIFF
             else:
                 leftMessageText = f"Well, {s1}, you've both sent around the same number of texts so far!"
@@ -139,9 +135,9 @@ def metrics(request):
             # LARGE DIFF
             if s1TotalWords / s2TotalWords > 1.25:
                 leftWordsText = f"You're quite a chatty person, {s1}, I hope {s2} likes it! Well, do keep up " \
-                                f"this excellent chemistry you guys have!"
+                    f"this excellent chemistry you guys have!"
                 rightWordsText = f"On behalf of {s1}, thanks for being such a great listener, {s2}, and try not to let {s1} " \
-                                 f"dominate the conversation ;)"
+                    f"dominate the conversation ;)"
             # SMALL DIFF
             else:
                 leftWordsText = f"Well, {s1}, you're both equally chatty! So nothing you need to worry about here!"
@@ -150,7 +146,7 @@ def metrics(request):
             # LARGE DIFF
             if s2TotalWords / s1TotalWords > 1.25:
                 leftWordsText = f"On behalf of {s2}, thanks for being such a great listener, {s1}, and try not to let {s2} " \
-                                f"dominate the conversation ;)"
+                    f"dominate the conversation ;)"
                 rightWordsText = f"You're quite a chatty person, {s2}! Do keep up this excellent chemistry you guys have!"
 
             # SMALL DIFF
@@ -234,7 +230,8 @@ def metrics(request):
     else:
         return index(request)
 
-def calculateMetrics(fileContentsList):
+
+def setMetrics(fileContentsList):
     # CLEAR HISTORY OF METRICS
     MessageStorage.clearMessageList()
     CountAnalysis.clearMetrics()
@@ -247,12 +244,11 @@ def calculateMetrics(fileContentsList):
     CountAnalysis.setInitialized(True)
 
 
-def readFile(request):
-    uploadedFile = request.FILES['WhatsAppFile']
+def readFile(uploadedFile):
     fileContents = uploadedFile.read().decode('utf-8')
     fileContentsList = fileContents.split('\n')
     return fileContentsList
 
 
 def stash(request):
-    return render(request, 'whatsanalyzer/stash_new.html')
+    return render(request, 'whatsanalyzer/stash.html')

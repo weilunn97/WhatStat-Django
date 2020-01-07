@@ -73,7 +73,8 @@ class CountAnalysis():
     @staticmethod
     def calculateMetrics():
         '''
-        Logic function to process all Message objects in our backend SQL DB.
+        Process all Message objects in messageList from MessageStorage.
+        Sets the initialized status to True.
         :return: None, performs in-place modification of General Metrics (above)
         '''
 
@@ -122,6 +123,9 @@ class CountAnalysis():
         except ZeroDivisionError:
             CountAnalysis.senderTwoWordsPerMsg = 0
 
+        # Set the initialization status
+        CountAnalysis.setInitialized(True)
+
     @staticmethod
     def calculateTimeDiff(mOne, mTwo):
         '''
@@ -169,6 +173,7 @@ class CountAnalysis():
 
     @staticmethod
     def clearMetrics():
+        CountAnalysis.initialized = False
         CountAnalysis.senderList.clear()
         CountAnalysis.senderOneTotalMessages = 0
         CountAnalysis.senderOneTotalWords = 0

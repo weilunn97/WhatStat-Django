@@ -1,12 +1,11 @@
-{% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
 
-<html>
-	<canvas id="myChart" width="1920" height="1080"></canvas>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.js"></script>
-	<script type="text/javascript">
+{% load static %}
+
+<canvas id="myChart" width="1920" height="1080"></canvas>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.js"></script>
+<script type="text/javascript">
 		document.getElementById("myChart").style.padding = "0px 100px 0px 0px";
 		var senderOne = {{senderOne|safe}};
 		var senderTwo = {{senderTwo|safe}}
@@ -95,5 +94,6 @@
 				}
 			}
 		});
-	</script>
+
+</script>
 </html>
