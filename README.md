@@ -8,7 +8,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <img src="readme_mockups/landing_page.JPG" />
+  <img src="readme_mockups/Logo.JPG" />
 </p>
 
 
@@ -49,7 +49,7 @@
 ## ✏ About The Project ✏
 <p align="center">
   <a href="https://weilunn97.wixsite.com/journeywithjed">
-    <img src="readme_mockups/AppIcon.JPG" />
+    <img src="readme_mockups/landing_page.JPG" />
   </a>
 
 There're quite a few WhatsApp chat analyzers out there in the App and PlayStore today, but none of them gave me what I was looking for... How quickly the other person was taking to reply to my texts!
