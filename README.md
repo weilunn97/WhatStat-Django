@@ -8,9 +8,9 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://weilunn97.wixsite.com/journeywithjed">
-    <img src="readme_mockups/landing_page.jpg" />
-  </a>
+  <img src="readme_mockups/landing_page.JPG" />
+</p>
+
 
   <h1 align="center">:sunglasses: WhatsAnalyzer (Django) :sunglasses:</h1>
 
