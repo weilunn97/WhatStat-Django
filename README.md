@@ -8,7 +8,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <img src="readme_mockups/Logo.JPG" />
+  <img src="readme_mockups/Logo.jpg" />
 </p>
 
 
