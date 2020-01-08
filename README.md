@@ -56,7 +56,7 @@ There're quite a few WhatsApp chat analyzers out there in the App and PlayStore 
 
  :alarm_clock: **IN OTHER WORDS, OUR REPLY TIMINGS!** :alarm_clock: 
 
-Currently, the app is still in it's 🏗 early development stage  🏗, and hence unavailable on the Google Play Store. But do feel free to fork the project and make any impmovements, modifications, and enhancements as you see fit! After all, that's what open source is for 😊
+Currently, the app is still in it's 🏗 early development stage  🏗, and hence hasn't been officially deployed and hosted on the 🌐. But I look forward to the day when it is! In the meantime, do feel free to fork the project and make any impmovements, modifications, and enhancements as you see fit! After all, that's what open source is for 😊
 <br><br>
 
 
