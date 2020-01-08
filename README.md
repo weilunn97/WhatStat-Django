@@ -1,4 +1,5 @@
 
+
 [![Contributors][contributors-shield]][contributors-url]
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
@@ -8,7 +9,7 @@
 <br />
 <p align="center">
   <a href="https://weilunn97.wixsite.com/journeywithjed">
-    <img src="img/WhatsAnalyzer Mockup.png" />
+    <img src="readme_mockups/landing_page.png" />
   </a>
 
   <h1 align="center">:sunglasses: WhatsAnalyzer (Django) :sunglasses:</h1>
@@ -48,7 +49,7 @@
 ## ✏ About The Project ✏
 <p align="center">
   <a href="https://weilunn97.wixsite.com/journeywithjed">
-    <img src="img/AppIcon.JPG" />
+    <img src="readme_mockups/AppIcon.JPG" />
   </a>
 
 There're quite a few WhatsApp chat analyzers out there in the App and PlayStore today, but none of them gave me what I was looking for... How quickly the other person was taking to reply to my texts!
@@ -86,11 +87,13 @@ These are the key ⚒ frameworks and tools ⚒ which were used extensively durin
 
 
 ## 📸 Usage & Demo 📸
-<!-- INSERT PICTURES HERE-->
+<img src="readme_mockups/landing_page.JPG" /><br><br>
+<img src="readme_mockups/cloud_selection.JPG" /><br><br>
+<img src="readme_mockups/message_metrics.JPG" /><br><br>
+<img src="readme_mockups/reply_metrics.JPG" /><br><br>
+<img src="readme_mockups/reply_chart.JPG" /><br><br>
 
-
-Pictures to be added soon... 📷
-
+And of course, names have been blurred out for 🔏 privacy! 
 <br><br>
 
 
