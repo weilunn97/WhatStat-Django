@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2c75543a-9fb0-4d81-8380-858a63f0b24d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/mysite/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/mysite/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/whatsanalyzer/count_analysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/whatsanalyzer/count_analysis.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/whatsanalyzer/line_processing.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/whatsanalyzer/line_processing.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/whatsanalyzer/templates/whatsanalyzer/stash.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/whatsanalyzer/templates/whatsanalyzer/stash.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysite/whatsanalyzer/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/whatsanalyzer/tests.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

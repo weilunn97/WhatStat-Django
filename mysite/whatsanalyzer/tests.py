@@ -2,9 +2,9 @@ from datetime import datetime
 from django.test import TestCase
 from .line_processing import *
 
-# Create your tests here.
-class LineProcessingTestCase(TestCase):
 
+# Test Class for line_processing module
+class LineProcessingTestCase(TestCase):
     messageList = []
 
     def setUp(self):
