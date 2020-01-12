@@ -8,9 +8,9 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://weilunn97.wixsite.com/journeywithjed">
-    <img src="readme_mockups/landing_page.png" />
-  </a>
+  <img src="readme_mockups/Logo.jpg" />
+</p>
+
 
   <h1 align="center">:sunglasses: WhatsAnalyzer (Django) :sunglasses:</h1>
 
@@ -49,14 +49,14 @@
 ## ✏ About The Project ✏
 <p align="center">
   <a href="https://weilunn97.wixsite.com/journeywithjed">
-    <img src="readme_mockups/AppIcon.JPG" />
+    <img src="readme_mockups/landing_page.JPG" />
   </a>
 
 There're quite a few WhatsApp chat analyzers out there in the App and PlayStore today, but none of them gave me what I was looking for... How quickly the other person was taking to reply to my texts!
 
  :alarm_clock: **IN OTHER WORDS, OUR REPLY TIMINGS!** :alarm_clock: 
 
-Currently, the app is still in it's 🏗 early development stage  🏗, and hence unavailable on the Google Play Store. But do feel free to fork the project and make any impmovements, modifications, and enhancements as you see fit! After all, that's what open source is for 😊
+Currently, the app is still in it's 🏗 early development stage  🏗, and hence hasn't been officially deployed and hosted on the 🌐. But I look forward to the day when it is! In the meantime, do feel free to fork the project and make any impmovements, modifications, and enhancements as you see fit! After all, that's what open source is for 😊
 <br><br>
 
 
