@@ -35,6 +35,8 @@ AUTHENTICATION_BACKENDS = (
     'allauth.account.auth_backends.AuthenticationBackend',
 )
 
+# Set Maximum File Download Size
+DATA_UPLOAD_MAX_MEMORY_SIZE = 10485760
 
 # Application definition
 

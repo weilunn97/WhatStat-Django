@@ -6,7 +6,6 @@ following 3 attributes from each message in a WhatsApp conversation text file.
 3. Message Content/Text
 '''
 
-
 from dateutil.parser import parse
 from re import findall, search
 
@@ -21,10 +20,16 @@ def extractDate(entireLine):
     '''
 
     try:
+        # AM/PM TIMESTAMP
         lineDatetime = search(r'^.*?(am|pm)', entireLine).group()
         return parse(lineDatetime, dayfirst=True)
     except (AttributeError, ValueError):
-        return None
+        # 24-HOUR TIMESTAMP
+        try:
+            lineDatetime = search(r'^.*?(-)', entireLine).group()
+            return parse(lineDatetime[:-2], dayfirst=True)
+        except (AttributeError, ValueError):
+            return None
 
 
 def extractSender(entireLine):
@@ -41,7 +46,11 @@ def extractSender(entireLine):
         if matchList:
             return matchList[0][4:-1]
         else:
-            return None
+            matchList = findall(" - .*?:", entireLine)
+            if matchList:
+                return matchList[0][3:-1]
+            else:
+                return None
     except IndexError:
         return None
 
@@ -61,6 +70,10 @@ def extractTextBody(entireLine):
         if matchList:
             return entireLine[len(matchList[0]):]
         else:
-            return None
+            matchList = findall(".* - .*?: ", entireLine)
+            if matchList:
+                return entireLine[len(matchList[0]):]
+            else:
+                return None
     except IndexError:
         return None

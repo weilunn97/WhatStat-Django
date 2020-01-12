@@ -66,9 +66,14 @@ class CountAnalysis():
                 myMessage = Message(date=md, sender=ms, text=mt)
                 MessageStorage.addMessage(myMessage)
 
+
         # DEBUG
-        print("Actual Message Count : ", len(fileContentsList))
-        print("Processed Message Count : ", MessageStorage.countMessages())
+        actualCount = len(fileContentsList)
+        processedCount = MessageStorage.countMessages()
+        percentProcessed = actualCount/processedCount * 100
+        print("Actual Message Count : ", actualCount)
+        print("Processed Message Count : ", processedCount)
+        print("Processed % : {.2f}%", percentProcessed)
 
     @staticmethod
     def calculateMetrics():
