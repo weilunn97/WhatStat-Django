@@ -38,10 +38,7 @@
 
 
    <section class="gallery-block cards-gallery">
-
-
 	   <div class="loading">Loading</div>
-
 	    <div class="container">
 	        <div class="heading">
 	          <h2>YOUR STASH</h2>
@@ -216,14 +213,13 @@
 		var fileList = [];
 
 		// CREATE A LIST OF TRUNCATED FILENAMES
-		var textFileNames = []; // ["... with ABC.txt", "... with XYZ.txt"];
+		var textFileNames = []; // ["... with ABC", "... with XYZ"];
 
 		// PULL ALL FILES BELONGING TO THE USER
 		folderRef.listAll().then(function (res) {
 			res.items.forEach(function (itemRef) {
 				fileList.push(itemRef);
 			});
-
 
 			// POPULATE THE LISTVIEW
 			var historyListView = document.getElementById('historyListView');
@@ -239,14 +235,13 @@
 					var fileDate = document.getElementById(fileDateID);
 
 					// SET COMPONENT NAME
-					var regExp = /WhatsApp Chat with .*.txt$/g;
+					var regExp = /WhatsApp Chat with .*/g;
 					var match = regExp.exec(fileList[i-1]);
-					var newName = match[0].substring(0, match[0].length - 4);
+					var newName = match[0];
 					fileName.innerHTML = newName;
 
 					// ADD FILENAME TO LIST FOR ACCESSING FIREBASE STORAGE
-					var newNameWithExtension = newName + '.txt';
-					textFileNames.push(newNameWithExtension);
+					textFileNames.push(newName);
 				}
 				// REMOVE CARD
 				else {
@@ -256,7 +251,7 @@
 				}
 			}
 			}).catch(function (error) {
-				alert(error.message);
+<!--				alert(error.message);-->
 			});
 
 
@@ -284,7 +279,7 @@
 					});
 				};
 			}).catch(function(error) {
-				alert(error.code);
+<!--				alert(error.code);-->
 			});
 		}
 
@@ -312,7 +307,7 @@
 					});
 				};
 			}).catch(function(error) {
-				alert(error.code);
+<!--				alert(error.code);-->
 			});
 		}
 
@@ -340,7 +335,7 @@
 					});
 				};
 			}).catch(function(error) {
-				alert(error.code);
+<!--				alert(error.code);-->
 			});
 		}
 
@@ -368,7 +363,7 @@
 					});
 				};
 			}).catch(function(error) {
-				alert(error.code);
+<!--				alert(error.code);-->
 			});
 		}
 
@@ -396,7 +391,7 @@
 					});
 				};
 			}).catch(function(error) {
-				alert(error.code);
+<!--				alert(error.code);-->
 			});
 		}
 
@@ -424,7 +419,7 @@
 					});
 				};
 			}).catch(function(error) {
-				alert(error.code);
+<!--				alert(error.code);-->
 			});
 		}
 
@@ -452,7 +447,7 @@
 					});
 				};
 			}).catch(function(error) {
-				alert(error.code);
+<!--				alert(error.code);-->
 			});
 		}
 
@@ -480,7 +475,7 @@
 					});
 				};
 			}).catch(function(error) {
-				alert(error.code);
+<!--				alert(error.code);-->
 			});
 		}
 
@@ -508,7 +503,7 @@
 					});
 				};
 			}).catch(function(error) {
-				alert(error.code);
+<!--				alert(error.code);-->
 			});
 		}
 </script>

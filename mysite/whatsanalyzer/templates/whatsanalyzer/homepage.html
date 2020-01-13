@@ -204,8 +204,9 @@
 
         // UPLOAD TO FIREBASE STORAGE
         var file = e.target.files[0];
-        var userDisplayName = authRef.currentUser.displayName;
-        var uploadTask = storageRef.child(userDisplayName).child(file.name).put(file);
+        var userDisplayName = firebase.auth().currentUser.displayName;
+        var fileName = document.getElementById("WhatsAppFile_name").innerHTML
+        var uploadTask = storageRef.child(userDisplayName).child(fileName).put(file);
 
         // SETUP ON SUCCESS/FAILURE LISTENERS
         uploadTask.on('state_changed',function(snapshot){
@@ -221,6 +222,7 @@
     // LOGIN BUTTON
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
+            authRef.currentUser = user;
             loginButton.innerHTML = user.displayName + "'s "+ "Stash";
         } else {
             // No user is signed in

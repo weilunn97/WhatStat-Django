@@ -148,10 +148,13 @@ class CountAnalysis():
         try:
             dateDiff = mTwo.messageDate - mOne.messageDate
             dateDiffInMins = dateDiff.seconds / 60
+            dateDiffInDays = dateDiff.seconds / (60 * 60 * 24);
             if dateDiffInMins < 0:
                 raise ValueError("Negative DateDiff")
+            elif dateDiffInDays > 8:
+                raise ValueError("DateDiff > 8 Days")
         except ValueError:
-            print("Negative DateDiff!")
+            print("DateDiff Out of Bounds!")
             print(f"mOne : {mOne}")
             print(f"mTwo : {mTwo}")
 

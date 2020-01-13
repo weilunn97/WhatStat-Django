@@ -3,8 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="2c75543a-9fb0-4d81-8380-858a63f0b24d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/whatsanalyzer/count_analysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/whatsanalyzer/count_analysis.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/whatsanalyzer/templates/whatsanalyzer/homepage.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/whatsanalyzer/templates/whatsanalyzer/homepage.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysite/whatsanalyzer/templates/whatsanalyzer/stash.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/whatsanalyzer/templates/whatsanalyzer/stash.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/whatsanalyzer/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/whatsanalyzer/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/whatsanalyzer/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/whatsanalyzer/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -142,22 +145,22 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="381" y="173" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1280.680@0.0.1280.680" timestamp="1578315957115" />
-    <state width="1259" height="143" key="GridCell.Tab.0.bottom" timestamp="1578147276770">
+    <state width="1259" height="141" key="GridCell.Tab.0.bottom" timestamp="1578812955596">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1259" height="143" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1578147276770" />
-    <state width="1259" height="143" key="GridCell.Tab.0.center" timestamp="1578147276770">
+    <state width="1259" height="141" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1578812955596" />
+    <state width="1259" height="141" key="GridCell.Tab.0.center" timestamp="1578812955595">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1259" height="143" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1578147276770" />
-    <state width="1259" height="143" key="GridCell.Tab.0.left" timestamp="1578147276770">
+    <state width="1259" height="141" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1578812955595" />
+    <state width="1259" height="141" key="GridCell.Tab.0.left" timestamp="1578812955595">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1259" height="143" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1578147276770" />
-    <state width="1259" height="143" key="GridCell.Tab.0.right" timestamp="1578147276770">
+    <state width="1259" height="141" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1578812955595" />
+    <state width="1259" height="141" key="GridCell.Tab.0.right" timestamp="1578812955596">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1259" height="143" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1578147276770" />
+    <state width="1259" height="141" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1578812955596" />
     <state x="117" y="0" key="SettingsEditor" timestamp="1578128377048">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
