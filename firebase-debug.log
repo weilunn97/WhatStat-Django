@@ -1,0 +1,82 @@
+[debug] [2020-03-23T07:55:46.453Z] ----------------------------------------------------------------------
+[debug] [2020-03-23T07:55:46.455Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\User\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2020-03-23T07:55:46.455Z] CLI Version:   7.15.1
+[debug] [2020-03-23T07:55:46.455Z] Platform:      win32
+[debug] [2020-03-23T07:55:46.456Z] Node Version:  v12.14.1
+[debug] [2020-03-23T07:55:46.456Z] Time:          Mon Mar 23 2020 15:55:46 GMT+0800 (Singapore Standard Time)
+[debug] [2020-03-23T07:55:46.456Z] ----------------------------------------------------------------------
+[debug] [2020-03-23T07:55:46.456Z] 
+[debug] [2020-03-23T07:55:46.465Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-03-23T07:55:46.466Z] > authorizing via signed-in user
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\User\Desktop\My Personal Notes\Personal Projects\WhatsAnalyzer_Django
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[info] i  If you want to create a project in a Google Cloud organization or folder, please use "firebase projects:create" instead, and return to this command when you've created the project.
+[debug] [2020-03-23T07:58:00.186Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2020-03-23T07:58:00.187Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2020-03-23T07:58:00.362Z] <<< HTTP RESPONSE 200
+[debug] [2020-03-23T07:58:00.390Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects  
+
+[debug] [2020-03-23T07:58:01.900Z] <<< HTTP RESPONSE 200
+[debug] [2020-03-23T07:58:01.905Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/operations/cp.5545395779210551844  
+ 
+[debug] [2020-03-23T07:58:03.435Z] <<< HTTP RESPONSE 200
+[debug] [2020-03-23T07:58:03.941Z] [Project Creation Poller] Retrying task index 0
+[debug] [2020-03-23T07:58:03.942Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/operations/cp.5545395779210551844  
+ 
+[debug] [2020-03-23T07:58:05.590Z] <<< HTTP RESPONSE 200
+[debug] [2020-03-23T07:58:05.597Z] >>> HTTP REQUEST POST https://firebase.googleapis.com/v1beta1/projects/whatsanalyzer-hosting:addFirebase  
+ 
+[debug] [2020-03-23T07:58:08.971Z] <<< HTTP RESPONSE 200
+[debug] [2020-03-23T07:58:08.973Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/operations/workflows/NWM1ZDg2MzYtNmUzMy00ZmFmLWFhMWQtMGQ0MjkwYmM3YTQ5  
+ 
+[debug] [2020-03-23T07:58:09.888Z] <<< HTTP RESPONSE 200
+[debug] [2020-03-23T07:58:10.392Z] [Add Firebase Poller] Retrying task index 0
+[debug] [2020-03-23T07:58:10.393Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/operations/workflows/NWM1ZDg2MzYtNmUzMy00ZmFmLWFhMWQtMGQ0MjkwYmM3YTQ5  
+ 
+[debug] [2020-03-23T07:58:11.424Z] <<< HTTP RESPONSE 200
+[debug] [2020-03-23T07:58:12.428Z] [Add Firebase Poller] Retrying task index 0
+[debug] [2020-03-23T07:58:12.429Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/operations/workflows/NWM1ZDg2MzYtNmUzMy00ZmFmLWFhMWQtMGQ0MjkwYmM3YTQ5  
+ 
+[debug] [2020-03-23T07:58:13.265Z] <<< HTTP RESPONSE 200
+[debug] [2020-03-23T07:58:15.268Z] [Add Firebase Poller] Retrying task index 0
+[debug] [2020-03-23T07:58:15.268Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/operations/workflows/NWM1ZDg2MzYtNmUzMy00ZmFmLWFhMWQtMGQ0MjkwYmM3YTQ5  
+ 
+[debug] [2020-03-23T07:58:16.014Z] <<< HTTP RESPONSE 200
+[debug] [2020-03-23T07:58:20.018Z] [Add Firebase Poller] Retrying task index 0
+[debug] [2020-03-23T07:58:20.018Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/operations/workflows/NWM1ZDg2MzYtNmUzMy00ZmFmLWFhMWQtMGQ0MjkwYmM3YTQ5  
+ 
+[debug] [2020-03-23T07:58:21.253Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Your Firebase project is ready! ===
+[info] 
+[info] Project information:
+[info]    - Project ID: whatsanalyzer-hosting
+[info]    - Project Name: WhatsAnalyzer Hosting
+[info] 
+[info] Firebase console is available at
+[info] https://console.firebase.google.com/project/whatsanalyzer-hosting/overview
+[info] i  Using project whatsanalyzer-hosting (WhatsAnalyzer Hosting)
+[info] 
+=== Hosting Setup
+[info] 
+[info] Your public directory is the folder (relative to your project directory) that
+[info] will contain Hosting assets to be uploaded with firebase deploy. If you
+[info] have a build process for your assets, use your build's output directory.
+[info] 
