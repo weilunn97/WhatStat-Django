@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2c75543a-9fb0-4d81-8380-858a63f0b24d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/firebase-debug.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/firebase-debug.log" beforeDir="false" afterPath="$PROJECT_DIR$/firebase-debug.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysite/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/whatsanalyzer/count_analysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/whatsanalyzer/count_analysis.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -138,6 +140,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="367" y="129" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.680@0.0.1280.680" timestamp="1578315034027" />
+    <state x="321" y="74" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1585457726561">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="321" y="74" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1280.680@0.0.1280.680" timestamp="1585457726561" />
     <state x="381" y="173" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1578315957115">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -166,10 +172,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="348" y="169" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1577593118059" />
-    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1578810577706">
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1585457888153">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1578810577706" />
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1585457888153" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

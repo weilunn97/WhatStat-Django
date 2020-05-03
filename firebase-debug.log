@@ -80,3 +80,9 @@ You're about to initialize a Firebase project in this directory:
 [info] will contain Hosting assets to be uploaded with firebase deploy. If you
 [info] have a build process for your assets, use your build's output directory.
 [info] 
+[debug] [2020-03-23T08:18:06.630Z] Error: kill ENOSYS
+    at process.kill (internal/process/per_thread.js:189:13)
+    at process.listener (C:\Users\User\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\signal-exit\index.js:95:15)
+    at process.emit (events.js:223:5)
+[error] 
+[error] Error: An unexpected error has occurred.

@@ -3,11 +3,6 @@ from .line_processing import *
 from .message_storage import MessageStorage
 from .message import Message
 
-import pdb
-import logging
-
-logger = logging.getLogger(__name__)
-
 
 class CountAnalysis():
     '''
