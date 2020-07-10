@@ -17,15 +17,15 @@
   <p align="center">
     Built to provide :mag: insight :mag: into your WhatsApp conversations
     <p align="center">
-    The Web-equivalent of our <a href="[https://github.com/weilunn97/WhatsAnalyzer-Android-](https://github.com/weilunn97/WhatsAnalyzer-Android-)">WhatStat Android App
+    The Web-equivalent of our <a href="[https://github.com/weilunn97/WhatStat-Android-](https://github.com/weilunn97/WhatStat-Android-)">WhatStat Android App
     <br />
     <br />
     <br />
-    <a href="https://github.com/weilunn97/WhatsAnalyzer-Android-/tree/master/app">Source Code</a>
+    <a href="https://github.com/weilunn97/WhatStat-Android-/tree/master/app">Source Code</a>
     ·
-    <a href="https://github.com/weilunn97/WhatsAnalyzer-Android-/issues">Report Bug</a>
+    <a href="https://github.com/weilunn97/WhatStat-Android-/issues">Report Bug</a>
     ·
-    <a href="https://github.com/weilunn97/WhatsAnalyzer-Android-/issues">Request Feature</a>
+    <a href="https://github.com/weilunn97/WhatStat-Android-/issues">Request Feature</a>
   </p>
 </p>
 
@@ -48,10 +48,6 @@
 
 ## ✏ About The Project ✏
 <p align="center">
-  <a href="https://weilunn97.wixsite.com/journeywithjed">
-    <img src="readme_mockups/landing_page.JPG" />
-  </a>
-
 There're quite a few WhatsApp chat analyzers out there in the App and PlayStore today, but none of them gave me what I was looking for... How quickly the other person was taking to reply to my texts!
 
  :alarm_clock: **IN OTHER WORDS, OUR REPLY TIMINGS!** :alarm_clock: 
@@ -76,7 +72,7 @@ Of course, this is a simple website with very limited functionality right now, b
 ## 💻 Tech Stack 💻
 These are the key ⚒ frameworks and tools ⚒ which were used extensively during the development of 🔍WhatStat Django 🔍.
 
-* [Django](https://www.djangoproject.com/), a MVC web server development tool for our 🌐 backend web server 🌐, for quick handling of HTTP requests and responses.
+* [Django](https://www.djangoproject.com/), a MVT web server development tool for our 🌐 backend web server 🌐.
 
 * [Firebase](https://firebase.google.com/), where user files can be stored and retrieved quickly from the 🌨, eliminating the need to keep these files on your device.
 
@@ -87,7 +83,6 @@ These are the key ⚒ frameworks and tools ⚒ which were used extensively durin
 
 
 ## 📸 Usage & Demo 📸
-<img src="readme_mockups/landing_page.JPG" /><br><br>
 <img src="readme_mockups/cloud_selection.JPG" /><br><br>
 <img src="readme_mockups/message_metrics.JPG" /><br><br>
 <img src="readme_mockups/reply_metrics.JPG" /><br><br>
@@ -141,12 +136,12 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=flat-square
-[contributors-url]: https://github.com/weilunn97/WhatsAnalyzer-Android-/graphs/contributors
+[contributors-url]: https://github.com/weilunn97/WhatStat-Android-/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=flat-square
-[forks-url]:https://github.com/weilunn97/WhatsAnalyzer-Android-/network
+[forks-url]:https://github.com/weilunn97/WhatStat-Android-/network
 [stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=flat-square
 [license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=flat-square
-[license-url]: https://github.com/weilunn97/WhatsAnalyzer-Android-/blob/master/LICENSE.txt
+[license-url]: https://github.com/weilunn97/WhatStat-Android-/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/tan-wei-lun
 [product-screenshot]: images/screenshot.png
