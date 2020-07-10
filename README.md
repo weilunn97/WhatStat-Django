@@ -12,12 +12,12 @@
 </p>
 
 
-  <h1 align="center">:sunglasses: WhatsAnalyzer (Django) :sunglasses:</h1>
+  <h1 align="center">:sunglasses: WhatStat (Django) :sunglasses:</h1>
 
   <p align="center">
     Built to provide :mag: insight :mag: into your WhatsApp conversations
     <p align="center">
-    The Web-equivalent of our <a href="[https://github.com/weilunn97/WhatsAnalyzer-Android-](https://github.com/weilunn97/WhatsAnalyzer-Android-)">WhatsAnalyzer Android App
+    The Web-equivalent of our <a href="[https://github.com/weilunn97/WhatsAnalyzer-Android-](https://github.com/weilunn97/WhatsAnalyzer-Android-)">WhatStat Android App
     <br />
     <br />
     <br />
@@ -74,7 +74,7 @@ Of course, this is a simple website with very limited functionality right now, b
 
 
 ## 💻 Tech Stack 💻
-These are the key ⚒ frameworks and tools ⚒ which were used extensively during the development of 🔍WhatsAnalyzer Web 🔍.
+These are the key ⚒ frameworks and tools ⚒ which were used extensively during the development of 🔍WhatStat Django 🔍.
 
 * [Django](https://www.djangoproject.com/), a MVC web server development tool for our 🌐 backend web server 🌐, for quick handling of HTTP requests and responses.
 
